@@ -19,7 +19,7 @@ def on_message(client, userdata, msg):
         print("Brightness of Strip will be changed to " + str(msg.payload))
         strip.setBrightness(int(msg.payload))
         strip.show
-        bright = strip.getBrightness
+        bright = np.uint8(strip.getBrightness())
         print(bright)
     else:
         print("else")
