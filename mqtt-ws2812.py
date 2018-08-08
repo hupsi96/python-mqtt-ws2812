@@ -44,6 +44,7 @@ def fade_brightness(value,speed):
             strip.show
             print(str(currrentBrightness + x))
             time.sleep(float(speed/1000))
+            print(floaf(speed/1000))
         #currrentBrightness = np.uint8(strip.getBrightness())
     elif dif < 0:
         dif = dif * (-1)
