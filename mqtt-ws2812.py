@@ -20,14 +20,14 @@ def on_message(client, userdata, msg):
     if msg.topic == "zimmer/map/brightness/set":
         global currrentBrightness
         currrentBrightness = np.uint8(strip.getBrightness())
-        fade_brightness(msg.payload)
+        fade_brightness(msg.payload,50)
         
         bright = np.uint8(strip.getBrightness())
         print("before: " + str(currrentBrightness) + " / msg:: " + str(msg.payload) + " / actual: " + str(bright) + " / CURRENTvalue: " + str(currrentBrightness))
 
     elif msg.topic == "zimmer/map/light/switch":
         if msg.payload == "ON" and np.uint8(strip.getBrightness()) == 0:
-            fade_brightness(currrentBrightness)
+            fade_brightness(currrentBrightness,50)
 
     else:
         print("else")
@@ -36,14 +36,14 @@ def on_message(client, userdata, msg):
     strip.setPixelColorRGB(1, 0, 255, 0)
     strip.show()
 
-def fade_brightness(value):
+def fade_brightness(value,speed):
     dif = int(value) - currrentBrightness
     if dif > 0:
         for x in range(1,dif+1):
             strip.setBrightness(currrentBrightness + x)
             strip.show
             print(str(currrentBrightness + x))
-            time.sleep(.030)
+            time.sleep(float(speed/1000))
         #currrentBrightness = np.uint8(strip.getBrightness())
     elif dif < 0:
         dif = dif * (-1)
@@ -51,7 +51,7 @@ def fade_brightness(value):
             strip.setBrightness(currrentBrightness - x)
             strip.show
             print(str(currrentBrightness - x))
-            time.sleep(.030)
+            time.sleep(float(speed/1000))
         #currrentBrightness = np.uint8(strip.getBrightness())
 
 
