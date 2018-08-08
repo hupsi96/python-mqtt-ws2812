@@ -31,7 +31,7 @@ def on_message(client, userdata, msg):
         strip.setBrightness(int(msg.payload))
         strip.show
         bright = np.uint8(strip.getBrightness())
-        print("before: " + currrentBrightness + " / msg:: " + msg.payload + " / actual: " + bright)
+        print("before: " + str(currrentBrightness) + " / msg:: " + str(msg.payload) + " / actual: " + str(bright))
     else:
         print("else")
     
