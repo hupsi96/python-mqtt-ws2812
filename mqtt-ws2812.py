@@ -15,14 +15,10 @@ def on_message(client, userdata, msg):
         print("Brightness of Strip will be changed to " + str(msg.payload))
         strip.setBrightness(int(msg.payload))
         strip.show
-        color = strip.getPixelColor(1)
-        strip.setPixelColor(2,color)
-        test = strip.getBrightness()
-        
     else:
         print("else")
     
-    
+    print(" ")
     strip.setPixelColorRGB(1, 0, 255, 0)
     strip.show()
 
