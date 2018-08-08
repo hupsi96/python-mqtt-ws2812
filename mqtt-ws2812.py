@@ -16,10 +16,10 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
-
+    global currrentBrightness
 #Brightness
     if msg.topic == "zimmer/map/brightness/set":
-        Global currrentBrightness
+        
         fade_brightness(msg.payload,.030)
         
         bright = np.uint8(strip.getBrightness())
