@@ -11,7 +11,8 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
 
-    switch (msg.topic) {
+    switch (msg.topic) 
+    {
         case "zimmer/map/brightness/set":
             print("testtest");
             break;
