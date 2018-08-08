@@ -2,6 +2,7 @@
 import paho.mqtt.client as mqtt
 from neopixel import *
 import numpy as np 
+import time
 
 
 strip = Adafruit_NeoPixel(16, 18, 800000, 5, False, 255)
