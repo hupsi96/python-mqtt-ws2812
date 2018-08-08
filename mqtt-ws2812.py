@@ -18,7 +18,7 @@ def on_message(client, userdata, msg):
 
 #Brightness
     if msg.topic == "zimmer/map/brightness/set":
-        currrentBrightness = np.uint8(strip.getBrightness())
+        global currrentBrightness = np.uint8(strip.getBrightness())
         fade_brightness(msg.payload)
         
         bright = np.uint8(strip.getBrightness())
@@ -43,7 +43,7 @@ def fade_brightness(value):
             strip.show
             print(str(currrentBrightness + x))
             time.sleep(.030)
-        currrentBrightness = np.uint8(strip.getBrightness())
+        #currrentBrightness = np.uint8(strip.getBrightness())
     elif dif < 0:
         dif = dif * (-1)
         for x in range(1,dif+1):
@@ -51,7 +51,7 @@ def fade_brightness(value):
             strip.show
             print(str(currrentBrightness - x))
             time.sleep(.030)
-        currrentBrightness = np.uint8(strip.getBrightness())
+        #currrentBrightness = np.uint8(strip.getBrightness())
 
 
 client = mqtt.Client()
