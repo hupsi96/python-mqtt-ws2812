@@ -12,7 +12,8 @@ def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
 
     if msg.topic == "zimmer/map/brightness/set":
-        print("if")
+        print("Brightness of Strip will be changed to " + str(msg.payload))
+        strip.setBrightness(msg.payload)
     else:
         print("else")
     
