@@ -7,11 +7,17 @@ def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
 
     client.subscribe("zimmer/#")
-
+    strip.begin()
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
-    strip.begin()
-    print(str(strip.getPixelColor(1)))
+
+    switch (msg.topic) {
+        case 1: ="zimmer/map/brightness/set";
+            print("testtest");
+            break;
+    }
+    
+    
     strip.setPixelColorRGB(1, 0, 255, 0)
     strip.show()
 
