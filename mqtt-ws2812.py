@@ -22,7 +22,7 @@ def on_message(client, userdata, msg):
         fade_brightness(msg.payload)
         
         bright = np.uint8(strip.getBrightness())
-        print("before: " + str(currrentBrightness) + " / msg:: " + str(msg.payload) + " / actual: " + str(bright))
+        print("before: " + str(currrentBrightness) + " / msg:: " + str(msg.payload) + " / actual: " + str(bright) + " / CURRENTvalue: " + str(currrentBrightness))
 
     elif msg.topic == "zimmer/map/light/switch":
         if msg.payload == "ON" and np.uint8(strip.getBrightness()) == 0:
