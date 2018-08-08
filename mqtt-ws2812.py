@@ -36,7 +36,7 @@ def on_message(client, userdata, msg):
     strip.show()
 
 def fade_brightness(value):
-    dif = value - currrentBrightness
+    dif = int(value) - currrentBrightness
     if dif > 0:
         for x in range(1,dif+1):
             strip.setBrightness(currrentBrightness + x)
