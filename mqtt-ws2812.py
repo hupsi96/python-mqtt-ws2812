@@ -19,6 +19,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
     global currrentBrightness
+    global stateoff
 #Brightness
     if msg.topic == "zimmer/map/brightness/set":
         
