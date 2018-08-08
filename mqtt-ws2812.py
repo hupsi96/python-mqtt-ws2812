@@ -11,15 +11,10 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
 
-    switch (msg.topic) 
-    {
-        case 'zimmer/map/brightness/set':
-            print("testtest");
-            break;
-        default:
-            print("default")
-            break;
-    }
+    if msg.topic = "zimmer/map/brightness/set":
+        print("if")
+    else:
+        print("else")
     
     
     strip.setPixelColorRGB(1, 0, 255, 0)
