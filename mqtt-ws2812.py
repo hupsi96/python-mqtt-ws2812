@@ -7,6 +7,7 @@ import time
 
 strip = Adafruit_NeoPixel(16, 18, 800000, 5, False, 255)
 strip.begin()
+global currrentBrightness
 currrentBrightness = np.uint8(strip.getBrightness())
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
