@@ -11,7 +11,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
 
-    if msg.topic = "zimmer/map/brightness/set":
+    if msg.topic == "zimmer/map/brightness/set":
         print("if")
     else:
         print("else")
