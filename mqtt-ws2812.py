@@ -11,7 +11,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
     strip.begin()
-    strip.setPixelColorRGB(1, 255, 255, 255)
+    strip.setPixelColorRGB(1, 255, 0, 0)
     strip.show()
 
 client = mqtt.Client()
