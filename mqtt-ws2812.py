@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import paho.mqtt.client as mqtt
 from neopixel import *
+import numpy as np 
+
 
 strip = Adafruit_NeoPixel(16, 18, 800000, 5, False, 255)
 def on_connect(client, userdata, flags, rc):
