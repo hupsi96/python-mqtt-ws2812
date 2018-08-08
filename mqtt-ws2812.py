@@ -15,7 +15,6 @@ def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
 
     if msg.topic == "zimmer/map/brightness/set":
-        print("Brightness of Strip will be changed to " + str(msg.payload))
         currrentBrightness = np.uint8(strip.getBrightness())
         dif = int(msg.payload) - currrentBrightness
         if dif > 0:
