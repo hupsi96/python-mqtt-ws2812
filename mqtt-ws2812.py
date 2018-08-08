@@ -22,12 +22,14 @@ def on_message(client, userdata, msg):
                 strip.setBrightness(currrentBrightness + x)
                 strip.show
                 print(str(currrentBrightness + x))
+                time.sleep(.050)
         elif dif < 0:
             dif = dif * (-1)
             for x in range(1,dif):
                 strip.setBrightness(currrentBrightness - x)
                 strip.show
                 print(str(currrentBrightness - x))
+                time.sleep(.050)
 
         strip.setBrightness(int(msg.payload))
         strip.show
