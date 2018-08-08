@@ -17,6 +17,7 @@ def on_message(client, userdata, msg):
         strip.show
         color = strip.getPixelColor(1)
         strip.setPixelColor(2,color)
+        test = strip.getBrightness
     else:
         print("else")
     
