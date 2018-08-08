@@ -28,10 +28,13 @@ def on_message(client, userdata, msg):
     elif msg.topic == "zimmer/map/light/switch":
         if msg.payload == "ON" and currrentBrightness == 0:
             fade_brightness(currrentBrightness,.030)
+            print(currrentBrightness)
         elif msg.payload == "OFF" and currrentBrightness != 0:
             fade_brightness(0,.050)
+            print(currrentBrightness)
         else:
             print("ignoreee")
+            print(currrentBrightness)
 
 
     else:
