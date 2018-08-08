@@ -53,7 +53,6 @@ def fade_brightness(value,speed):
             strip.show
             print(str(currrentBrightness + x))
             time.sleep(speed)
-        currrentBrightness = np.uint8(strip.getBrightness())
     elif dif < 0:
         dif = dif * (-1)
         for x in range(1,dif+1):
@@ -61,6 +60,7 @@ def fade_brightness(value,speed):
             strip.show
             print(str(currrentBrightness - x))
             time.sleep(speed)
+    if value != 0:
         currrentBrightness = np.uint8(strip.getBrightness())
 
 
