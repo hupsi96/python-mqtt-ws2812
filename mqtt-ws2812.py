@@ -13,7 +13,7 @@ def on_message(client, userdata, msg):
 
     switch (msg.topic) 
     {
-        case "zimmer/map/brightness/set":
+        case zimmer/map/brightness/set:
             print("testtest");
             break;
         default:
