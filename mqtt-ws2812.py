@@ -12,8 +12,11 @@ def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
 
     switch (msg.topic) {
-        case 1: ="zimmer/map/brightness/set";
+        case "zimmer/map/brightness/set":
             print("testtest");
+            break;
+        default:
+            print("default")
             break;
     }
     
