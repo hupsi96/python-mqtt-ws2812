@@ -14,6 +14,9 @@ def on_message(client, userdata, msg):
     if msg.topic == "zimmer/map/brightness/set":
         print("Brightness of Strip will be changed to " + str(msg.payload))
         strip.setBrightness(int(msg.payload))
+        strip.show
+        uint32_t color = strip.getPixelColor(1)
+        strip.setPixelColor(2,color)
     else:
         print("else")
     
