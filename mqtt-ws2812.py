@@ -19,6 +19,7 @@ def on_message(client, userdata, msg):
 
 #Brightness
     if msg.topic == "zimmer/map/brightness/set":
+        Global currrentBrightness
         fade_brightness(msg.payload,.030)
         
         bright = np.uint8(strip.getBrightness())
