@@ -10,17 +10,28 @@ def on_connect(client, userdata, flags, rc):
 
     client.subscribe("zimmer/#")
     strip.begin()
-    bright = np.uint8(strip.getBrightness())
-    print(bright)
+
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
 
     if msg.topic == "zimmer/map/brightness/set":
         print("Brightness of Strip will be changed to " + str(msg.payload))
+        currrentBrightness = np.uint8(strip.getBrightness())
+        dif = int(msg.payload) - currrentBrightness
+        if dif > 0:
+            for x in rang(1,dif):
+                strip.setBrightness(currrentBrightness + x)
+                strip.show
+        elif dif < 0:
+            dif = dif * (-1)
+            for x in rang(1,dif):
+                strip.setBrightness(currrentBrightness - x)
+                strip.show
+
         strip.setBrightness(int(msg.payload))
         strip.show
         bright = np.uint8(strip.getBrightness())
-        print(bright)
+        print("before: " + currrentBrightness + " / msg:: " + msg.payload + " / actual: " + bright)
     else:
         print("else")
     
