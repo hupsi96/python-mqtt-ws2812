@@ -20,6 +20,6 @@ client.on_message = on_message
 
 client.connect("192.168.2.114", 1883, 60)
 
-#client.loop_forever()
+client.loop_forever()
 
 
