@@ -8,6 +8,7 @@ import time
 strip = Adafruit_NeoPixel(16, 18, 800000, 5, False, 255)
 strip.begin()
 global currrentBrightness
+stateoff
 currrentBrightness = np.uint8(strip.getBrightness())
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
@@ -26,12 +27,14 @@ def on_message(client, userdata, msg):
         print("before: " + str(currrentBrightness) + " / msg:: " + str(msg.payload) + " / actual: " + str(bright) + " / CURRENTvalue: " + str(currrentBrightness))
 
     elif msg.topic == "zimmer/map/light/switch":
-        if msg.payload == "ON" and currrentBrightness == 0:
+        if msg.payload == "ON" and stateoff == True:
             fade_brightness(currrentBrightness,.030)
             print(currrentBrightness)
-        elif msg.payload == "OFF" and currrentBrightness != 0:
+            stateoff = False
+        elif msg.payload == "OFF" and stateoff ==False:
             fade_brightness(0,.050)
             print(currrentBrightness)
+            stateoff = True
         else:
             print("ignoreee")
             print(currrentBrightness)
