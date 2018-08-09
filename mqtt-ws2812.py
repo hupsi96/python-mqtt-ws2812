@@ -25,6 +25,7 @@ def on_message(client, userdata, msg):
         strip.begin()
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,2,2,2)
+            strip.show
             time.sleep(0.03)
         #fade_brightness(msg.payload,.030)
 #Switch        
