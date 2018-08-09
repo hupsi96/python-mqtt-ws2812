@@ -81,7 +81,7 @@ def fade_color(red,green,blue,fadeTime):
     lv = len(value)
     rgbCurrentColor = tuple(int(value[i:i + lv // 3], 16) for i in range(0,lv, lv // 3))
     print(currentColor)
-    print(output)
+    print(rgbCurrentColor)
     for x in range(strip.numPixels()):
         print("test")
 
