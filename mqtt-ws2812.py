@@ -5,18 +5,9 @@ import numpy as np
 import time
 
 
-#global strip 
-#strip = Adafruit_NeoPixel(100, 18, 800000, 5, True, 255)
-#strip.begin()
-#strip.setPixelColorRGB(10,20,20,0)
-#strip.setPixelColorRGB(12,20,20,0)
-#strip.setPixelColorRGB(14,20,20,0)
-#strip.setPixelColorRGB(16,20,20,0)
-#strip.show
-#global currrentBrightness
-#global stateoff
-#stateoff = False
-#currrentBrightness = np.uint8(strip.getBrightness())
+
+stateoff = True
+currrentBrightness = np.uint8(strip.getBrightness())
 strip = Adafruit_NeoPixel(10, 18, 800000, 5, False, 255)
 strip.begin()
 
