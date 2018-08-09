@@ -41,6 +41,7 @@ def on_message(client, userdata, msg):
     strip.setPixelColorRGB(2,0,0,0)
     strip.setPixelColorRGB(1,0,0,0)
     strip.setPixelColorRGB(0,0,0,0)
+    
     strip.show
 
     #global currrentBrightness
