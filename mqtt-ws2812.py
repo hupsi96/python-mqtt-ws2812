@@ -9,7 +9,7 @@ import time
 stateoff = True
 strip = Adafruit_NeoPixel(10, 18, 800000, 5, False, 255)
 strip.begin()
-currrentBrightness = np.uint8(strip.getBrightness())
+currrentBrightness = 255#np.uint8(strip.getBrightness())
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
@@ -63,6 +63,7 @@ def on_message(client, userdata, msg):
     
 
 def fade_brightness(value,speed):
+    print(currrentBrightness)
     dif = int(value) - currrentBrightness
     global currrentBrightness
     if dif > 0:
