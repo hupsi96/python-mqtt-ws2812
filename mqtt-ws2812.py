@@ -166,4 +166,10 @@ client.connect("192.168.2.114", 1883, 60)
 
 client.loop_forever()
 
+if __name__ == '__main__':
+    strip = Adafruit_NeoPixel(10, 18, 800000, 5, False, 255)
+    strip.begin()
+
+    strip.setPixelColorRGB(5,20,20,0)
+    strip.show
 
