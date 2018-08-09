@@ -9,7 +9,7 @@ import time
 stateoff = True
 strip = Adafruit_NeoPixel(10, 18, 800000, 5, False, 255)
 strip.begin()
-currrentBrightness = 255#np.uint8(strip.getBrightness())
+global currrentBrightness = 255#np.uint8(strip.getBrightness())
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
@@ -25,6 +25,15 @@ def on_message(client, userdata, msg):
 
 #Brightness
     if msg.topic == "zimmer/map/brightness/set":
+        for x in range(strip.numPixels()):
+            strip.setPixelColorRGB(x,10,10,10)
+        strip.show()
+        time.sleep(1)
+        strip.setBrightness(150)
+        strip.show()
+        time.sleep(2)
+        strip.setBrightness(10)
+        strip.show
         fade_brightness(msg.payload,.030)
 #Switch        
     #elif msg.topic == "zimmer/map/light/switch":
@@ -63,9 +72,7 @@ def on_message(client, userdata, msg):
     
 
 def fade_brightness(value,speed):
-    print(currrentBrightness)
     dif = int(value) - currrentBrightness
-    global currrentBrightness
     if dif > 0:
         for x in range(1,dif+1):
             strip.setBrightness(currrentBrightness + x)
