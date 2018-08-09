@@ -23,7 +23,7 @@ def on_message(client, userdata, msg):
         for y in range(strip.numPixels()):
             strip.setPixelColorRGB(y,50,0,0)
             strip.show()
-            time.sleep(.01)
+            time.sleep(.03)
     
 
     #global currrentBrightness
