@@ -33,7 +33,11 @@ def on_message(client, userdata, msg):
     strip.setPixelColorRGB(3,0,0,0)
     strip.setPixelColorRGB(2,0,0,0)
     strip.setPixelColorRGB(1,0,0,0)
-    strip.setPixelColorRGB(0,0,0,0)
+    strip.setPixelColorRGB(6,0,0,0)
+    strip.setPixelColorRGB(7,0,0,0)
+    strip.setPixelColorRGB(8,0,0,0)
+    strip.setPixelColorRGB(9,0,0,0)
+    strip.setPixelColorRGB(10,0,0,0)
     
     strip.show
 
