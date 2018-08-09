@@ -100,6 +100,38 @@ def fade_color(red,green,blue,fadeTime):
             dif = greendif
         if bluedif > dif:
             dif = bluedif
+    for x in range(1,dif+1):
+        for pixel in range(strip.numPixel()):
+            currentColor = hex(np.asscalar(np.uint32(strip.getPixelColor(x))))
+            value = currentColor.lstrip('0x')
+            value = value.rstrip('L')
+            lv = len(value)
+            rgbCurrentColor = tuple(int(value[i:i + lv // 3], 16) for i in range(0,lv, lv // 3))
+            newRedValue = 0
+            newGreenValue = 0
+            newBlueValue = 0
+            if red > rgbCurrentColor[0]:
+                newRedValue = rgbCurrentColor[0] + 1
+            elif red < rgbCurrentColor[0]:
+                newRedValue = rgbCurrentColor[0] - 1
+            else:
+                newRedValue = red
+
+            if green > rgbCurrentColor[1]:
+                newGreenValue = rgbCurrentColor[1] + 1
+            elif green < rgbCurrentColor[1]:
+                newGreenValue = rgbCurrentColor[1] - 1
+            else:
+                newGreenValue = green
+
+            if blue > rgbCurrentColor[3]:
+                newBlueValue = rgbCurrentColor[3] + 1
+            elif blue < rgbCurrentColor[3]:
+                newBlueValue = rgbCurrentColor[3] - 1
+            else:
+                newBlueValue = blue
+            strip.setPixelColorRGB(pixel,newRedValue,newGreenValue,newBlueValue)
+        strip.show
 
 
 
