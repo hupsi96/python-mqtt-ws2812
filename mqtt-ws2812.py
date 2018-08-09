@@ -28,19 +28,12 @@ def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
     strip = Adafruit_NeoPixel(100, 18, 800000, 5, False, 255)
     strip.begin()
-    strip.setBrightness(100)
-    strip.setPixelColorRGB(5,50,0,0)
-    strip.setPixelColorRGB(4,0,50,0)
-    strip.setPixelColorRGB(3,0,0,50)
-    strip.setPixelColorRGB(2,0,50,0)
-    strip.setPixelColorRGB(1,0,50,0)
-    strip.setPixelColorRGB(6,50,0,0)
-    strip.setPixelColorRGB(7,0,0,50)
-    strip.setPixelColorRGB(8,0,50,0)
-    strip.setPixelColorRGB(9,0,50,0)
-    strip.setPixelColorRGB(10,50,0,0)
+    #strip.setBrightness(100)
+    for x in range(strip.numPixels()):
+        strip.setPixelColorRGB(x,10,10,0)
+        strip.show()
+        time.sleep(.030)
     
-    strip.show()
 
     #global currrentBrightness
     #global stateoff
