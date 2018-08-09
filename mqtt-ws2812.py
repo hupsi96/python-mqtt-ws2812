@@ -7,7 +7,7 @@ import time
 
 strip = Adafruit_NeoPixel(100, 18, 800000, 5, False, 255)
 strip.begin()
-strip.clear()
+strip.clean()
 global currrentBrightness
 global stateoff
 stateoff = False
