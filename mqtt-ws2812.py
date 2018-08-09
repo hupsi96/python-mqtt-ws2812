@@ -30,7 +30,7 @@ def on_message(client, userdata, msg):
             strip.setPixelColorRGB(x,10,10,10)
         strip.show()
         strip.setBrightness(int(msg.payload))
-        'fade_brightness(msg.payload,.010)
+        #fade_brightness(msg.payload,.010)
 #Switch        
     #elif msg.topic == "zimmer/map/light/switch":
         #if msg.payload == "ON" and stateoff == True:
