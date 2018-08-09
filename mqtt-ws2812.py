@@ -35,6 +35,9 @@ def on_message(client, userdata, msg):
         time.sleep(2)
         strip.setBrightness(10)
         strip.show
+        time.sleep(2)
+        strip.setBrightness(0)
+        
         fade_brightness(msg.payload,.030)
 #Switch        
     #elif msg.topic == "zimmer/map/light/switch":
