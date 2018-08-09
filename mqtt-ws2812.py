@@ -19,31 +19,13 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
     
-    #strip.setBrightness(100)
-    for x in range(strip.numPixels()):
-        strip.setPixelColorRGB(x,10,10,0)
-        strip.show()
-        time.sleep(.030)
-    
 
     #global currrentBrightness
     #global stateoff
-client = mqtt.Client()
-client.on_connect = on_connect
-client.on_message = on_message
 
-client.connect("192.168.2.114", 1883, 60)
-
-client.loop_forever()
 #Brightness
-    #if msg.topic == "zimmer/map/brightness/set":
-        #strip.begin()
-        #for x in range(strip.numPixels()):
-            #print(x)
-            #strip.setPixelColorRGB(x,20,20,20)
-            #strip.show
-            #time.sleep(0.03)
-        #fade_brightness(msg.payload,.030)
+    if msg.topic == "zimmer/map/brightness/set":
+        fade_brightness(msg.payload,.030)
 #Switch        
     #elif msg.topic == "zimmer/map/light/switch":
         #if msg.payload == "ON" and stateoff == True:
@@ -80,24 +62,24 @@ client.loop_forever()
         
     
 
-#def fade_brightness(value,speed):
-    #dif = int(value) - currrentBrightness
-    #global currrentBrightness
-    #if dif > 0:
-        #for x in range(1,dif+1):
-            #strip.setBrightness(currrentBrightness + x)
-            #strip.show
-            #print(str(currrentBrightness + x))
-            #time.sleep(speed)
-    #elif dif < 0:
-        #dif = dif * (-1)
-        #for x in range(1,dif+1):
-            #strip.setBrightness(currrentBrightness - x)
-            #strip.show
-            #print(str(currrentBrightness - x))
-            #time.sleep(speed)
-    #if value != 0:
-        #currrentBrightness = np.uint8(strip.getBrightness())
+def fade_brightness(value,speed):
+    dif = int(value) - currrentBrightness
+    global currrentBrightness
+    if dif > 0:
+        for x in range(1,dif+1):
+            strip.setBrightness(currrentBrightness + x)
+            strip.show()
+            print(str(currrentBrightness + x))
+            time.sleep(speed)
+    elif dif < 0:
+        dif = dif * (-1)
+        for x in range(1,dif+1):
+            strip.setBrightness(currrentBrightness - x)
+            strip.show()
+            print(str(currrentBrightness - x))
+            time.sleep(speed)
+    if value != 0:
+        currrentBrightness = np.uint8(strip.getBrightness())
 
 #def fade_color(red,green,blue,fadeTime):
     #dif = 0
@@ -162,7 +144,13 @@ client.loop_forever()
         #strip.show
 
 
+client = mqtt.Client()
+client.on_connect = on_connect
+client.on_message = on_message
 
+client.connect("192.168.2.114", 1883, 60)
+
+client.loop_forever()
 
 
 
