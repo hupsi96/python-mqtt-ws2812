@@ -7,13 +7,6 @@ import time
 
 strip = Adafruit_NeoPixel(10, 18, 800000, 5, False, 255)
 strip.begin()
-strip.setPixelColorRGB(5,0,0,0)
-strip.setPixelColorRGB(4,0,0,0)
-strip.setPixelColorRGB(3,0,0,0)
-strip.setPixelColorRGB(2,0,0,0)
-strip.setPixelColorRGB(1,0,0,0)
-strip.setPixelColorRGB(0,0,0,0)
-strip.show
 
 global currrentBrightness
 global stateoff
@@ -26,6 +19,13 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
+    strip.setPixelColorRGB(5,0,0,0)
+    strip.setPixelColorRGB(4,0,0,0)
+    strip.setPixelColorRGB(3,0,0,0)
+    strip.setPixelColorRGB(2,0,0,0)
+    strip.setPixelColorRGB(1,0,0,0)
+    strip.setPixelColorRGB(0,0,0,0)
+    strip.show
     global currrentBrightness
     global stateoff
 
