@@ -75,7 +75,7 @@ def fade_brightness(value,speed):
         currrentBrightness = np.uint8(strip.getBrightness())
 
 def fade_color(red,green,blue,fadeTime):
-    currentColor = np.uint32(strip.getPixelColor(10))
+    currentColor = np.uint32(strip.getPixelColorRGB(10))
     print(str(currentColor))
 
 client = mqtt.Client()
