@@ -37,6 +37,7 @@ def on_message(client, userdata, msg):
         strip.show
         time.sleep(2)
         strip.setBrightness(0)
+        strip.show()
         
         fade_brightness(msg.payload,.030)
 #Switch        
