@@ -20,14 +20,11 @@ def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
     global currrentBrightness
     global stateoff
+
 #Brightness
     if msg.topic == "zimmer/map/brightness/set":
-        
         fade_brightness(msg.payload,.030)
-        
-        bright = np.uint8(strip.getBrightness())
-        print("before: " + str(currrentBrightness) + " / msg:: " + str(msg.payload) + " / actual: " + str(bright) + " / CURRENTvalue: " + str(currrentBrightness))
-
+#Switch        
     elif msg.topic == "zimmer/map/light/switch":
         if msg.payload == "ON" and stateoff == True:
             fade_brightness(currrentBrightness,.030)
@@ -40,6 +37,13 @@ def on_message(client, userdata, msg):
         else:
             print("ignoreee")
             print(currrentBrightness)
+#RGB
+    elif msg.topic == "zimmer/map/rgb/set":
+        data = str(msg.payload).split(",")
+        red = int(data[0])
+        green = int(data[1])
+        blue = int(data[2])
+        fade_color(red,green,blue,fadeTime)
 
 
     else:
@@ -68,6 +72,9 @@ def fade_brightness(value,speed):
     if value != 0:
         currrentBrightness = np.uint8(strip.getBrightness())
 
+def fade_color(red,green,blue,fadeTime):
+    currentColor = np.uint32(strip.getPixelColor(10))
+    print(str(currentColor))
 
 client = mqtt.Client()
 client.on_connect = on_connect
