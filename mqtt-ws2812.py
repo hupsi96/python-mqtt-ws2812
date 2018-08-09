@@ -27,7 +27,7 @@ def on_message(client, userdata, msg):
     for y in range(0,254):
         strip.setBrightness(y)
         strip.show()
-        time.sleep(.05)
+        time.sleep(.1)
         
 
     #global currrentBrightness
