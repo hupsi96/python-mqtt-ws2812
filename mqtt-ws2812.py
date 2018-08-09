@@ -43,7 +43,7 @@ def on_message(client, userdata, msg):
         red = int(data[0])
         green = int(data[1])
         blue = int(data[2])
-        fade_color(red,green,blue,fadeTime)
+        fade_color(red,green,blue,1000)
 
 
     else:
