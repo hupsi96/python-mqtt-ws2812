@@ -44,6 +44,7 @@ def on_message(client, userdata, msg):
         green = int(data[1])
         blue = int(data[2])
         print("red: " + str(red) + " green: " + str(green) + " blue: " + str(blue))
+        strip.setPixelColor(10,50,50,50)
         fade_color(red,green,blue,1000)
 
 
