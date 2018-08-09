@@ -17,7 +17,8 @@ import time
 #global stateoff
 #stateoff = False
 #currrentBrightness = np.uint8(strip.getBrightness())
-
+strip = Adafruit_NeoPixel(10, 18, 800000, 5, False, 255)
+strip.begin()
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
@@ -26,8 +27,7 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
-    strip = Adafruit_NeoPixel(100, 18, 800000, 5, False, 255)
-    strip.begin()
+    
     #strip.setBrightness(100)
     for x in range(strip.numPixels()):
         strip.setPixelColorRGB(x,10,10,0)
