@@ -5,7 +5,7 @@ import numpy as np
 import time
 
 
-strip = Adafruit_NeoPixel(16, 18, 800000, 5, False, 255)
+strip = Adafruit_NeoPixel(100, 18, 800000, 5, False, 255)
 strip.begin()
 global currrentBrightness
 global stateoff
@@ -75,15 +75,32 @@ def fade_brightness(value,speed):
         currrentBrightness = np.uint8(strip.getBrightness())
 
 def fade_color(red,green,blue,fadeTime):
-    currentColor = hex(np.asscalar(np.uint32(strip.getPixelColor(10))))
-    value = currentColor.lstrip('0x')
-    value = value.rstrip('L')
-    lv = len(value)
-    rgbCurrentColor = tuple(int(value[i:i + lv // 3], 16) for i in range(0,lv, lv // 3))
-    print(currentColor)
-    print(rgbCurrentColor)
+    dif = 0
     for x in range(strip.numPixels()):
-        print("test")
+        currentColor = hex(np.asscalar(np.uint32(strip.getPixelColor(x))))
+        value = currentColor.lstrip('0x')
+        value = value.rstrip('L')
+        lv = len(value)
+        rgbCurrentColor = tuple(int(value[i:i + lv // 3], 16) for i in range(0,lv, lv // 3))
+        if (int(rgbCurrentColor[0]) - int(red)) >= 0:
+            reddif = int(rgbCurrentColor[0]) - int(red)
+        else:
+            reddif = (int(rgbCurrentColor[0]) - int(red)) * (-1)
+        if (int(rgbCurrentColor[1]) - int(green)) >= 0:
+            greendif = (int(rgbCurrentColor[1]) - int(green)
+        else:
+            greendif = (int(rgbCurrentColor[1]) - int(green)) * (-1)
+        if (int(rgbCurrentColor[2]) - int(blue)) >= 0:
+            bluedif = int(rgbCurrentColor[2]) - int(blue)
+        else:
+            bluedif = (int(rgbCurrentColor[2]) - int(blue)) * (-1)
+        if reddif > dif:
+            dif = reddif
+        if greendif > dif:
+            dif = greendif
+        if bluedif > dif:
+            dif = bluedif
+
 
 
 client = mqtt.Client()
