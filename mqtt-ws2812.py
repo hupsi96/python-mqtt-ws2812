@@ -80,7 +80,7 @@ def fade_color(red,green,blue,fadeTime):
         currentColor = hex(np.asscalar(np.uint32(strip.getPixelColor(x))))
         value = currentColor.lstrip('0x')
         value = value.rstrip('L')
-        lv = len(value)
+        lv = 6
         rgbCurrentColor = tuple(int(value[i:i + lv // 3], 16) for i in range(0,lv, lv // 3))
         if len(rgbCurrentColor) > 3:
             if (int(rgbCurrentColor[0]) - int(red)) >= 0:
