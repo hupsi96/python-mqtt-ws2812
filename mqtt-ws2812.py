@@ -25,7 +25,7 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
-    strip = Adafruit_NeoPixel(100, 18, 800000, 5, True, 255)
+    strip = Adafruit_NeoPixel(10, 18, 800000, 5, False, 255)
     strip.begin()
     strip.setPixelColorRGB(3,255,0,0)
     strip.show()
