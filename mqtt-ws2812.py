@@ -87,7 +87,7 @@ def fade_color(red,green,blue,fadeTime):
         else:
             reddif = (int(rgbCurrentColor[0]) - int(red)) * (-1)
         if (int(rgbCurrentColor[1]) - int(green)) >= 0:
-            greendif = (int(rgbCurrentColor[1]) - int(green)
+            greendif = int(rgbCurrentColor[1]) - int(green)
         else:
             greendif = (int(rgbCurrentColor[1]) - int(green)) * (-1)
         if (int(rgbCurrentColor[2]) - int(blue)) >= 0:
