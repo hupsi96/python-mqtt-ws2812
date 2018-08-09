@@ -20,17 +20,15 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
     
-    for i in range(0,50):
-        for y in range(strip.numPixels()):
-            strip.setPixelColorRGB(y,50,0,0)
+    
+    for y in range(strip.numPixels()):
+        strip.setPixelColorRGB(y,0,50,0)
+    strip.show()
+    for y in range(0,254):
+        strip.setBrightness(y)
         strip.show()
-        for y in range(strip.numPixels()):
-            strip.setBrightness(50)
-            strip.show()
-            time.sleep(.03)
-            strip.setBrightness(10)
-            strip.show()
-            time.sleep(.03)
+        time.sleep(.05)
+        
 
     #global currrentBrightness
     #global stateoff
