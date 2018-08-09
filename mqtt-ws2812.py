@@ -79,9 +79,12 @@ def fade_color(red,green,blue,fadeTime):
     value = currentColor.lstrip('0x')
     value = value.rstrip('L')
     lv = len(value)
-    output = tuple(int(value[i:i + lv // 3], 16) for i in range(0,lv, lv // 3))
+    rgbCurrentColor = tuple(int(value[i:i + lv // 3], 16) for i in range(0,lv, lv // 3))
     print(currentColor)
     print(output)
+    for x in range(strip.numPixels()):
+        print("test")
+
 
 client = mqtt.Client()
 client.on_connect = on_connect
