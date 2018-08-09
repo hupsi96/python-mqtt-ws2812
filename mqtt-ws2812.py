@@ -18,13 +18,6 @@ import time
 #stateoff = False
 #currrentBrightness = np.uint8(strip.getBrightness())
 
-client = mqtt.Client()
-client.on_connect = on_connect
-client.on_message = on_message
-
-client.connect("192.168.2.114", 1883, 60)
-
-client.loop_forever()
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
@@ -46,7 +39,13 @@ def on_message(client, userdata, msg):
 
     #global currrentBrightness
     #global stateoff
+client = mqtt.Client()
+client.on_connect = on_connect
+client.on_message = on_message
 
+client.connect("192.168.2.114", 1883, 60)
+
+client.loop_forever()
 #Brightness
     #if msg.topic == "zimmer/map/brightness/set":
         #strip.begin()
