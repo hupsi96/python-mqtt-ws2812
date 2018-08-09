@@ -77,21 +77,23 @@ def on_message(client, userdata, msg):
     
 
 def fade_brightness(value,speed):
-    dif = int(value) - currrentBrightness
+    curBright = currrentBrightness
+    dif = int(value) - int(curBright)
     if dif > 0:
         for x in range(1,dif+1):
-            strip.setBrightness(currrentBrightness + x)
+            strip.setBrightness(curBright + x)
             strip.show()
-            print(str(currrentBrightness + x))
+            print(str(curBright + x))
             time.sleep(speed)
     elif dif < 0:
         dif = dif * (-1)
         for x in range(1,dif+1):
-            strip.setBrightness(currrentBrightness - x)
+            strip.setBrightness(curBright - x)
             strip.show()
-            print(str(currrentBrightness - x))
+            print(str(curBright - x))
             time.sleep(speed)
     if value != 0:
+        global currrentBrightness
         currrentBrightness = np.uint8(strip.getBrightness())
 
 #def fade_color(red,green,blue,fadeTime):
