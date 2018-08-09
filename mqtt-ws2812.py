@@ -22,6 +22,7 @@ def on_message(client, userdata, msg):
 
 #Brightness
     if msg.topic == "zimmer/map/brightness/set":
+        strip.begin()
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,2,2,2)
             time.sleep(0.03)
