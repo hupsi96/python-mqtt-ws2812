@@ -26,15 +26,18 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
-    strip.setPixelColorRGB(5,0,0,1)
-    strip.setPixelColorRGB(4,0,0,2)
-    strip.setPixelColorRGB(3,0,0,3)
-    strip.setPixelColorRGB(2,0,0,4)
-    strip.setPixelColorRGB(1,0,0,5)
-    strip.setPixelColorRGB(0,0,0,6)
-    strip.show
-    global currrentBrightness
-    global stateoff
+    strip = Adafruit_NeoPixel(100, 18, 800000, 5, True, 255)
+    strip.begin()
+    strip.setPixelColorRGB(3,255,0,0)
+    strip.show()
+    #global currrentBrightness
+    #global stateoff
+
+client = mqtt.Client()
+client.on_connect = on_connect
+client.on_message = on_message
+
+client.connect("192.168.2.114", 1883, 60)
 
 #Brightness
     if msg.topic == "zimmer/map/brightness/set":
