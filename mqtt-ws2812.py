@@ -24,7 +24,7 @@ def on_message(client, userdata, msg):
             strip.setPixelColorRGB(y,50,0,0)
             strip.show()
             time.sleep(.03)
-    
+    time.sleep(5=)
 
     #global currrentBrightness
     #global stateoff
