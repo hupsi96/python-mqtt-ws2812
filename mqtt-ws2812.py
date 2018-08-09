@@ -24,7 +24,7 @@ def on_message(client, userdata, msg):
     for y in range(strip.numPixels()):
         strip.setPixelColorRGB(y,0,50,0)
     strip.show()
-    for y in range(0,254):
+    for y in range(254,0):
         strip.setBrightness(y)
         strip.show()
         time.sleep(.1)
