@@ -28,8 +28,8 @@ def on_message(client, userdata, msg):
     if msg.topic == "zimmer/map/brightness/set":
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,10,10,10)
-        strip.show()
         strip.setBrightness(int(msg.payload))
+        strip.show()
         #fade_brightness(msg.payload,.010)
 #Switch        
     #elif msg.topic == "zimmer/map/light/switch":
