@@ -32,7 +32,7 @@ def on_message(client, userdata, msg):
         strip.setBrightness(int(np.uint8(msg.payload)))
         strip.show()
         print("aktuelle Helligkeit")
-        print(str(np.uint8(strip.getBrightness)))
+        print(np.uint8(strip.getBrightness))
         #fade_brightness(msg.payload,.010)
 #Switch        
     #elif msg.topic == "zimmer/map/light/switch":
