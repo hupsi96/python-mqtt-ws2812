@@ -50,14 +50,15 @@ def on_message(client, userdata, msg):
 
     else:
         print("else")
+        print(" ")
+        strip.setPixelColorRGB(0, 0, 255, 0)
+        strip.setPixelColorRGB(1, 0, 255, 0)
+        strip.setPixelColorRGB(2, 0, 255, 0)
+        strip.setPixelColorRGB(3, 0, 255, 0)
+        strip.setPixelColorRGB(4, 0, 255, 0)
+        strip.show()
+        
     
-    print(" ")
-    strip.setPixelColorRGB(0, 0, 255, 0)
-    strip.setPixelColorRGB(1, 0, 255, 0)
-    strip.setPixelColorRGB(2, 0, 255, 0)
-    strip.setPixelColorRGB(3, 0, 255, 0)
-    strip.setPixelColorRGB(4, 0, 255, 0)
-    strip.show()
 
 def fade_brightness(value,speed):
     dif = int(value) - currrentBrightness
