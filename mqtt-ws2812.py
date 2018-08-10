@@ -26,21 +26,36 @@ def on_connect(client, userdata, flags, rc):
 
     client.subscribe("zimmer/#")
 
+def getRrbColor(position):
+    colorHex = hex(np.asscalar(np.uint32(strip.getPixelColor(position))))
+    colorHex = colorHex.lstrip('0x')
+    colorHex = colorHex.rstrip('L')
+    if len(colorHex) < 6:
+        output = ""
+        for a in range(6-len(colorHex)):
+            output = output + "0"
+        colorHex = output + colorHex
+    rgbColor = tuple(map(ord,colorHex.decode('hex')))
+    return rgbColor
+    
+
 def fadeStripBrightness(value):
     matrix = [[0 for x in range(3)] for y in range(strip.numPixels())]
 
     for pos in range(strip.numPixels()):
         strip.setPixelColorRGB(pos,0,0,3)
+        rgbColor = getRrbColor(pos)
+        print(rgbColor)
         #get Color of each Pixel and convert hex value to rgb tuple
-        colorHex = hex(np.asscalar(np.uint32(strip.getPixelColor(pos))))
-        colorHex = colorHex.lstrip('0x')
-        colorHex = colorHex.rstrip('L')
-        if len(colorHex) < 6:
-            output = ""
-            for a in range(6-len(colorHex)):
-                output = output + "0"
-            colorHex = output + colorHex
-        rgbColor = tuple(map(ord,colorHex.decode('hex')))
+        #colorHex = hex(np.asscalar(np.uint32(strip.getPixelColor(pos))))
+        #colorHex = colorHex.lstrip('0x')
+        #colorHex = colorHex.rstrip('L')
+        #if len(colorHex) < 6:
+            #output = ""
+            #for a in range(6-len(colorHex)):
+            #    output = output + "0"
+            #colorHex = output + colorHex
+        #rgbColor = tuple(map(ord,colorHex.decode('hex')))
         #write rate for color into matrix 
         for y in range(3):
             matrix[pos][y] = int(rgbColor[y])
