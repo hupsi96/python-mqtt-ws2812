@@ -40,7 +40,7 @@ def getRrbColor(position):
     rgbColor = tuple(map(ord,colorHex.decode('hex')))
     return rgbColor
 
-def fadeStripBrightness(value):
+def fadeStripBrightness(value,speed):
     matrix = [[0 for x in range(7)] for y in range(strip.numPixels())]
 
     for pos in range(strip.numPixels()):
@@ -87,6 +87,7 @@ def fadeStripBrightness(value):
                 strip.setPixelColorRGB(x,int(matrix[x][0] + (itt * matrix[x][3])),int(matrix[x][1] + (itt * matrix[x][4])),int(matrix[x][2] + (itt * matrix[x][5])))
                 print("color set to: (" + str(int(matrix[x][0] + (itt * matrix[x][3]))) +"," + str(int(matrix[x][1] + (itt * matrix[x][4]))) +"," + str(int(matrix[x][2] + (itt * matrix[x][5]))) )
         strip.show()
+        time.sleep((speed/1000)/itterations)
         
 
 
@@ -99,7 +100,7 @@ def on_message(client, userdata, msg):
     #Brightness
     if msg.topic == "zimmer/map/brightness/set":
         #setStripBrightness(int(msg.payload))
-        fadeStripBrightness(int(msg.payload))
+        fadeStripBrightness(int(msg.payload),1000)
     #Switch        
     #elif msg.topic == "zimmer/map/light/switch":
         #if msg.payload == "ON" and stateoff == True:
