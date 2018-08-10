@@ -55,7 +55,7 @@ def fadeStripBrightness(value):
                 matrix[pos][y] = float((maxValue * 1.0) / 255)
             else:
                 matrix[pos][y] = float((rgbColor[y] * 1.0) / (maxValue * 1.0))
-                print(matrix[pos][y])
+            print(matrix[pos][y])
     print("")
     
 
