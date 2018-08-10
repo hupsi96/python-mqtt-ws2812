@@ -9,7 +9,6 @@ import time
 stateoff = True
 strip = Adafruit_NeoPixel(10, 18, 800000, 5, False, 255)
 strip.begin()
-clear()
 global currrentBrightness
 currrentBrightness = 255#np.uint8(strip.getBrightness())
 
@@ -167,7 +166,7 @@ def fade_brightness(value,speed):
                     #strip.setPixelColorRGB(pixel,newRedValue,newGreenValue,newBlueValue)
         #strip.show
 
-
+clear()
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
