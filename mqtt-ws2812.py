@@ -40,7 +40,7 @@ def getRrbColor(position):
     return rgbColor
 
 def fadeStripBrightness(value):
-    matrix = [[0 for x in range(4)] for y in range(strip.numPixels())]
+    matrix = [[0 for x in range(7)] for y in range(strip.numPixels())]
 
     for pos in range(strip.numPixels()):
         print("pos: " + str(pos))
@@ -50,12 +50,16 @@ def fadeStripBrightness(value):
         #write rate for color into matrix 
         maxValue = max(rgbColor)
         print(maxValue)
-        for y in range(4):
-            if y == 3:
-                matrix[pos][y] = float((maxValue * 1.0) / 255)
+        for y in range(7):
+            if y < 3:
+                matrix[pos][y] = rgbColor[y]
+            elif y == 6:
+                matrix[pos][y] = maxValue * 1.0
             else:
-                matrix[pos][y] = float((rgbColor[y] * 1.0) / (maxValue * 1.0))
+                matrix[pos][y] = float((rgbColor[y-3] * 1.0) / (maxValue * 1.0))
             print(matrix[pos][y])
+    #dif1 = value - max()
+    #maxDif = 
     print("")
     
 
