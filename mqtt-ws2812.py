@@ -43,15 +43,15 @@ def fadeStripBrightness(value):
     matrix = [[0 for x in range(3)] for y in range(strip.numPixels())]
 
     for pos in range(strip.numPixels()):
-        strip.setPixelColorRGB(pos,0,0,3)
+        strip.setPixelColorRGB(pos,120,51,210)
         rgbColor = getRrbColor(pos)
 
         #write rate for color into matrix 
         maxValue = max(rgbColor)
         print(maxValue)
         for y in range(3):
-
-            matrix[pos][y] = int(rgbColor[y])
+            print(float(int(rgbColor[y]) / maxValue))
+            matrix[pos][y] = float(int(rgbColor[y]) / maxValue)
 
 
 
