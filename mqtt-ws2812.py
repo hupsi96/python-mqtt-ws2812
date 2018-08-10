@@ -73,10 +73,16 @@ def fadeStripBrightness(value):
 
     for x in range(strip.numPixels()):
         for y in range(3):
-            print(str(matrix[x][y]) +"-"+str(matrix[x][y+3]) +"*"+ str(value) +"/" + str(itterations))
+            #print(str(matrix[x][y]) +"-"+str(matrix[x][y+3]) +"*"+ str(value) +"/" + str(itterations))
             matrix[x][y] = (matrix[x][y]-(matrix[x][y+3] * value) / itterations)
 
-    
+    for itt in range(itterations):
+        for x in range(strip.numPixels()):
+            if matrix[x][6] > value:
+                strip.setPixelColorRGB(x,matrix[x][0] - (itt * matrix[x][3]),matrix[x][1] - (itt * matrix[x][4]),matrix[x][2] - (itt * matrix[x][5]))
+            elif matrix[x][6] < value:
+                strip.setPixelColorRGB(x,matrix[x][0] + (itt * matrix[x][3]),matrix[x][1] + (itt * matrix[x][4]),matrix[x][2] + (itt * matrix[x][5]))
+        strip.show()
 
 
 
