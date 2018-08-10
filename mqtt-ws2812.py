@@ -34,7 +34,7 @@ def fadeStripBrightness(value):
         colorHex = colorHex.lstrip('0x')
         colorHex = colorHex.rstrip('L')
         lv = len(colorHex)
-        print(int(colorHex[0:2],16))
+        print(int(colorHex[:2],16))
         rgbColor = tuple(int(colorHex[i:i + lv // 3], 16) for i in range(0,lv, lv // 3))
         for y in range(3):
             matrix[pos][y] = int(rgbColor[y])
