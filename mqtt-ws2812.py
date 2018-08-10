@@ -45,7 +45,10 @@ def fadeStripBrightness(value):
 
     for pos in range(strip.numPixels()):
         print("pos: " + str(pos))
+        #to be removed:
         strip.setPixelColorRGB(pos,randint(0,255),randint(0,255),randint(0,255))
+        strip.show()
+        #to be removed
         rgbColor = getRrbColor(pos)
 
         #write rate for color into matrix 
@@ -62,10 +65,10 @@ def fadeStripBrightness(value):
     brightness = [0] * int(strip.numPixels())
     for x in range(strip.numPixels()):
         brightness[x] = matrix[x][6]
-    maxBrightness = max(brightness)
-    minBrightness = min(brightness)
-    print(maxBrightness)
-    print(minBrightness)
+    difMaxBrightness = max(brightness) - int(value)
+    difMinBrightness = min(brightness) - int(value)
+    itterations = abs(difMaxBrightness) if abs(difMaxBrightness) > abs(difMinBrightness) else abs(difMinBrightness)
+    print(itterations)
     #dif1 = value - max()
     #maxDif = 
     print("")
