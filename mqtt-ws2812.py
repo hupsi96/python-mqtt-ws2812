@@ -61,17 +61,21 @@ def fadeStripBrightness(value):
             else:
                 matrix[pos][y] = float((rgbColor[y-3] * 1.0) / (maxValue * 1.0))
             print(matrix[pos][y])
-            print("")
+        print("")
+
+    #define the number of fade steps
     brightness = [0] * int(strip.numPixels())
     for x in range(strip.numPixels()):
         brightness[x] = matrix[x][6]
     difMaxBrightness = max(brightness) - int(value)
     difMinBrightness = min(brightness) - int(value)
     itterations = abs(difMaxBrightness) if abs(difMaxBrightness) > abs(difMinBrightness) else abs(difMinBrightness)
-    print(itterations)
-    #dif1 = value - max()
-    #maxDif = 
-    print("")
+
+    for x in range(strip.numPixels()):
+        for y in range(3):
+            print(str(matrix[x][y]) +"-"+str(matrix[x][y+3]) +"*"+ str(value) +"/" + str(itterations))
+            matrix[x][y] = (matrix[x][y]-(matrix[x][y+3] * value) / itterations)
+
     
 
 
