@@ -31,6 +31,7 @@ def fadeStripBrightness(value):
 
     for pos in range(strip.numPixels()):
         strip.setPixelColorRGB(pos,0,0,3)
+        #get Color of each Pixel and convert hex value to rgb tuple
         colorHex = hex(np.asscalar(np.uint32(strip.getPixelColor(pos))))
         colorHex = colorHex.lstrip('0x')
         colorHex = colorHex.rstrip('L')
@@ -39,9 +40,8 @@ def fadeStripBrightness(value):
             for a in range(6-len(colorHex)):
                 output = output + "0"
             colorHex = output + colorHex
-        print(colorHex)
         rgbColor = tuple(map(ord,colorHex.decode('hex')))
-        print(rgbColor)
+        #write rate for color into matrix 
         for y in range(3):
             matrix[pos][y] = int(rgbColor[y])
 
