@@ -3,6 +3,7 @@ import paho.mqtt.client as mqtt
 from neopixel import *
 import numpy as np 
 import time
+from random import randint
 
 
 
@@ -44,7 +45,7 @@ def fadeStripBrightness(value):
 
     for pos in range(strip.numPixels()):
         print("pos: " + str(pos))
-        strip.setPixelColorRGB(pos,120,51,210)
+        strip.setPixelColorRGB(pos,randint(0,255),randint(0,255),randint(0,255))
         rgbColor = getRrbColor(pos)
 
         #write rate for color into matrix 
