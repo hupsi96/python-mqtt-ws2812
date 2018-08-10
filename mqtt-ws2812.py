@@ -9,30 +9,47 @@ import time
 stateoff = True
 strip = Adafruit_NeoPixel(10, 18, 800000, 5, False, 255)
 strip.begin()
-global currrentBrightness 
+clear()
+global currrentBrightness
 currrentBrightness = 255#np.uint8(strip.getBrightness())
+
+def clear():
+    for x in range(strip.numPixels()):
+        strip.setPixelColorRGB(x,0,0,0)
+    strip.show()
+
+def setStripBrightness(value):
+    strip.setBrightness(value)
+    strip.show()
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
 
     client.subscribe("zimmer/#")
 
+def fadeStripBrightness(value):
+    matrix = [[0 for x in range(3)] for y in range(strip.numPixels())]
+
+    for pos in range(strip.numPixels()):
+        colorHex = hex(np.asscalar(np.uint32(strip.getPixelColor(pos))))
+        colorHex = colorHex.lstrip('0x')
+        colorHex = colorHex.rstrip('L')
+        lv = len(colorHex)
+        rgbColor = tuple(int(colorHex[i:i + lv // 3], 16) for i in range(0,lv, lv // 3))
+        for y in range(3):
+            matrix[pos][y] = int(rgbColor[y])
+
+
+
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
     #global currrentBrightness
     #global stateoff
 
-#Brightness
+    #Brightness
     if msg.topic == "zimmer/map/brightness/set":
-        for x in range(strip.numPixels()):
-            strip.setPixelColorRGB(x,10,10,10)
-        print(str(np.uint8(msg.payload)))
-        strip.setBrightness(int(np.uint8(msg.payload)))
-        strip.show()
-        print("aktuelle Helligkeit")
-        print(str(np.uint8(strip.getBrightness())))
-        #fade_brightness(msg.payload,.010)
-#Switch        
+        setStripBrightness(msg.payload)
+    #Switch        
     #elif msg.topic == "zimmer/map/light/switch":
         #if msg.payload == "ON" and stateoff == True:
             #fade_brightness(currrentBrightness,.030)
@@ -45,7 +62,7 @@ def on_message(client, userdata, msg):
         #else:
             #print("ignoreee")
             #print(currrentBrightness)
-#RGB
+    #RGB
     #elif msg.topic == "zimmer/map/rgb/set":
         #data = str(msg.payload).split(",")
         #red = int(data[0])
