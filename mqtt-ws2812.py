@@ -47,7 +47,7 @@ def on_message(client, userdata, msg):
 
     #Brightness
     if msg.topic == "zimmer/map/brightness/set":
-        setStripBrightness(msg.payload)
+        setStripBrightness(int(msg.payload))
     #Switch        
     #elif msg.topic == "zimmer/map/light/switch":
         #if msg.payload == "ON" and stateoff == True:
