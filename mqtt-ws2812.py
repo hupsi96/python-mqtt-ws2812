@@ -43,7 +43,7 @@ def fadeStripBrightness(value):
     matrix = [[0 for x in range(4)] for y in range(strip.numPixels())]
 
     for pos in range(strip.numPixels()):
-        print("pos: " + pos)
+        print("pos: " + str(pos))
         strip.setPixelColorRGB(pos,120,51,210)
         rgbColor = getRrbColor(pos)
 
