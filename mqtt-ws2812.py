@@ -61,7 +61,7 @@ def fadeStripBrightness(value,speed):
             elif y == 6:
                 matrix[pos][y] = maxValue
             else:
-                0 if maxValue == 0 else matrix[pos][y] = float((rgbColor[y-3] * 1.0) / (maxValue * 1.0))
+                matrix[pos][y] = 0 if maxValue == 0 else matrix[pos][y] = float((rgbColor[y-3] * 1.0) / (maxValue * 1.0))
             print(matrix[pos][y])
         print("")
 
