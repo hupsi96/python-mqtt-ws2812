@@ -8,7 +8,7 @@ from random import randint
 
 
 stateoff = True
-strip = Adafruit_NeoPixel(10, 18, 800000, 5, False, 255)
+strip = Adafruit_NeoPixel(20, 18, 800000, 5, False, 255)
 strip.begin()
 global currrentBrightness
 currrentBrightness = 255#np.uint8(strip.getBrightness())
@@ -47,7 +47,7 @@ def fadeStripBrightness(value,speed):
         print("pos: " + str(pos))
         #to be removed:
         strip.setPixelColorRGB(pos,randint(0,255),randint(0,255),randint(0,255))
-        
+
         #strip.setPixelColorRGB(pos,50,50,50)
         strip.show()
         #to be removed
