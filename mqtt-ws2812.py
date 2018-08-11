@@ -46,7 +46,7 @@ def fadeStripBrightness(value,speed):
     for pos in range(strip.numPixels()):
         print("pos: " + str(pos))
         #to be removed:
-        #strip.setPixelColorRGB(pos,randint(0,255),randint(0,255),randint(0,255))
+        strip.setPixelColorRGB(pos,randint(0,255),randint(0,255),randint(0,255))
 
         #strip.setPixelColorRGB(pos,50,50,50)
         strip.show()
