@@ -78,8 +78,8 @@ def fadeStripBrightness(value,speed):
 
     for x in range(strip.numPixels()):
         for y in range(3):
-            #print(str(matrix[x][y]) +"-"+str(matrix[x][y+3]) +"*"+ str(value) +"/" + str(itterations))
-            matrix[x][y+3] = (((matrix[x][y+3] * value) - matrix[x][y]) / itterations)
+            if itterations != 0:
+                matrix[x][y+3] = (((matrix[x][y+3] * value) - matrix[x][y]) / itterations)
             print(matrix[x][y+3])
         print("")
 
