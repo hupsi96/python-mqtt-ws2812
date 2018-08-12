@@ -96,17 +96,15 @@ def fadeStripBrightness(value,speed):
 
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
-    #global currrentBrightness
-    #global stateoff
 
     #Brightness
     if msg.topic == "zimmer/map/brightness/set":
-        #setStripBrightness(int(msg.payload))
         fadeStripBrightness(int(msg.payload),1000)
     #Switch        
-    #elif msg.topic == "zimmer/map/light/switch":
-        #if msg.payload == "ON" and stateoff == True:
+    elif msg.topic == "zimmer/map/light/switch":
+        if msg.payload == "OFF":
             #fade_brightness(currrentBrightness,.030)
+            fadeStripBrightness(0,1000)
             #print(currrentBrightness)
             #stateoff = False
         #elif msg.payload == "OFF" and stateoff ==False:
