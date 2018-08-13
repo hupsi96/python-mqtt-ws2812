@@ -12,6 +12,7 @@ strip = Adafruit_NeoPixel(20, 18, 800000, 5, False, 255)
 strip.begin()
 global currrentBrightness
 currrentBrightness = 255#np.uint8(strip.getBrightness())
+defaultColor = (255,255,255)
 
 def clear():
     for x in range(strip.numPixels()):
@@ -45,6 +46,7 @@ def getRrbColor(position):
 
 def fadeStripBrightness(value,speed):
     matrix = [[0 for x in range(7)] for y in range(strip.numPixels())]
+    stateoff = True if int(value) == 0 else False
 
     for pos in range(strip.numPixels()):
         print("pos: " + str(pos))
@@ -91,6 +93,8 @@ def fadeStripBrightness(value,speed):
 def fadeStripRGB(red,green,blue):
     matrix = [[0 for x in range(8)] for y in range(strip.numPixels())]
     value = [int(red),int(green),int(blue)]
+    defaultColor = (int(red),int(green),int(blue))
+    stateoff = False
     #O(n) = n * 5
     for pos in range(strip.numPixels()):
         rgbColor = getRrbColor(pos)
@@ -136,8 +140,8 @@ def on_message(client, userdata, msg):
             fadeStripBrightness(0,1000)
             #print(currrentBrightness)
             #stateoff = False
-        #elif msg.payload == "OFF" and stateoff ==False:
-            #fade_brightness(0,.050)
+        else msg.payload == "ON" and stateoff == False:
+            fadeStripRGB(int(defaultColor[0]),int(defaultColor[1]),int(defaultColor[2]))
             #print(currrentBrightness)
             #stateoff = True
         #else:
