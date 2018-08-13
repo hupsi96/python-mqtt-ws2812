@@ -54,10 +54,13 @@ def fadeStripBrightness(value,speed):
         maxValue = max(rgbColor)
         for y in range(7):
             if y < 3:
+                #0-2 stores realy current rgb values
                 matrix[pos][y] = rgbColor[y]
             elif y == 6:
+                #3-5 stores the rates of the maximum value to the other
                 matrix[pos][y] = maxValue
             else:
+                #6 stores the max brightness
                 matrix[pos][y] = 0 if maxValue == 0 else float((rgbColor[y-3] * 1.0) / (maxValue * 1.0))
             print(matrix[pos][y])
         print("")
@@ -85,6 +88,34 @@ def fadeStripBrightness(value,speed):
         strip.show()
         #time.sleep(float((speed/1000)/itterations))
         
+def fadeStripRGB(red,green,blue):
+    matrix = [[0 for x in range(7)] for y in range(strip.numPixels())]
+    value = [int(red),int(green),int(blue)]
+    for pos in range(strip.numPixels()):
+        rgbColor = getRrbColor(pos)
+
+        for y in range(5):
+            if y < 3:
+                matrix[pos][y] = rgbColor[y]
+            elif y == 3:
+                matrix[pos][y] = min(rgbColor)
+            elif y == 4:
+                matrix[pos][y] = max(rgbColor)
+
+    #define the number of fading steps that are needed:
+    maxValue = [0] * int(strip.numPixels())
+    minValue = [0] * int(strip.numPixels())
+    for x in range(strip.numPixels()):
+        minValue[x] = matrix[x][3]
+        maxValue[x] = matrix[x][4]
+    difMaxValue = max(maxValue) - min(value)
+    DifMinValue = min(minValue) - max(value)
+    itterations = abs(DifMinValue) if abs(DifMinValue) > abs(difMaxValue) else abs(difMaxValue)
+        
+
+    
+    
+
 
 
 
@@ -109,11 +140,12 @@ def on_message(client, userdata, msg):
             #print("ignoreee")
             #print(currrentBrightness)
     #RGB
-    #elif msg.topic == "zimmer/map/rgb/set":
-        #data = str(msg.payload).split(",")
-        #red = int(data[0])
-        #green = int(data[1])
-        #blue = int(data[2])
+    elif msg.topic == "zimmer/map/rgb/set":
+        data = str(msg.payload).split(",")
+        red = int(data[0])
+        green = int(data[1])
+        blue = int(data[2])
+        fadeStripRGB(red,green,blue)
         #print("red: " + str(red) + " green: " + str(green) + " blue: " + str(blue))
         #strip.setPixelColorRGB(10,50,50,50)
         #fade_color(red,green,blue,1000)
