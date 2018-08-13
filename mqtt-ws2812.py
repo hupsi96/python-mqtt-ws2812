@@ -87,10 +87,11 @@ def fadeStripBrightness(value,speed):
         
         strip.show()
         #time.sleep(float((speed/1000)/itterations))
-        
+#O(n) = n*5 + n + n * 3 + itt * n = 9*n + itt*n        
 def fadeStripRGB(red,green,blue):
-    matrix = [[0 for x in range(7)] for y in range(strip.numPixels())]
+    matrix = [[0 for x in range(8)] for y in range(strip.numPixels())]
     value = [int(red),int(green),int(blue)]
+    #O(n) = n * 5
     for pos in range(strip.numPixels()):
         rgbColor = getRrbColor(pos)
 
@@ -105,19 +106,22 @@ def fadeStripRGB(red,green,blue):
     #define the number of fading steps that are needed:
     maxValue = [0] * int(strip.numPixels())
     minValue = [0] * int(strip.numPixels())
+    #O(n) = n
     for x in range(strip.numPixels()):
         minValue[x] = matrix[x][3]
         maxValue[x] = matrix[x][4]
     difMaxValue = max(maxValue) - min(value)
     DifMinValue = min(minValue) - max(value)
     itterations = abs(DifMinValue) if abs(DifMinValue) > abs(difMaxValue) else abs(difMaxValue)
-        
-
-    
-    
-
-
-
+    #O(n) = n * 3    
+    for x in range(strip.numPixels()):
+        for y in range(3):
+            matrix[x][y+5] = ((value[y] - rgbColor[y]) * 1.0) / (itterstaions * 1.0)
+    #O(n) = numberOfFadesteps * n -> max: 255 * n min: n
+    for itt in range(itterations + 1):
+        for x in rnage(strip.numPixels()):
+            strip.setPixelColorRGB(x,int(matrix[x][0]+ (itt * matrix[x][5])),int(matrix[x][1]+ (itt * matrix[x][6])),int(matrix[x][2]+ (itt * matrix[x][7])))
+        strip.show()
 
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
