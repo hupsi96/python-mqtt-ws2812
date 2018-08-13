@@ -48,12 +48,6 @@ def fadeStripBrightness(value,speed):
 
     for pos in range(strip.numPixels()):
         print("pos: " + str(pos))
-        #to be removed:
-        #strip.setPixelColorRGB(pos,randint(0,255),randint(0,255),randint(0,255))
-
-        #strip.setPixelColorRGB(pos,50,50,50)
-        #strip.show()
-        #to be removed
         rgbColor = getRrbColor(pos)
 
         #write rate for color into matrix 
@@ -80,13 +74,13 @@ def fadeStripBrightness(value,speed):
         for y in range(3):
             if itterations != 0:
                 matrix[x][y+3] = (((matrix[x][y+3] * value) - matrix[x][y]) / itterations)
-            print(matrix[x][y+3])
-        print("")
+            #print(matrix[x][y+3])
+        #print("")
 
     for itt in range(itterations+1):
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,int(matrix[x][0] + (itt * matrix[x][3])),int(matrix[x][1] + (itt * matrix[x][4])),int(matrix[x][2] + (itt * matrix[x][5])))
-            print("color set to: (" + str(int(matrix[x][0] + (itt * matrix[x][3]))) +"," + str(int(matrix[x][1] + (itt * matrix[x][4]))) +"," + str(int(matrix[x][2] + (itt * matrix[x][5]))) )
+            #print("color set to: (" + str(int(matrix[x][0] + (itt * matrix[x][3]))) +"," + str(int(matrix[x][1] + (itt * matrix[x][4]))) +"," + str(int(matrix[x][2] + (itt * matrix[x][5]))) )
         
         strip.show()
         #time.sleep(float((speed/1000)/itterations))
