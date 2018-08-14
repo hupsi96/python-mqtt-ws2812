@@ -123,7 +123,7 @@ def fadeStripRGB(red,green,blue):
             matrix[x][y+5] = ((value[y] - rgbColor[y]) * 1.0) / (itterations * 1.0)
     #O(n) = numberOfFadesteps * n -> max: 255 * n min: n
     for itt in range(itterations + 1):
-        for x in rnage(strip.numPixels()):
+        for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,int(matrix[x][0]+ (itt * matrix[x][5])),int(matrix[x][1]+ (itt * matrix[x][6])),int(matrix[x][2]+ (itt * matrix[x][7])))
         strip.show()
 
