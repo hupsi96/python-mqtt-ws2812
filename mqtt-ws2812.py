@@ -135,7 +135,7 @@ def on_message(client, userdata, msg):
 
     #Brightness
     if msg.topic == "zimmer/map/brightness/set":
-        fadeStripBrightness(int(msg.payload),3000)
+        fadeStripBrightness(int(msg.payload),10000)
     #Switch        
     elif msg.topic == "zimmer/map/light/switch":
         if msg.payload == "OFF":
