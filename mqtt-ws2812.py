@@ -26,7 +26,7 @@ def setStripBrightness(value):
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
     for pos in range(strip.numPixels()):
-        strip.setPixelColorRGB(pos,0,255,0)#randint(0,255),randint(0,255),randint(0,255)) order g,r
+        strip.setPixelColorRGB(pos,0,255,0)#randint(0,255),randint(0,255),randint(0,255)) order g,r,b
     strip.show()
     print("Test color was turned on")
     client.subscribe("zimmer/#")
@@ -92,7 +92,7 @@ def fadeStripBrightness(value,speed):
 #O(n) = n*5 + n + n * 3 + itt * n = 9*n + itt*n        
 def fadeStripRGB(red,green,blue):
     matrix = [[0 for x in range(8)] for y in range(strip.numPixels())]
-    value = [int(red),int(green),int(blue)]
+    value = [int(green),int(red),int(blue)]
     defaultColor = (int(red),int(green),int(blue))
     stateoff = False
     #O(n) = n * 5
