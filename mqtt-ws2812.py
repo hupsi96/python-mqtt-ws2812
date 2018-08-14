@@ -49,7 +49,7 @@ def fadeStripBrightness(value,speed):
     stateoff = True if int(value) == 0 else False
 
     for pos in range(strip.numPixels()):
-        print("pos: " + str(pos))
+        #print("pos: " + str(pos))
         rgbColor = getRrbColor(pos)
 
         #write rate for color into matrix 
@@ -64,8 +64,8 @@ def fadeStripBrightness(value,speed):
             else:
                 #6 stores the max brightness
                 matrix[pos][y] = 0 if maxValue == 0 else float((rgbColor[y-3] * 1.0) / (maxValue * 1.0))
-            print(matrix[pos][y])
-        print("")
+            #print(matrix[pos][y])
+        #print("")
 
     #define the number of fade steps
     brightness = [0] * int(strip.numPixels())
@@ -124,8 +124,8 @@ def fadeStripRGB(red,green,blue):
     #O(n) = numberOfFadesteps * n -> max: 255 * n min: n
     for itt in range(itterations + 1):
         for x in range(strip.numPixels()):
-            print(str(matrix[x][0]) + ":" + str(matrix[x][1]) + ":" + str(matrix[x][2]) + ":" + str(matrix[x][3]) + ":" + str(matrix[x][4]) + ":" + str(matrix[x][5]) + ":" + str(matrix[x][6]) + ":" + str(matrix[x][7]))
-            print(str(x) + ", " + str(int(matrix[x][0])) + " + (" + str(int(itt)) + " * " + str(int(matrix[x][5])) + "), ...")
+            #print(str(matrix[x][0]) + ":" + str(matrix[x][1]) + ":" + str(matrix[x][2]) + ":" + str(matrix[x][3]) + ":" + str(matrix[x][4]) + ":" + str(matrix[x][5]) + ":" + str(matrix[x][6]) + ":" + str(matrix[x][7]))
+            #print(str(x) + ", " + str(int(matrix[x][0])) + " + (" + str(int(itt)) + " * " + str(int(matrix[x][5])) + "), ...")
             strip.setPixelColorRGB(x,int(matrix[x][0]+ (itt * matrix[x][5])),int(matrix[x][1]+ (itt * matrix[x][6])),int(matrix[x][2]+ (itt * matrix[x][7])))
         strip.show()
 
