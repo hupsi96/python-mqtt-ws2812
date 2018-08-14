@@ -120,7 +120,7 @@ def fadeStripRGB(red,green,blue):
     #O(n) = n * 3    
     for x in range(strip.numPixels()):
         for y in range(3):
-            matrix[x][y+5] = ((value[y] - rgbColor[y]) * 1.0) / (itterstaions * 1.0)
+            matrix[x][y+5] = ((value[y] - rgbColor[y]) * 1.0) / (itterations * 1.0)
     #O(n) = numberOfFadesteps * n -> max: 255 * n min: n
     for itt in range(itterations + 1):
         for x in rnage(strip.numPixels()):
