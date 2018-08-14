@@ -124,7 +124,7 @@ def fadeStripRGB(red,green,blue):
     #O(n) = numberOfFadesteps * n -> max: 255 * n min: n
     for itt in range(itterations + 1):
         for x in range(strip.numPixels()):
-            print( str(x) + ", " + str(int(matrix[x][0]) + " + (" + str(int(itt)) + " * " + str(int(matrix[x][5])) + "), ..."))
+            print(str(x) + ", " + str(int(matrix[x][0])) + " + (" + str(int(itt)) + " * " + str(int(matrix[x][5])) + "), ...")
             strip.setPixelColorRGB(x,int(matrix[x][0]+ (itt * matrix[x][5])),int(matrix[x][1]+ (itt * matrix[x][6])),int(matrix[x][2]+ (itt * matrix[x][7])))
         strip.show()
 
