@@ -86,7 +86,7 @@ def fadeStripBrightness(value,speed):
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,int(matrix[x][0] + (itt * matrix[x][3])),int(matrix[x][1] + (itt * matrix[x][4])),int(matrix[x][2] + (itt * matrix[x][5])))
             #print("color set to: (" + str(int(matrix[x][0] + (itt * matrix[x][3]))) +"," + str(int(matrix[x][1] + (itt * matrix[x][4]))) +"," + str(int(matrix[x][2] + (itt * matrix[x][5]))) )
-        
+        print(str(float((speed/1000)/itterations)))
         strip.show()
         time.sleep(float((speed/1000)/itterations))
 #O(n) = n*5 + n + n * 3 + itt * n = 9*n + itt*n        
@@ -135,7 +135,7 @@ def on_message(client, userdata, msg):
 
     #Brightness
     if msg.topic == "zimmer/map/brightness/set":
-        fadeStripBrightness(int(msg.payload),1000)
+        fadeStripBrightness(int(msg.payload),3000)
     #Switch        
     elif msg.topic == "zimmer/map/light/switch":
         if msg.payload == "OFF":
