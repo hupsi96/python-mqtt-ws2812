@@ -124,7 +124,7 @@ def fadeStripRGB(red,green,blue):
     #O(n) = numberOfFadesteps * n -> max: 255 * n min: n
     for itt in range(itterations + 1):
         for x in range(strip.numPixels()):
-            strip.setPixelColorRGB(int(x),np.uint(matrix[x][0]+ (itt * matrix[x][5])),np.uint(matrix[x][1]+ (itt * matrix[x][6])),np.uint(matrix[x][2]+ (itt * matrix[x][7])))
+            strip.setPixelColorRGB(int(x),np.uint32(matrix[x][0]+ (itt * matrix[x][5])),np.uint32(matrix[x][1]+ (itt * matrix[x][6])),np.uint32(matrix[x][2]+ (itt * matrix[x][7])))
         strip.show()
 
 def on_message(client, userdata, msg):
