@@ -86,11 +86,11 @@ def fadeStripBrightness(value,speed):
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,int(matrix[x][0] + (itt * matrix[x][3])),int(matrix[x][1] + (itt * matrix[x][4])),int(matrix[x][2] + (itt * matrix[x][5])))
             #print("color set to: (" + str(int(matrix[x][0] + (itt * matrix[x][3]))) +"," + str(int(matrix[x][1] + (itt * matrix[x][4]))) +"," + str(int(matrix[x][2] + (itt * matrix[x][5]))) )
-        print(str(float((speed * 1.0 /1000.0)/(itterations * 1.0))))
+        #print(str(float((speed * 1.0 /1000.0)/(itterations * 1.0))))
         strip.show()
         time.sleep(float((speed * 1.0 /1000.0)/(itterations * 1.0)))
 #O(n) = n*5 + n + n * 3 + itt * n = 9*n + itt*n        
-def fadeStripRGB(red,green,blue):
+def fadeStripRGB(red,green,blue,speed):
     matrix = [[0 for x in range(8)] for y in range(strip.numPixels())]
     value = [int(green),int(red),int(blue)]
     defaultColor = (int(red),int(green),int(blue))
@@ -129,6 +129,7 @@ def fadeStripRGB(red,green,blue):
             #print(str(x) + ", " + str(int(matrix[x][0])) + " + (" + str(int(itt)) + " * " + str(int(matrix[x][5])) + "), ...")
             strip.setPixelColorRGB(x,int(matrix[x][0]+ (itt * matrix[x][5])),int(matrix[x][1]+ (itt * matrix[x][6])),int(matrix[x][2]+ (itt * matrix[x][7])))
         strip.show()
+        time.sleep(float((speed * 1.0 /1000.0)/(itterations * 1.0)))
 
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
@@ -156,7 +157,7 @@ def on_message(client, userdata, msg):
         red = int(data[0])
         green = int(data[1])
         blue = int(data[2])
-        fadeStripRGB(red,green,blue)
+        fadeStripRGB(red,green,blue,5000)
         #print("red: " + str(red) + " green: " + str(green) + " blue: " + str(blue))
         #strip.setPixelColorRGB(10,50,50,50)
         #fade_color(red,green,blue,1000)
