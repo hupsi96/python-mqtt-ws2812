@@ -88,7 +88,7 @@ def fadeStripBrightness(value,speed):
             #print("color set to: (" + str(int(matrix[x][0] + (itt * matrix[x][3]))) +"," + str(int(matrix[x][1] + (itt * matrix[x][4]))) +"," + str(int(matrix[x][2] + (itt * matrix[x][5]))) )
         
         strip.show()
-        #time.sleep(float((speed/1000)/itterations))
+        time.sleep(float((speed/1000)/itterations))
 #O(n) = n*5 + n + n * 3 + itt * n = 9*n + itt*n        
 def fadeStripRGB(red,green,blue):
     matrix = [[0 for x in range(8)] for y in range(strip.numPixels())]
