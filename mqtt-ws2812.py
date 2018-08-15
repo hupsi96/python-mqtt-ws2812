@@ -8,8 +8,7 @@ import requests
 
 myToken = 'b08f4d8e5f3a74c2e1417c081ef20823'
 head = {'Authorization': 'token {}'.format(myToken)}
-myUrl = 'http://samples.openweathermap.org/data/2.5/weather?q=London,uk'
-response = requests.get(myUrl, headers=head)
+myUrl = 'http://samples.openweathermap.org/data/2.5/weather?'
 
 print(str(response.status_code))
 
@@ -138,6 +137,11 @@ def fadeStripRGB(red,green,blue,speed):
         strip.show()
         time.sleep(float((speed * 1.0 /1000.0)/(itterations * 1.0)))
 
+def weatherMap():
+    global myUrl, head
+    myUrl = myUrl + 'lat=35&lon139'
+    response = requests.get(myUrl, headers=head)
+
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
     global defaultColor
@@ -178,6 +182,8 @@ def on_message(client, userdata, msg):
             fadeTime = 5000
         if msg.payload == "fade10":
             fadeTime = 10000
+        if msg.payload == "weather":
+            weatherMap()
     
     print("done")
         
