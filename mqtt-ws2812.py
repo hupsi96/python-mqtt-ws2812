@@ -9,7 +9,7 @@ from random import randint
 
 
 stateoff = False
-strip = Adafruit_NeoPixel(20, 18, 800000, 5, False, 255)
+strip = Adafruit_NeoPixel(170, 18, 800000, 5, False, 255)
 strip.begin()
 defaultColor = (255,255,255)
 fadeTime = 1000
