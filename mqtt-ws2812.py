@@ -10,7 +10,6 @@ myToken = 'b08f4d8e5f3a74c2e1417c081ef20823'
 head = {'Authorization': 'token {}'.format(myToken)}
 myUrl = 'http://samples.openweathermap.org/data/2.5/weather?'
 
-print(str(response.status_code))
 
 stateoff = False
 strip = Adafruit_NeoPixel(100, 18, 800000, 5, False, 255)
