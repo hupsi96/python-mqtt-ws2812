@@ -12,6 +12,7 @@ stateoff = False
 strip = Adafruit_NeoPixel(20, 18, 800000, 5, False, 255)
 strip.begin()
 defaultColor = (255,255,255)
+fadeTime = 1000
 
 def clear():
     for x in range(strip.numPixels()):
@@ -137,29 +138,23 @@ def on_message(client, userdata, msg):
     global defaultColor
     global stateoff
     global defaultColor
+    global fadeTime
     #Brightness
     if msg.topic == "zimmer/map/brightness/set":
-        fadeStripBrightness(int(msg.payload),10000)
+        fadeStripBrightness(int(msg.payload),fadeTime)
         stateoff = False
-        print("done")
+
     #Switch        
     elif msg.topic == "zimmer/map/light/switch":
         if msg.payload == "OFF":
             #fade_brightness(currrentBrightness,.030)
-            fadeStripBrightness(0,1000)
+            fadeStripBrightness(0,fadeTime)
             stateoff = True
-            print("done")
-            #print(currrentBrightness)
-            #stateoff = False
+
         elif msg.payload == "ON" and stateoff == True:
-            fadeStripRGB(int(defaultColor[0]),int(defaultColor[1]),int(defaultColor[2]),1000)
+            fadeStripRGB(int(defaultColor[0]),int(defaultColor[1]),int(defaultColor[2]),fadeTime)
             stateoff = False
-            print("done")
-            #print(currrentBrightness)
-            #stateoff = True
-        #else:
-            #print("ignoreee")
-            #print(currrentBrightness)
+
     #RGB
     elif msg.topic == "zimmer/map/rgb/set":
         data = str(msg.payload).split(",")
@@ -167,12 +162,19 @@ def on_message(client, userdata, msg):
         green = int(data[1])
         blue = int(data[2])
         defaultColor = data
-        fadeStripRGB(red,green,blue,5000)
+        fadeStripRGB(red,green,blue,fadeTime)
         stateoff = False
-        print("done")
-        #print("red: " + str(red) + " green: " + str(green) + " blue: " + str(blue))
-        #strip.setPixelColorRGB(10,50,50,50)
-        #fade_color(red,green,blue,1000)
+    elif msg.topic == "zimmer/map/effect/set":
+        if msg.payload == "fade1":
+            fadeTime = 1000
+        if msg.payload == "fade3":
+            fadeTime = 3000
+        if msg.payload == "fade5":
+            fadeTime = 5000
+        if msg.payload == "fade10":
+            fadeTime = 10000
+    
+    print("done")
 
 
     #else:
