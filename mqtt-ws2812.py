@@ -151,7 +151,7 @@ def on_message(client, userdata, msg):
             #print(currrentBrightness)
             #stateoff = False
         elif msg.payload == "ON" and stateoff == True:
-            fadeStripRGB(int(defaultColor[0]),int(defaultColor[1]),int(defaultColor[2]))
+            fadeStripRGB(int(defaultColor[0]),int(defaultColor[1]),int(defaultColor[2]),1000)
             stateoff = False
             print("done")
             #print(currrentBrightness)
