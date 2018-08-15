@@ -140,6 +140,8 @@ def weatherMap():
     global myUrl, head
     myUrl = myUrl + 'lat=35&lon139'
     response = requests.get(myUrl, headers=head)
+    print(str(response.status_code))
+    print(response.json())
 
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
