@@ -89,12 +89,12 @@ def fadeStripBrightness(value,speed):
         #print(str(float((speed * 1.0 /1000.0)/(itterations * 1.0))))
         strip.show()
         time.sleep(float((speed * 1.0 /1000.0)/(itterations * 1.0)))
+
 #O(n) = n*5 + n + n * 3 + itt * n = 9*n + itt*n        
 def fadeStripRGB(red,green,blue,speed):
     print("fadetime: " + str(speed))
     matrix = [[0 for x in range(8)] for y in range(strip.numPixels())]
     value = [int(green),int(red),int(blue)]
-    defaultColor = (int(red),int(green),int(blue))
     stateoff = False
     #O(n) = n * 5
     for pos in range(strip.numPixels()):
@@ -136,6 +136,7 @@ def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
     global defaultColor
     global stateoff
+    global defaultColor
     #Brightness
     if msg.topic == "zimmer/map/brightness/set":
         fadeStripBrightness(int(msg.payload),10000)
@@ -165,6 +166,7 @@ def on_message(client, userdata, msg):
         red = int(data[0])
         green = int(data[1])
         blue = int(data[2])
+        defaultColor = data
         fadeStripRGB(red,green,blue,5000)
         stateoff = False
         print("done")
