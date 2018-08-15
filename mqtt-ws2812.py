@@ -47,6 +47,7 @@ def getRrbColor(position):
 def fadeStripBrightness(value,speed):
     matrix = [[0 for x in range(7)] for y in range(strip.numPixels())]
     stateoff = True if int(value) == 0 else False
+    print("fadetime: " + str(speed))
 
     for pos in range(strip.numPixels()):
         #print("pos: " + str(pos))
@@ -91,6 +92,7 @@ def fadeStripBrightness(value,speed):
         time.sleep(float((speed * 1.0 /1000.0)/(itterations * 1.0)))
 #O(n) = n*5 + n + n * 3 + itt * n = 9*n + itt*n        
 def fadeStripRGB(red,green,blue,speed):
+    print("fadetime: " + str(speed))
     matrix = [[0 for x in range(8)] for y in range(strip.numPixels())]
     value = [int(green),int(red),int(blue)]
     defaultColor = (int(red),int(green),int(blue))
