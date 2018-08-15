@@ -4,6 +4,7 @@ from neopixel import *
 import numpy as np 
 import time
 from random import randint
+import requests
 
 
 
@@ -175,17 +176,6 @@ def on_message(client, userdata, msg):
             fadeTime = 10000
     
     print("done")
-
-
-    #else:
-        #print("else")
-        #print(" ")
-        #strip.setPixelColorRGB(0, 0, 255, 0)
-        #strip.setPixelColorRGB(1, 0, 255, 0)
-        #strip.setPixelColorRGB(2, 0, 255, 0)
-        #strip.setPixelColorRGB(3, 0, 255, 0)
-        #strip.setPixelColorRGB(4, 0, 255, 0)
-        #strip.show()
         
 
 clear()
