@@ -134,7 +134,8 @@ def fadeStripRGB(red,green,blue,speed):
 
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
-
+    global defaultColor
+    global stateoff
     #Brightness
     if msg.topic == "zimmer/map/brightness/set":
         fadeStripBrightness(int(msg.payload),10000)
