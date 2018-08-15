@@ -8,7 +8,6 @@ import requests
 
 myToken = 'b08f4d8e5f3a74c2e1417c081ef20823'
 head = {'Authorization': 'token {}'.format(myToken)}
-myUrl = 'http://samples.openweathermap.org/data/2.5/weather?'
 
 
 stateoff = False
@@ -137,8 +136,8 @@ def fadeStripRGB(red,green,blue,speed):
         time.sleep(float((speed * 1.0 /1000.0)/(itterations * 1.0)))
 
 def weatherMap():
-    global myUrl, head
-    myUrl = myUrl + 'lat=35&lon139'
+    global head
+    myUrl = 'http://samples.openweathermap.org/data/2.5/weather?lat=35&lon=139'
     response = requests.get(myUrl, headers=head)
     print(str(response.status_code))
     print(response.json())
