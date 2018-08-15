@@ -139,6 +139,7 @@ def on_message(client, userdata, msg):
     #Brightness
     if msg.topic == "zimmer/map/brightness/set":
         fadeStripBrightness(int(msg.payload),10000)
+        stateoff = False
         print("done")
     #Switch        
     elif msg.topic == "zimmer/map/light/switch":
@@ -165,6 +166,7 @@ def on_message(client, userdata, msg):
         green = int(data[1])
         blue = int(data[2])
         fadeStripRGB(red,green,blue,5000)
+        stateoff = False
         print("done")
         #print("red: " + str(red) + " green: " + str(green) + " blue: " + str(blue))
         #strip.setPixelColorRGB(10,50,50,50)
