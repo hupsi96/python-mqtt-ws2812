@@ -10,9 +10,7 @@ from random import randint
 stateoff = True
 strip = Adafruit_NeoPixel(20, 18, 800000, 5, False, 255)
 strip.begin()
-global currrentBrightness
-currrentBrightness = 255#np.uint8(strip.getBrightness())
-defaultColor = (255,255,255)
+global defaultColor = (255,255,255)
 
 def clear():
     for x in range(strip.numPixels()):
