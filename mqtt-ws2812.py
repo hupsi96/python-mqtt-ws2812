@@ -7,7 +7,8 @@ from random import randint
 
 
 
-stateoff = True
+global stateoff
+stateoff = False
 strip = Adafruit_NeoPixel(20, 18, 800000, 5, False, 255)
 strip.begin()
 global defaultColor 
