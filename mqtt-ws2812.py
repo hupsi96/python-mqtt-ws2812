@@ -194,16 +194,19 @@ def on_message(client, userdata, msg):
     print("done")
         
 weatherThread = threading.Thread(target = weatherMap)
+def startMQTT():
 
-clear()
-client = mqtt.Client()
-client.on_connect = on_connect
-client.on_message = on_message
+    clear()
+    client = mqtt.Client()
+    client.on_connect = on_connect
+    client.on_message = on_message
 
-client.connect("192.168.2.114", 1883, 60)
+    client.connect("192.168.2.114", 1883, 60)
 
-client.loop_forever()
+    client.loop_forever()
 
+mainThread = threading.Thread(target = startMQTT)
+mainThread.start()
 #old code:
 
 # def fade_brightness(value,speed):
