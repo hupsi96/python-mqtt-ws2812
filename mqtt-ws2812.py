@@ -5,8 +5,9 @@ import numpy as np
 import time
 from random import randint
 import requests
+import config
 
-myToken = '&APPID=b08f4d8e5f3a74c2e1417c081ef20823'
+myToken = '&APPID=' + config.weatherApiToken
 
 
 stateoff = False
