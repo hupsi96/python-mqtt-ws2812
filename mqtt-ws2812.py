@@ -190,6 +190,7 @@ def on_message(client, userdata, msg):
             fadeTime = 10000
         if msg.payload == "weather":
             weatherThread.start()
+            weatherThread.run()
     
     print("done")
         
