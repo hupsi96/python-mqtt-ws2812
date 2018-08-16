@@ -149,7 +149,6 @@ def on_message(client, userdata, msg):
     global stateoff
     global defaultColor
     global fadeTime
-    global p2
 
     #Brightness
     if msg.topic == "zimmer/map/brightness/set":
