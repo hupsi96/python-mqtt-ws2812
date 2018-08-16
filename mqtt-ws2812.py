@@ -143,8 +143,7 @@ def weatherMap():
     time.sleep(10)
     print("Thread closed")
 
-p2 = multiprocessing.Process(target=weatherMap)
-p2.daemon = True
+
 
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
@@ -209,6 +208,9 @@ def startMQTT():
 
     client.connect("192.168.2.114", 1883, 60)
 
+    p2 = multiprocessing.Process(target=weatherMap)
+    p2.daemon = True
+    
     client.loop_forever()
 
 
