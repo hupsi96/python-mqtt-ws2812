@@ -189,9 +189,9 @@ def on_message(client, userdata, msg):
         if msg.payload == "fade10":
             fadeTime = 10000
         if msg.payload == "weather":
-            thread.start_new_thread(weatherMap,()
+            thread.start_new_thread(weatherMap,())
             #weatherThread.run()
-    #print("done")
+    print("done")
         
 #weatherThread = threading.Thread(target = weatherMap)
 def startMQTT():
@@ -205,7 +205,7 @@ def startMQTT():
 
     client.loop_forever()
 
-thread.start_new_thread(startMQTT())
+thread.start_new_thread(startMQTT,())
 #mainThread = threading.Thread(target = startMQTT)
 #mainThread.start()
 #old code:
