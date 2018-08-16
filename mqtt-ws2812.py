@@ -6,7 +6,7 @@ import time
 from random import randint
 import requests
 import config
-from multiprocessing import Process
+import multiprocessing
 
 myToken = '&APPID=' + config.weatherApiToken
 
@@ -149,7 +149,7 @@ def on_message(client, userdata, msg):
     global stateoff
     global defaultColor
     global fadeTime
-    p2 = Process(target=weatherMap)
+    p2 = multiprocessing.Process(target=weatherMap)
     p2.daemon = True
 
     #Brightness
@@ -209,7 +209,7 @@ def startMQTT():
 
     client.loop_forever()
 
-p1 = Process(target=startMQTT)
+p1 = multiprocessing.Process(target=startMQTT)
 p1.start()
 #thread.start_new_thread(startMQTT,())
 #mainThread = threading.Thread(target = startMQTT)
