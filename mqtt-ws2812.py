@@ -143,12 +143,16 @@ def weatherMap():
     time.sleep(10)
     print("Thread closed")
 
+p2 = multiprocessing.Process(target=weatherMap)
+p2.daemon = True
+
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
     global defaultColor
     global stateoff
     global defaultColor
     global fadeTime
+    global p2
 
     #Brightness
     if msg.topic == "zimmer/map/brightness/set":
@@ -210,8 +214,7 @@ def startMQTT():
 
 p1 = multiprocessing.Process(target=startMQTT)
 p1.start()
-p2 = multiprocessing.Process(target=weatherMap)
-p2.daemon = True
+
 #thread.start_new_thread(startMQTT,())
 #mainThread = threading.Thread(target = startMQTT)
 #mainThread.start()
