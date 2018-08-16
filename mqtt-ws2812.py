@@ -145,7 +145,9 @@ def weatherMap():
     print(str(response.status_code))
     output = json.loads(response.text)
     print(str(output))
-    print(str(output.get('main').get('temp')))
+    temp = output.get('main').get('temp')
+    tempCels = (temp - 32) / 1.8
+    print(str(tempCels))
     print("Thread closed")
 
 
