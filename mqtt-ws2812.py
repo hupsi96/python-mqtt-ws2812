@@ -6,7 +6,7 @@ import time
 from random import randint
 import requests
 import config
-from threading import Thread
+import threading
 
 myToken = '&APPID=' + config.weatherApiToken
 
@@ -150,7 +150,7 @@ def on_message(client, userdata, msg):
     global stateoff
     global defaultColor
     global fadeTime
-    weatherThread = Thread(target = weatherMap)
+    weatherThread = threading.Thread(target = weatherMap)
     #Brightness
     if msg.topic == "zimmer/map/brightness/set":
         fadeStripBrightness(int(msg.payload),fadeTime)
