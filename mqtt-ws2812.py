@@ -6,6 +6,7 @@ import time
 from random import randint
 import requests
 import config
+import threading
 
 myToken = '&APPID=' + config.weatherApiToken
 
@@ -136,11 +137,12 @@ def fadeStripRGB(red,green,blue,speed):
         time.sleep(float((speed * 1.0 /1000.0)/(itterations * 1.0)))
 
 def weatherMap():
-    
     myUrl = 'http://samples.openweathermap.org/data/2.5/weather?q=London,uk' + myToken
     response = requests.get(myUrl) #, headers=head
     print(str(response.status_code))
     print(response.json())
+    time.sleep(10)
+    print("Thread closed")
 
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
@@ -183,7 +185,8 @@ def on_message(client, userdata, msg):
         if msg.payload == "fade10":
             fadeTime = 10000
         if msg.payload == "weather":
-            weatherMap()
+            weatherThread = Thread(target = weatherMap)
+            weatherThread.start()
     
     print("done")
         
