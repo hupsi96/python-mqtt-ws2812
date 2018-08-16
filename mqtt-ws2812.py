@@ -136,7 +136,7 @@ def fadeStripRGB(red,green,blue,speed):
         time.sleep(float((speed * 1.0 /1000.0)/(itterations * 1.0)))
 
 def weatherMap():
-    global head
+    #global head
     myUrl = 'http://samples.openweathermap.org/data/2.5/weather?lat=35&lon=139'
     response = requests.get(myUrl, headers=head)
     print(str(response.status_code))
