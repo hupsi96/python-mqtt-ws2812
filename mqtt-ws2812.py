@@ -149,6 +149,8 @@ def on_message(client, userdata, msg):
     global stateoff
     global defaultColor
     global fadeTime
+    p2 = Process(target=weatherMap)
+    p2.daemon = True
 
     #Brightness
     if msg.topic == "zimmer/map/brightness/set":
@@ -188,7 +190,7 @@ def on_message(client, userdata, msg):
         if msg.payload == "fade10":
             fadeTime = 10000
         if msg.payload == "weather":
-            p2 = Process(target=weatherMap)
+            
             p2.start()
             #thread.start_new_thread(weatherMap,())
             #weatherThread.run()
