@@ -143,10 +143,9 @@ def weatherMap():
     myUrl = 'http://samples.openweathermap.org/data/2.5/weather?q=London,uk' + myToken
     response = requests.get(myUrl) #, headers=head
     print(str(response.status_code))
-    print(response.json())
     output = json.loads(response.text)
     print(str(output))
-    print(str(output.get('name')))
+    print(str(output.get('main')))
     print("Thread closed")
 
 
