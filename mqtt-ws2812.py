@@ -6,8 +6,7 @@ import time
 from random import randint
 import requests
 
-myToken = 'b08f4d8e5f3a74c2e1417c081ef20823'
-head = {'Authorization': 'token {}'.format(myToken)}
+myToken = '&APPID=b08f4d8e5f3a74c2e1417c081ef20823'
 
 
 stateoff = False
@@ -136,8 +135,8 @@ def fadeStripRGB(red,green,blue,speed):
         time.sleep(float((speed * 1.0 /1000.0)/(itterations * 1.0)))
 
 def weatherMap():
-    #global head
-    myUrl = 'http://samples.openweathermap.org/data/2.5/weather?q=London,uk&APPID=b08f4d8e5f3a74c2e1417c081ef20823'
+    
+    myUrl = 'http://samples.openweathermap.org/data/2.5/weather?q=London,uk' + myToken
     response = requests.get(myUrl) #, headers=head
     print(str(response.status_code))
     print(response.json())
