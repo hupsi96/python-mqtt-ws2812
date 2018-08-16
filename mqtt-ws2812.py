@@ -11,6 +11,8 @@ import threading
 myToken = '&APPID=' + config.weatherApiToken
 
 
+weatherThread = threading.Thread(target = weatherMap)
+
 stateoff = False
 strip = Adafruit_NeoPixel(100, 18, 800000, 5, False, 255)
 strip.begin()
@@ -150,8 +152,8 @@ def on_message(client, userdata, msg):
     global stateoff
     global defaultColor
     global fadeTime
-    weatherThread = threading.Thread(target = weatherMap)
-    weatherThread.start()
+    global weatherThread
+    #weatherThread.start()
     #Brightness
     if msg.topic == "zimmer/map/brightness/set":
         fadeStripBrightness(int(msg.payload),fadeTime)
