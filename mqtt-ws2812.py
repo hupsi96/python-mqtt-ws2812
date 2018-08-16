@@ -206,7 +206,7 @@ def startMQTT():
 
     client.loop_forever()
 
-thread.start_new_thread(startMQTT,self)
+thread.start_new_thread(startMQTT())
 #mainThread = threading.Thread(target = startMQTT)
 #mainThread.start()
 #old code:
