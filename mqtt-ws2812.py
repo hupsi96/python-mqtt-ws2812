@@ -174,9 +174,9 @@ def on_message(client, userdata, msg):
     #RGB
     elif msg.topic == "zimmer/map/rgb/set":
         print(p2.is_alive())
-        #if p2.is_alive() == True:
-        p2.terminate()
-        p2.join()
+        if p2.is_alive() == True:
+            p2.terminate()
+            p2.join()
         data = str(msg.payload).split(",")
         red = int(data[0])
         green = int(data[1])
