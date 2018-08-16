@@ -6,7 +6,7 @@ import time
 from random import randint
 import requests
 import config
-import threading
+import thread
 
 myToken = '&APPID=' + config.weatherApiToken
 
@@ -149,7 +149,7 @@ def on_message(client, userdata, msg):
     global stateoff
     global defaultColor
     global fadeTime
-    global weatherThread
+    #global weatherThread
     #weatherThread.start()
     #Brightness
     if msg.topic == "zimmer/map/brightness/set":
@@ -189,11 +189,12 @@ def on_message(client, userdata, msg):
         if msg.payload == "fade10":
             fadeTime = 10000
         if msg.payload == "weather":
-            weatherThread.run()
+            thread.start_new_thread(weatherMap)
+            #weatherThread.run()
     
     print("done")
         
-weatherThread = threading.Thread(target = weatherMap)
+#weatherThread = threading.Thread(target = weatherMap)
 def startMQTT():
 
     clear()
@@ -205,8 +206,9 @@ def startMQTT():
 
     client.loop_forever()
 
-mainThread = threading.Thread(target = startMQTT)
-mainThread.start()
+thread.start_new_thread(startMQTT)
+#mainThread = threading.Thread(target = startMQTT)
+#mainThread.start()
 #old code:
 
 # def fade_brightness(value,speed):
