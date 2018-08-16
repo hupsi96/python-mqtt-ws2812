@@ -169,8 +169,8 @@ def on_message(client, userdata, msg):
 
     #RGB
     elif msg.topic == "zimmer/map/rgb/set":
-        print(weatherThread.is_alive)
-        if weatherThread.is_alive == True:
+        print(weatherThread.isAlive())
+        if weatherThread.isAlive() == True:
             weatherThread._stop()
         data = str(msg.payload).split(",")
         red = int(data[0])
