@@ -7,6 +7,7 @@ from random import randint
 import requests
 import config
 import multiprocessing
+import json
 
 myToken = '&APPID=' + config.weatherApiToken
 
@@ -143,7 +144,8 @@ def weatherMap():
     response = requests.get(myUrl) #, headers=head
     print(str(response.status_code))
     print(response.json())
-    time.sleep(10)
+    output = json.load(response)
+    print(str(output))
     print("Thread closed")
 
 
