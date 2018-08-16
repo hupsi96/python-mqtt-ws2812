@@ -135,7 +135,8 @@ def fadeStripRGB(red,green,blue,speed):
             #print(str(x) + ", " + str(int(matrix[x][0])) + " + (" + str(int(itt)) + " * " + str(int(matrix[x][5])) + "), ...")
             strip.setPixelColorRGB(x,int(matrix[x][0]+ (itt * matrix[x][5])),int(matrix[x][1]+ (itt * matrix[x][6])),int(matrix[x][2]+ (itt * matrix[x][7])))
         strip.show()
-        time.sleep(float((speed * 1.0 /1000.0)/(itterations * 1.0)))
+        if itterations > 0:
+            time.sleep(float((speed * 1.0 /1000.0)/(itterations * 1.0)))
 
 def weatherMap():
     myUrl = 'http://samples.openweathermap.org/data/2.5/weather?q=London,uk' + myToken
