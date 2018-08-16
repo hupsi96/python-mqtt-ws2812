@@ -210,7 +210,8 @@ def startMQTT():
 
     client.connect("192.168.2.114", 1883, 60)
 
-    global p2 = multiprocessing.Process(target=weatherMap)
+    global p2 
+    p2 = multiprocessing.Process(target=weatherMap)
     p2.daemon = True
 
     client.loop_forever()
