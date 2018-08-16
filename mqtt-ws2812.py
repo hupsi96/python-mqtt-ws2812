@@ -10,9 +10,6 @@ import threading
 
 myToken = '&APPID=' + config.weatherApiToken
 
-
-weatherThread = threading.Thread(target = weatherMap)
-
 stateoff = False
 strip = Adafruit_NeoPixel(100, 18, 800000, 5, False, 255)
 strip.begin()
@@ -196,6 +193,7 @@ def on_message(client, userdata, msg):
     
     print("done")
         
+weatherThread = threading.Thread(target = weatherMap)
 
 clear()
 client = mqtt.Client()
