@@ -151,6 +151,7 @@ def on_message(client, userdata, msg):
     global defaultColor
     global fadeTime
     weatherThread = threading.Thread(target = weatherMap)
+    weatherThread.start()
     #Brightness
     if msg.topic == "zimmer/map/brightness/set":
         fadeStripBrightness(int(msg.payload),fadeTime)
@@ -189,7 +190,6 @@ def on_message(client, userdata, msg):
         if msg.payload == "fade10":
             fadeTime = 10000
         if msg.payload == "weather":
-            weatherThread.start()
             weatherThread.run()
     
     print("done")
