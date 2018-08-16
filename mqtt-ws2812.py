@@ -191,7 +191,7 @@ def on_message(client, userdata, msg):
         if msg.payload == "weather":
             thread.start_new_thread(weatherMap,()
             #weatherThread.run()
-    print("done")
+    #print("done")
         
 #weatherThread = threading.Thread(target = weatherMap)
 def startMQTT():
