@@ -191,7 +191,9 @@ def weatherMap():
         elif weatherList[x] < -50:
             blue = 255
         testOutput[x] = (red,green,blue)
+        strip.setPixelColorRGB(x,green,red,blue)
     print(str(testOutput))
+    strip.show()
     print("Thread closed")
 
 
