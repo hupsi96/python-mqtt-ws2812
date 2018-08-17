@@ -10,7 +10,7 @@ import multiprocessing
 import json
 
 stateoff = False
-strip = Adafruit_NeoPixel(50, 18, 800000, 5, False, 255)
+strip = Adafruit_NeoPixel(70, 18, 800000, 5, False, 255)
 strip.begin()
 defaultColor = (255,255,255)
 fadeTime = 1000
