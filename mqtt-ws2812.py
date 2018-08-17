@@ -18,6 +18,7 @@ fadeTime = 1000
 myToken = '&APPID=' + config.weatherApiToken
 weatherList = [""] * int(strip.numPixels())
 cityList = [""] * int(strip.numPixels())
+#North America City Mapping:
 cityList = ["5994339" """Kuluktuk""","5916134" """Cape Parry""","5914276" """Camp Farewell""","5865670" """Kaktovik""","4181182" """Barrow County""","5871778" """Point Lay""",
 "5866726" """Kotzebue""","5860695" """Dillingham""","5877389" """Valdez""","6180550" """Whitehorse""","5986080" """Jedway""","6173331" """Vancouver""",
 "4152291" """Crescent City""","5391959" """San Francisco""","5368361" """Los Angeles""","4004898" """Hermosillo""","4005539" """Guadalajara""","4699066" """Houston""",
@@ -148,14 +149,15 @@ def fadeStripRGB(red,green,blue,speed):
             time.sleep(float((speed * 1.0 /1000.0)/(itterations * 1.0)))
 
 def weatherMap():
-    myUrl = 'http://api.openweathermap.org/data/2.5/weather?id=2867714' + myToken
-    response = requests.get(myUrl)
-    print(str(response.status_code))
-    output = json.loads(response.text)
-    print(str(output))
-    temp = output.get('main').get('temp')
-    tempCels = temp -  273.15
-    print(str(tempCels))
+    for x in range(len(cityList)):
+        myUrl = 'http://api.openweathermap.org/data/2.5/weather?id=' + cityList[x] + myToken
+        response = requests.get(myUrl)
+        print(str(response.status_code))
+        output = json.loads(response.text)
+        temp = output.get('main').get('temp')
+        tempCels = temp -  273.15
+        weatherList[x] = tempCels
+    print(str(weatherList))
     print("Thread closed")
 
 
