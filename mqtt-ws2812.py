@@ -150,50 +150,52 @@ def fadeStripRGB(red,green,blue,speed):
             time.sleep(float((speed * 1.0 /1000.0)/(itterations * 1.0)))
 
 def weatherMap():
-    for x in range(len(cityList)):
-        myUrl = 'http://api.openweathermap.org/data/2.5/weather?id=' + cityList[x][0] + myToken
-        print(myUrl)
-        #errors have to be caught here 
-        response = requests.get(myUrl)
-        print(str(response.status_code))
-        output = json.loads(response.text)
-        temp = output.get('main').get('temp')
-        tempCels = temp -  273.15
-        weatherList[x] = tempCels
-    print(str(weatherList))
+    while true:
+        for x in range(len(cityList)):
+            myUrl = 'http://api.openweathermap.org/data/2.5/weather?id=' + cityList[x][0] + myToken
+            print(myUrl)
+            #errors have to be caught here 
+            response = requests.get(myUrl)
+            print(str(response.status_code))
+            output = json.loads(response.text)
+            temp = output.get('main').get('temp')
+            tempCels = temp -  273.15
+            weatherList[x] = tempCels
+        print(str(weatherList))
 
-    for x in range(len(weatherList)):
-        red = 0
-        green = 0
-        blue = 0
-        if weatherList[x] >= 50:
-            red = 255
-        elif weatherList[x] < 50 and weatherList[x] >= 30:
-            red = 255
-            green = int(100 - ((weatherList[x]-30) * 5))
-        elif weatherList[x] < 30 and weatherList[x] >= 20:
-            red = 255
-            green = int(100 + ((30 - weatherList[x]) * 15.5))
-        elif weatherList[x] < 20 and weatherList[x] >= 10:
-            red = int(105 + ((weatherList[x] - 10)* 15))
-            green = 255
-            blue = int((20 - weatherList[x]) * 15)
-        elif weatherList[x] < 10 and weatherList[x] >= 0:
-            red = int(weatherList[x] * 10.5)
-            green = 255
-            blue = int(255 - (weatherList[x] * 10.5))
-        elif weatherList[x] < 0 and weatherList[x] >= -10:
-            green = int(255 - (abs(weatherList[x]) *10))
-            blue = 255
-        elif weatherList[x] < -10 and weatherList[x] >= -50:
-            green = int(155 - ((abs(weatherList[x]) - 10) * 3.875))
-            blue = 255
-        elif weatherList[x] < -50:
-            blue = 255
-        weatherColorList[x] = (red,green,blue)
-        strip.setPixelColorRGB(x,green,red,blue)
-    print(str(weatherColorList))
-    strip.show()
+        for x in range(len(weatherList)):
+            red = 0
+            green = 0
+            blue = 0
+            if weatherList[x] >= 50:
+                red = 255
+            elif weatherList[x] < 50 and weatherList[x] >= 30:
+                red = 255
+                green = int(100 - ((weatherList[x]-30) * 5))
+            elif weatherList[x] < 30 and weatherList[x] >= 20:
+                red = 255
+                green = int(100 + ((30 - weatherList[x]) * 15.5))
+            elif weatherList[x] < 20 and weatherList[x] >= 10:
+                red = int(105 + ((weatherList[x] - 10)* 15))
+                green = 255
+                blue = int((20 - weatherList[x]) * 15)
+            elif weatherList[x] < 10 and weatherList[x] >= 0:
+                red = int(weatherList[x] * 10.5)
+                green = 255
+                blue = int(255 - (weatherList[x] * 10.5))
+            elif weatherList[x] < 0 and weatherList[x] >= -10:
+                green = int(255 - (abs(weatherList[x]) *10))
+                blue = 255
+            elif weatherList[x] < -10 and weatherList[x] >= -50:
+                green = int(155 - ((abs(weatherList[x]) - 10) * 3.875))
+                blue = 255
+            elif weatherList[x] < -50:
+                blue = 255
+            weatherColorList[x] = (red,green,blue)
+            strip.setPixelColorRGB(x,green,red,blue)
+        print(str(weatherColorList))
+        strip.show()
+    time.sleep(360)
     print("Thread closed")
 
 
