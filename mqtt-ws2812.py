@@ -195,7 +195,7 @@ def weatherMap():
             strip.setPixelColorRGB(x,green,red,blue)
         print(str(weatherColorList))
         strip.show()
-    time.sleep(360)
+        time.sleep(360)
     print("Thread closed")
 
 
@@ -261,7 +261,8 @@ def startMQTT():
     client.on_connect = on_connect
     client.on_message = on_message
 
-    client.connect("192.168.2.114", 1883, 60)
+    client.connect(localhost, 1883, 60)
+    #client.connect("192.168.2.114", 1883, 60)
 
     global p2 
     p2 = multiprocessing.Process(target=weatherMap)
