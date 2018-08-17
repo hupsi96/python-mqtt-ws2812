@@ -151,7 +151,7 @@ def fadeStripRGB(red,green,blue,speed):
             time.sleep(float((speed * 1.0 /1000.0)/(itterations * 1.0)))
 
 def weatherMap():
-    while true:
+    while True:
         for x in range(len(cityList)):
             myUrl = 'http://api.openweathermap.org/data/2.5/weather?id=' + cityList[x][0] + myToken
             print(myUrl)
