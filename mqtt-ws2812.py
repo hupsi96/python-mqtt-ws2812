@@ -9,16 +9,16 @@ import config
 import multiprocessing
 import json
 
-myToken = '&APPID=' + config.weatherApiToken
-weatherList = [[0 for x in range(2)] for y in range(strip.numPixels())]
-weatherList[0] = [1,2,3,4,5]
-print(str(weatherList))
-
 stateoff = False
 strip = Adafruit_NeoPixel(50, 18, 800000, 5, False, 255)
 strip.begin()
 defaultColor = (255,255,255)
 fadeTime = 1000
+
+myToken = '&APPID=' + config.weatherApiToken
+weatherList = [[0 for x in range(2)] for y in range(strip.numPixels())]
+weatherList[0] = [1,2,3,4,5]
+print(str(weatherList))
 
 global p2
 
