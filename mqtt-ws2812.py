@@ -151,6 +151,7 @@ def fadeStripRGB(red,green,blue,speed):
 def weatherMap():
     for x in range(len(cityList)):
         myUrl = 'http://api.openweathermap.org/data/2.5/weather?id=' + cityList[x] + myToken
+        print(myUrl)
         response = requests.get(myUrl)
         print(str(response.status_code))
         output = json.loads(response.text)
