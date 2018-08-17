@@ -20,7 +20,7 @@ weatherList = [""] * int(strip.numPixels())
 cityList = [""] * int(strip.numPixels())
 #North America City Mapping:
 cityList = [("5994339","Kuluktuk"),("5916134","Cape Parry"),("5914276","Camp Farewell"),("5865670","Kaktovik"),("4181182","Barrow County"),("5871778","Point Lay"),
-("5866726","Kotzebue"),("5860695","Dillingham"),("5877389","Valdez"),"6180550","Whitehorse"),("5986080","Jedway"),("6173331","Vancouver"),
+("5866726","Kotzebue"),("5860695","Dillingham"),("5877389","Valdez"),("6180550","Whitehorse"),("5986080","Jedway"),("6173331","Vancouver"),
 ("4152291","Crescent City"),("5391959","San Francisco"),("5368361","Los Angeles"),("4004898","Hermosillo"),("4005539","Guadalajara"),("4699066","Houston"),
 ("4241704","Jacksonville"),("4145381","Wilmington"),("5128638","New York"),("6138517","Saint John"),("5927969","Corner Brook"),("5970458","Happy Valley-Goose Bay"),
 ("5989203","Kangiqsualujjuaq"),("5882994","Akulivik"),("5955950","Fort Severn"),("5927708","Coral Harbour"),("5961560","Gjoa Haven"),("5913698","Cambridge Bay"),
