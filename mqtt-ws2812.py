@@ -47,6 +47,7 @@ def setStripBrightness(value):
 def on_connect(client, userdata, flags, rc):
     logging.info('Connected with result code %s',str(rc))
     for pos in range(strip.numPixels()):
+        strip.setPixelColorRGB(pos,255,150,20)
     strip.show()
     logging.debug('Test color was turned on')
     client.subscribe("zimmer/#")
