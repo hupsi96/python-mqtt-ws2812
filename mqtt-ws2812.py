@@ -260,6 +260,9 @@ def on_message(client, userdata, msg):
         if msg.payload == "fade10":
             fadeTime = 10000
         if msg.payload == "weather":
+            global processActivateWeather
+            processActivateWeather = multiprocessing.Process(target=weatherMap)
+            processActivateWeather.daemon = True
             processActivateWeather.start()
 
 def startMQTT():
@@ -272,10 +275,10 @@ def startMQTT():
     #client.connect("127.0.0.1", 1883, 60) #local setup
     client.connect("192.168.2.114", 1883, 60) #global setup
 
-    global processActivateWeather 
+    #global processActivateWeather 
     global weatherList
-    processActivateWeather = multiprocessing.Process(target=weatherMap)
-    processActivateWeather.daemon = True
+    #processActivateWeather = multiprocessing.Process(target=weatherMap)
+    #processActivateWeather.daemon = True
 
     #global processBackgroundWeather
     
