@@ -201,6 +201,7 @@ def weatherMap():
             strip.setPixelColorRGB(x,green,red,blue)
         print(str(weatherColorList))
         strip.show()
+        print("test")
         logging.info('Sleeping for 6 minutes before updating color again')
         time.sleep(360)
     logging.info('Thread closed')
