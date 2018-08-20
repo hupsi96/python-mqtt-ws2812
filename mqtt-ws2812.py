@@ -14,6 +14,7 @@ strip = Adafruit_NeoPixel(150, 18, 800000, 5, False, 255)
 strip.begin()
 defaultColor = (255,255,255)
 fadeTime = 1000
+apiCount = 58
 
 myToken = '&APPID=' + config.weatherApiToken
 weatherList = [""] * int(strip.numPixels())
@@ -27,7 +28,8 @@ cityList = [("5994339","Kuluktuk"),("5916134","Cape Parry"),("5914276","Camp Far
 ("5989203","Kangiqsualujjuaq"),("5882994","Akulivik"),("5955950","Fort Severn"),("5927708","Coral Harbour"),("5961560","Gjoa Haven"),("5913698","Cambridge Bay"),
 ("5994339","Kuluktuk"),("5994339","Kuluktuk"),("5994339","Kuluktuk")]
 
-global p2
+global processActivateWeather
+global processBackgroundWeather
 
 def clear():
     for x in range(strip.numPixels()):
@@ -150,53 +152,61 @@ def fadeStripRGB(red,green,blue,speed):
         if itterations > 0:
             time.sleep(float((speed * 1.0 /1000.0)/(itterations * 1.0)))
 
-def weatherMap():
+def getWeatherData():
+    global apiCount
     while True:
         for x in range(len(cityList)):
-            myUrl = 'http://api.openweathermap.org/data/2.5/weather?id=' + cityList[x][0] + myToken
-            print(myUrl)
-            #errors have to be caught here 
-            response = requests.get(myUrl)
-            print(str(response.status_code))
-            output = json.loads(response.text)
-            temp = output.get('main').get('temp')
-            tempCels = temp -  273.15
-            weatherList[x] = tempCels
-        print(str(weatherList))
+            if apiCount > 0:
+                myUrl = 'http://api.openweathermap.org/data/2.5/weather?id=' + cityList[x][0] + myToken
+                print(myUrl)
+                #errors have to be caught here 
+                response = requests.get(myUrl)
+                apiCount = apiCount - 1
+                print(str(response.status_code))
+                output = json.loads(response.text)
+                temp = output.get('main').get('temp')
+                tempCels = temp -  273.15
+                weatherList[x] = tempCels
+            elif apiCount == 0:
+                time.sleep(65)
+                apiCount = 58
+            print(str(weatherList))
+        time.sleep(900)
 
-        for x in range(len(weatherList)):
-            red = 0
-            green = 0
-            blue = 0
-            if weatherList[x] >= 50:
-                red = 255
-            elif weatherList[x] < 50 and weatherList[x] >= 30:
-                red = 255
-                green = int(100 - ((weatherList[x]-30) * 5))
-            elif weatherList[x] < 30 and weatherList[x] >= 20:
-                red = 255
-                green = int(100 + ((30 - weatherList[x]) * 15.5))
-            elif weatherList[x] < 20 and weatherList[x] >= 10:
-                red = int(105 + ((weatherList[x] - 10)* 15))
-                green = 255
-                blue = int((20 - weatherList[x]) * 15)
-            elif weatherList[x] < 10 and weatherList[x] >= 0:
-                red = int(weatherList[x] * 10.5)
-                green = 255
-                blue = int(255 - (weatherList[x] * 10.5))
-            elif weatherList[x] < 0 and weatherList[x] >= -10:
-                green = int(255 - (abs(weatherList[x]) *10))
-                blue = 255
-            elif weatherList[x] < -10 and weatherList[x] >= -50:
-                green = int(155 - ((abs(weatherList[x]) - 10) * 3.875))
-                blue = 255
-            elif weatherList[x] < -50:
-                blue = 255
-            weatherColorList[x] = (red,green,blue)
-            strip.setPixelColorRGB(x,green,red,blue)
-        print(str(weatherColorList))
-        strip.show()
-        time.sleep(360)
+def weatherMap():
+    for x in range(len(weatherList)):
+        red = 0
+        green = 0
+        blue = 0
+        if weatherList[x] >= 50:
+            red = 255
+        elif weatherList[x] < 50 and weatherList[x] >= 30:
+            red = 255
+            green = int(100 - ((weatherList[x]-30) * 5))
+        elif weatherList[x] < 30 and weatherList[x] >= 20:
+            red = 255
+            green = int(100 + ((30 - weatherList[x]) * 15.5))
+        elif weatherList[x] < 20 and weatherList[x] >= 10:
+            red = int(105 + ((weatherList[x] - 10)* 15))
+            green = 255
+            blue = int((20 - weatherList[x]) * 15)
+        elif weatherList[x] < 10 and weatherList[x] >= 0:
+            red = int(weatherList[x] * 10.5)
+            green = 255
+            blue = int(255 - (weatherList[x] * 10.5))
+        elif weatherList[x] < 0 and weatherList[x] >= -10:
+            green = int(255 - (abs(weatherList[x]) *10))
+            blue = 255
+        elif weatherList[x] < -10 and weatherList[x] >= -50:
+            green = int(155 - ((abs(weatherList[x]) - 10) * 3.875))
+            blue = 255
+        elif weatherList[x] < -50:
+            blue = 255
+        weatherColorList[x] = (red,green,blue)
+        strip.setPixelColorRGB(x,green,red,blue)
+    print(str(weatherColorList))
+    strip.show()
+    time.sleep(360)
     print("Thread closed")
 
 
@@ -207,7 +217,7 @@ def on_message(client, userdata, msg):
     global stateoff
     global defaultColor
     global fadeTime
-    global p2
+    global processActivateWeather
 
     #Brightness
     if msg.topic == "zimmer/map/brightness/set":
@@ -227,10 +237,10 @@ def on_message(client, userdata, msg):
 
     #RGB
     elif msg.topic == "zimmer/map/rgb/set":
-        print(p2.is_alive())
-        if p2.is_alive() == True:
-            p2.terminate()
-            p2.join()
+        print(processActivateWeather.is_alive())
+        if processActivateWeather.is_alive() == True:
+            processActivateWeather.terminate()
+            processActivateWeather.join()
         data = str(msg.payload).split(",")
         red = int(data[0])
         green = int(data[1])
@@ -249,7 +259,7 @@ def on_message(client, userdata, msg):
             fadeTime = 10000
         if msg.payload == "weather":
             
-            p2.start()
+            processActivateWeather.start()
             #thread.start_new_thread(weatherMap,())
             #weatherThread.run()
     print("done")
@@ -265,9 +275,13 @@ def startMQTT():
     #client.connect("127.0.0.1", 1883, 60) #local setup
     client.connect("192.168.2.114", 1883, 60) #global setup
 
-    global p2 
-    p2 = multiprocessing.Process(target=weatherMap)
-    p2.daemon = True
+    global processActivateWeather 
+    processActivateWeather = multiprocessing.Process(target=weatherMap)
+    processActivateWeather.daemon = True
+
+    global processBackgroundWeather
+    processBackgroundWeather = multiprocessing.Process(target=getWeatherData)
+    processBackgroundWeather.start()
 
     client.loop_forever()
 
