@@ -168,9 +168,7 @@ def getWeatherData():
         time.sleep(900)
 
 def weatherMap():
-    print("Start while loop")
     while True:
-        print("start for loop")
         for x in range(len(weatherList)):
             red = 0
             green = 0
@@ -199,11 +197,11 @@ def weatherMap():
                 blue = 255
             elif weatherList[x] < -50:
                 blue = 255
+            print("Red: " + red + " - Green: " + green + " - Blue: " + blue)
             weatherColorList[x] = (red,green,blue)
             strip.setPixelColorRGB(x,green,red,blue)
         print(str(weatherColorList))
         strip.show()
-        print("test")
         logging.info('Sleeping for 6 minutes before updating color again')
         time.sleep(360)
     logging.info('Thread closed')
@@ -257,7 +255,6 @@ def on_message(client, userdata, msg):
         if msg.payload == "fade10":
             fadeTime = 10000
         if msg.payload == "weather":
-            print("start WeatherProcess")
             processActivateWeather.start()
 
 def startMQTT():
