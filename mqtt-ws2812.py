@@ -170,6 +170,8 @@ def getWeatherData():
 
 def weatherMap():
     global weatherList
+    global weatherColorList
+    print(weatherList)
     while True:
         for x in range(len(weatherList)):
             red = 0
