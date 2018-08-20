@@ -154,7 +154,7 @@ def getWeatherData():
                 #errors have to be caught here 
                 response = requests.get(myUrl)
                 apiCount = apiCount - 1
-                logging.DEBUG('%s',str(response.status_code))
+                logging.DEBUG(str(response.status_code))
                 output = json.loads(response.text)
                 temp = output.get('main').get('temp')
                 tempCels = temp -  273.15
