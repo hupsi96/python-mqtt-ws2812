@@ -17,7 +17,7 @@ defaultColor = (255,255,255)
 fadeTime = 1000
 apiCount = 58
 
-logging.basicConfig(filename='WS2812Controller.log', level=logging.DEBUG)
+logging.basicConfig(filename='WS2812Controller.log', filemode='w', level=logging.DEBUG, format='%(asctime)s - %(levelname)s: %(message)s', datefmt='%d.%m.%y %I:%M:%S %p')
 logging.info('The logging file was created')
 
 myToken = '&APPID=' + config.weatherApiToken
