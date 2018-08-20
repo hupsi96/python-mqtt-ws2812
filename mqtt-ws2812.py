@@ -173,7 +173,7 @@ def weatherMap():
             red = 0
             green = 0
             blue = 0
-            print(str(x))
+            print(str(weatherList[x]))
             if weatherList[x] >= 50:
                 red = 255
             elif weatherList[x] < 50 and weatherList[x] >= 30:
