@@ -6,7 +6,7 @@ import numpy as np
 import time
 import requests
 import config
-import multiprocessing
+from multiprocessing import Process, Value, Lock, Array
 import json
 import logging
 
@@ -221,6 +221,8 @@ def on_message(client, userdata, msg):
     global defaultColor
     global fadeTime
     global processActivateWeather
+    global weatherList
+
 
     #Brightness
     if msg.topic == "zimmer/map/brightness/set":
@@ -260,9 +262,8 @@ def on_message(client, userdata, msg):
         if msg.payload == "fade10":
             fadeTime = 10000
         if msg.payload == "weather":
-            global processActivateWeather
-            processActivateWeather = multiprocessing.Process(target=weatherMap)
-            processActivateWeather.daemon = True
+            print(weatherList)
+            #v = Array('i',weatherList)
             processActivateWeather.start()
 
 def startMQTT():
@@ -275,12 +276,10 @@ def startMQTT():
     #client.connect("127.0.0.1", 1883, 60) #local setup
     client.connect("192.168.2.114", 1883, 60) #global setup
 
-    #global processActivateWeather 
-    global weatherList
-    #processActivateWeather = multiprocessing.Process(target=weatherMap)
-    #processActivateWeather.daemon = True
+    global processActivateWeather
+    processActivateWeather = multiprocessing.Process(target=weatherMap)
+    processActivateWeather.daemon = True
 
-    #global processBackgroundWeather
     
 
     client.loop_forever()
