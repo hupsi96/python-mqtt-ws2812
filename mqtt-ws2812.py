@@ -168,7 +168,9 @@ def getWeatherData():
         time.sleep(900)
 
 def weatherMap():
+    print("Start while loop")
     while True:
+        print("start for loop")
         for x in range(len(weatherList)):
             red = 0
             green = 0
@@ -254,12 +256,9 @@ def on_message(client, userdata, msg):
         if msg.payload == "fade10":
             fadeTime = 10000
         if msg.payload == "weather":
-            
+            print("start WeatherProcess")
             processActivateWeather.start()
-            #thread.start_new_thread(weatherMap,())
-            #weatherThread.run()
-        
-#weatherThread = threading.Thread(target = weatherMap)
+
 def startMQTT():
 
     clear()
