@@ -21,7 +21,7 @@ logging.basicConfig(filename='WS2812Controller.log', filemode='w', level=logging
 logging.info('The logging file was created')
 
 myToken = '&APPID=' + config.weatherApiToken
-weatherList = Array('i',strip.numPixels())#[""] * int(strip.numPixels())
+weatherList = Array('f',strip.numPixels())#[""] * int(strip.numPixels())
 cityList = [""] * int(strip.numPixels())
 weatherColorList = [""] * int(strip.numPixels())
 #North America City Mapping:
