@@ -277,14 +277,14 @@ def startMQTT():
     client.connect("192.168.2.114", 1883, 60) #global setup
 
     global processActivateWeather
-    processActivateWeather = multiprocessing.Process(target=weatherMap)
+    processActivateWeather = Process(target=weatherMap)
     processActivateWeather.daemon = True
 
     
 
     client.loop_forever()
 
-processBackgroundWeather = multiprocessing.Process(target=getWeatherData)
+processBackgroundWeather = Process(target=getWeatherData)
 processBackgroundWeather.start()
-p1 = multiprocessing.Process(target=startMQTT)
+p1 = Process(target=startMQTT)
 p1.start()
