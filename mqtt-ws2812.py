@@ -262,8 +262,8 @@ def startMQTT():
     client.on_connect = on_connect
     client.on_message = on_message
 
-    client.connect("127.0.0.1", 1883, 60)
-    #client.connect("192.168.2.114", 1883, 60)
+    #client.connect("127.0.0.1", 1883, 60) #local setup
+    client.connect("192.168.2.114", 1883, 60) #global setup
 
     global p2 
     p2 = multiprocessing.Process(target=weatherMap)
