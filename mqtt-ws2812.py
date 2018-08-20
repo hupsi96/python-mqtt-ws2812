@@ -21,7 +21,7 @@ logging.basicConfig(filename='WS2812Controller.log', filemode='w', level=logging
 logging.info('The logging file was created')
 
 myToken = '&APPID=' + config.weatherApiToken
-weatherList = [""] * int(strip.numPixels())
+weatherList = Array('i',strip.numPixels())#[""] * int(strip.numPixels())
 cityList = [""] * int(strip.numPixels())
 weatherColorList = [""] * int(strip.numPixels())
 #North America City Mapping:
@@ -145,9 +145,9 @@ def fadeStripRGB(red,green,blue,speed):
         if itterations > 0:
             time.sleep(float((speed * 1.0 /1000.0)/(itterations * 1.0)))
 
-def getWeatherData():
-    global apiCount
-    global weatherList
+def getWeatherData(weatherList, lock):
+    #global apiCount
+    apiCount = 58
     while True:
         for x in range(len(cityList)):
             if apiCount > 0:
@@ -159,7 +159,8 @@ def getWeatherData():
                 output = json.loads(response.text)
                 temp = output.get('main').get('temp')
                 tempCels = temp -  273.15
-                weatherList[x] = tempCels
+                with lock:
+                    weatherList[x] = tempCels
             elif apiCount == 0:
                 logging.info('Update Thread sleeping for 65 seconds before doing further requests')
                 time.sleep(65)
@@ -284,7 +285,8 @@ def startMQTT():
 
     client.loop_forever()
 
-processBackgroundWeather = Process(target=getWeatherData)
+lock = Lock()
+processBackgroundWeather = Process(target=getWeatherData,args=(weatherList, lock))
 processBackgroundWeather.start()
 p1 = Process(target=startMQTT)
 p1.start()
