@@ -280,6 +280,6 @@ def startMQTT():
     client.loop_forever()
 
 processBackgroundWeather = multiprocessing.Process(target=getWeatherData)
-    processBackgroundWeather.start()
+processBackgroundWeather.start()
 p1 = multiprocessing.Process(target=startMQTT)
 p1.start()
