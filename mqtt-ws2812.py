@@ -212,7 +212,7 @@ def weatherMap():
 
 def on_message(client, userdata, msg):
     print(msg.topic + ' ' + msg.payload)
-    logging.DEBUG('%s %s', msg.topic, str(msg.payload))
+    logging.DEBUG('%s : %s', msg.topic, msg.payload)
     global defaultColor
     global stateoff
     global defaultColor
