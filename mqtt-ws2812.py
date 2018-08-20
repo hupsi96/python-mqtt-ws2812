@@ -168,7 +168,7 @@ def getWeatherData():
         logging.info('Update Thread slepping for 15 minutes before getting all weatherpoints again')
         time.sleep(900)
 
-def weatherMap(weatherList):
+def weatherMap():
     global weatherColorList
     print(weatherList)
     while True:
@@ -273,8 +273,8 @@ def startMQTT():
 
     global processActivateWeather 
     global weatherList
-    processActivateWeather = multiprocessing.Process(target=weatherMap,args=(weatherList))
-    #processActivateWeather.daemon = True
+    processActivateWeather = multiprocessing.Process(target=weatherMap)
+    processActivateWeather.daemon = True
 
     #global processBackgroundWeather
     
