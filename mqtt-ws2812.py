@@ -8,6 +8,7 @@ import requests
 import config
 import multiprocessing
 import json
+import logging
 
 stateoff = False
 strip = Adafruit_NeoPixel(150, 18, 800000, 5, False, 255)
@@ -15,6 +16,9 @@ strip.begin()
 defaultColor = (255,255,255)
 fadeTime = 1000
 apiCount = 58
+
+logging.basicConfig(filename='WS2812Controller.log', level=logging.DEBUG)
+logging.info('The logging file was created')
 
 myToken = '&APPID=' + config.weatherApiToken
 weatherList = [""] * int(strip.numPixels())
