@@ -168,6 +168,7 @@ def getWeatherData():
         time.sleep(900)
 
 def weatherMap():
+    global weatherList
     while True:
         for x in range(len(weatherList)):
             red = 0
