@@ -147,6 +147,7 @@ def fadeStripRGB(red,green,blue,speed):
 
 def getWeatherData():
     global apiCount
+    global weatherList
     while True:
         for x in range(len(cityList)):
             if apiCount > 0:
