@@ -145,7 +145,7 @@ def fadeStripRGB(red,green,blue,speed):
         if itterations > 0:
             time.sleep(float((speed * 1.0 /1000.0)/(itterations * 1.0)))
 
-def getWeatherData(weatherList, lock):
+def getWeatherData(weatherList):
     #global apiCount
     apiCount = 58
     while True:
@@ -159,8 +159,8 @@ def getWeatherData(weatherList, lock):
                 output = json.loads(response.text)
                 temp = output.get('main').get('temp')
                 tempCels = temp -  273.15
-                with lock:
-                    weatherList[x] = tempCels
+                #with lock:
+                weatherList[x] = tempCels
             elif apiCount == 0:
                 logging.info('Update Thread sleeping for 65 seconds before doing further requests')
                 time.sleep(65)
@@ -285,8 +285,8 @@ def startMQTT():
 
     client.loop_forever()
 
-lock = Lock()
-processBackgroundWeather = Process(target=getWeatherData,args=(weatherList, lock))
+#lock = Lock()
+processBackgroundWeather = Process(target=getWeatherData,args=(weatherList))
 processBackgroundWeather.start()
 p1 = Process(target=startMQTT)
 p1.start()
