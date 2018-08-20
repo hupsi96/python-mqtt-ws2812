@@ -197,7 +197,7 @@ def weatherMap():
                 blue = 255
             elif weatherList[x] < -50:
                 blue = 255
-            print("Red: " + red + " - Green: " + green + " - Blue: " + blue)
+            print("Red: " + str(red) + " - Green: " + str(green) + " - Blue: " + str(blue))
             weatherColorList[x] = (red,green,blue)
             strip.setPixelColorRGB(x,green,red,blue)
         print(str(weatherColorList))
