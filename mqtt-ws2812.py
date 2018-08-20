@@ -1,9 +1,9 @@
 #!/usr/bin/env python
+#author= Christian Huppertz
 import paho.mqtt.client as mqtt
 from neopixel import *
 import numpy as np 
 import time
-from random import randint
 import requests
 import config
 import multiprocessing
@@ -45,11 +45,10 @@ def setStripBrightness(value):
     strip.show()
 
 def on_connect(client, userdata, flags, rc):
-    print("Connected with result code " + str(rc))
+    logging.info('Connected with result code %s',str(rc))
     for pos in range(strip.numPixels()):
-        strip.setPixelColorRGB(pos,0,255,0)#randint(0,255),randint(0,255),randint(0,255)) order g,r,b
     strip.show()
-    print("Test color was turned on")
+    logging.debug('Test color was turned on')
     client.subscribe("zimmer/#")
 
 # converts the Hex value of the Pixel @position to the corresponding rgb value
@@ -68,10 +67,8 @@ def getRrbColor(position):
 def fadeStripBrightness(value,speed):
     matrix = [[0 for x in range(7)] for y in range(strip.numPixels())]
     stateoff = True if int(value) == 0 else False
-    print("fadetime: " + str(speed))
 
     for pos in range(strip.numPixels()):
-        #print("pos: " + str(pos))
         rgbColor = getRrbColor(pos)
 
         #write rate for color into matrix 
@@ -86,8 +83,6 @@ def fadeStripBrightness(value,speed):
             else:
                 #6 stores the max brightness
                 matrix[pos][y] = 0 if maxValue == 0 else float((rgbColor[y-3] * 1.0) / (maxValue * 1.0))
-            #print(matrix[pos][y])
-        #print("")
 
     #define the number of fade steps
     brightness = [0] * int(strip.numPixels())
@@ -101,21 +96,16 @@ def fadeStripBrightness(value,speed):
         for y in range(3):
             if itterations != 0:
                 matrix[x][y+3] = (((matrix[x][y+3] * value) - matrix[x][y]) / itterations)
-            #print(matrix[x][y+3])
-        #print("")
 
     for itt in range(itterations+1):
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,int(matrix[x][0] + (itt * matrix[x][3])),int(matrix[x][1] + (itt * matrix[x][4])),int(matrix[x][2] + (itt * matrix[x][5])))
-            #print("color set to: (" + str(int(matrix[x][0] + (itt * matrix[x][3]))) +"," + str(int(matrix[x][1] + (itt * matrix[x][4]))) +"," + str(int(matrix[x][2] + (itt * matrix[x][5]))) )
-        #print(str(float((speed * 1.0 /1000.0)/(itterations * 1.0))))
         strip.show()
         if itterations > 0:
             time.sleep(float((speed * 1.0 /1000.0)/(itterations * 1.0)))
 
 #O(n) = n*5 + n + n * 3 + itt * n = 9*n + itt*n        
 def fadeStripRGB(red,green,blue,speed):
-    print("fadetime: " + str(speed))
     matrix = [[0 for x in range(8)] for y in range(strip.numPixels())]
     value = [int(green),int(red),int(blue)]
     stateoff = False
@@ -149,8 +139,6 @@ def fadeStripRGB(red,green,blue,speed):
     #O(n) = numberOfFadesteps * n -> max: 255 * n min: n
     for itt in range(itterations + 1):
         for x in range(strip.numPixels()):
-            #print(str(matrix[x][0]) + ":" + str(matrix[x][1]) + ":" + str(matrix[x][2]) + ":" + str(matrix[x][3]) + ":" + str(matrix[x][4]) + ":" + str(matrix[x][5]) + ":" + str(matrix[x][6]) + ":" + str(matrix[x][7]))
-            #print(str(x) + ", " + str(int(matrix[x][0])) + " + (" + str(int(itt)) + " * " + str(int(matrix[x][5])) + "), ...")
             strip.setPixelColorRGB(x,int(matrix[x][0]+ (itt * matrix[x][5])),int(matrix[x][1]+ (itt * matrix[x][6])),int(matrix[x][2]+ (itt * matrix[x][7])))
         strip.show()
         if itterations > 0:
@@ -162,21 +150,20 @@ def getWeatherData():
         for x in range(len(cityList)):
             if apiCount > 0:
                 myUrl = 'http://api.openweathermap.org/data/2.5/weather?id=' + cityList[x][0] + myToken
-                print(myUrl)
                 #errors have to be caught here 
                 response = requests.get(myUrl)
                 apiCount = apiCount - 1
-                print(str(response.status_code))
+                logging.DEBUG('%s',str(response.status_code))
                 output = json.loads(response.text)
                 temp = output.get('main').get('temp')
                 tempCels = temp -  273.15
                 weatherList[x] = tempCels
             elif apiCount == 0:
-                print("Update Thread sleeping for 65 seconds")
+                logging.info('Update Thread sleeping for 65 seconds before doing further requests')
                 time.sleep(65)
                 apiCount = 58
         print(str(weatherList))
-        print("Update Thread slepping for 15 minutes")
+        logging.info('Update Thread slepping for 15 minutes before getting all weatherpoints again')
         time.sleep(900)
 
 def weatherMap():
@@ -213,14 +200,14 @@ def weatherMap():
             strip.setPixelColorRGB(x,green,red,blue)
         print(str(weatherColorList))
         strip.show()
-        print("Colors were updated according to current weather data")
+        logging.info('Sleeping for 6 minutes before updating color again')
         time.sleep(360)
-    print("Thread closed")
+    logging.info('Thread closed')
 
 
 
 def on_message(client, userdata, msg):
-    print(msg.topic + " " + str(msg.payload))
+    logging.DEBUG('%s %s', msg.topic, str(msg.payload))
     global defaultColor
     global stateoff
     global defaultColor
@@ -245,7 +232,6 @@ def on_message(client, userdata, msg):
 
     #RGB
     elif msg.topic == "zimmer/map/rgb/set":
-        print(processActivateWeather.is_alive())
         if processActivateWeather.is_alive() == True:
             processActivateWeather.terminate()
             processActivateWeather.join()
@@ -270,7 +256,6 @@ def on_message(client, userdata, msg):
             processActivateWeather.start()
             #thread.start_new_thread(weatherMap,())
             #weatherThread.run()
-    print("done")
         
 #weatherThread = threading.Thread(target = weatherMap)
 def startMQTT():
