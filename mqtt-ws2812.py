@@ -23,7 +23,7 @@ logging.info('The logging file was created')
 myToken = '&APPID=' + config.weatherApiToken
 weatherList = Array('f',strip.numPixels())#[""] * int(strip.numPixels())
 cityList = [""] * int(strip.numPixels())
-currentColorList = [""] * int(strip.numPixels())
+currentColorList = Array() [""] * int(strip.numPixels())
 #North America City Mapping:
 cityList = [("5994339","Kuluktuk"),("5916134","Cape Parry"),("5914276","Camp Farewell"),("5865670","Kaktovik"),("4181182","Barrow County"),("5871778","Point Lay"),
 ("5866726","Kotzebue"),("5860695","Dillingham"),("5877389","Valdez"),("6180550","Whitehorse"),("5986080","Jedway"),("6173331","Vancouver"),
@@ -169,7 +169,7 @@ def getWeatherData(weatherList,lock):
         logging.info('Update Thread slepping for 15 minutes before getting all weatherpoints again')
         time.sleep(900)
 
-def weatherMap(currentColorList,lock):
+def weatherMap():
     
     print(weatherList)
     while True:
@@ -285,8 +285,7 @@ def startMQTT():
 
     lock2 = Lock()
     global processActivateWeather
-    global currentColorList
-    processActivateWeather = Process(target=weatherMap,args=(currentColorList,lock2))
+    processActivateWeather = Process(target=weatherMap
     processActivateWeather.daemon = True
 
     
