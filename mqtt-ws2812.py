@@ -286,7 +286,7 @@ def startMQTT():
     client.loop_forever()
 
 lock = Lock()
-processBackgroundWeather = Process(target=getWeatherData,args=([weatherList],lock))
+processBackgroundWeather = Process(target=getWeatherData,args=(weatherList,lock))
 processBackgroundWeather.start()
 p1 = Process(target=startMQTT)
 p1.start()
