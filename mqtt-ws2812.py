@@ -277,6 +277,8 @@ def startMQTT():
     #client.connect("127.0.0.1", 1883, 60) #local setup
     client.connect("192.168.2.114", 1883, 60) #global setup
 
+    print("CONNECTED")
+
     lock2 = Lock()
     global processActivateWeather
     processActivateWeather = Process(target=weatherMap)
