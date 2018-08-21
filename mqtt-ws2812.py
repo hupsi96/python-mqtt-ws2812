@@ -223,6 +223,7 @@ def on_message(client, userdata, msg):
     global fadeTime
     global processActivateWeather
     global currentColorList
+    global weatherList
 
 
     #Brightness
@@ -270,6 +271,7 @@ def on_message(client, userdata, msg):
             processActivateWeather.start()
             time.sleep(5)
             print(currentColorList)
+            print(weatherList)
 
 def startMQTT():
 
