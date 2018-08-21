@@ -169,9 +169,8 @@ def getWeatherData(weatherList,lock):
         logging.info('Update Thread slepping for 15 minutes before getting all weatherpoints again')
         time.sleep(900)
 
-def weatherMap():
+def weatherMap(weatherList,lock):
     global weatherColorList
-    global weatherList
     print(weatherList)
     while True:
         for x in range(len(weatherList)):
@@ -277,8 +276,9 @@ def startMQTT():
     #client.connect("127.0.0.1", 1883, 60) #local setup
     client.connect("192.168.2.114", 1883, 60) #global setup
 
+    lock2 = Lock()
     global processActivateWeather
-    processActivateWeather = Process(target=weatherMap)
+    processActivateWeather = Process(target=weatherMap,args=(weatherList,lock2))
     processActivateWeather.daemon = True
 
     
