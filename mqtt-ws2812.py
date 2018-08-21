@@ -285,7 +285,7 @@ def startMQTT():
 
     lock2 = Lock()
     global processActivateWeather
-    processActivateWeather = Process(target=weatherMap
+    processActivateWeather = Process(target=weatherMap)
     processActivateWeather.daemon = True
 
     
