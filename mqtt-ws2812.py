@@ -271,7 +271,7 @@ def on_message(client, userdata, msg):
             processActivateWeather.start()
             time.sleep(5)
             print(currentColorList)
-            print(weatherList)
+            print(str(weatherList))
 
 def startMQTT():
 
