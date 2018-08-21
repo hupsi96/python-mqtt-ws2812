@@ -165,19 +165,16 @@ def getWeatherData(weatherList,lock):
                 logging.info('Update Thread sleeping for 65 seconds before doing further requests')
                 time.sleep(65)
                 apiCount = 58
-        print(str(weatherList))
         logging.info('Update Thread slepping for 15 minutes before getting all weatherpoints again')
         time.sleep(900)
 
 def weatherMap():
-    
-    print(weatherList)
+
     while True:
         for x in range(len(weatherList)):
             red = 0
             green = 0
             blue = 0
-            print(str(weatherList[x]))
             if weatherList[x] >= 50:
                 red = 255
             elif weatherList[x] < 50 and weatherList[x] >= 30:
@@ -202,11 +199,11 @@ def weatherMap():
                 blue = 255
             elif weatherList[x] < -50:
                 blue = 255
-            print("Red: " + str(red) + " - Green: " + str(green) + " - Blue: " + str(blue))
+            #print("Red: " + str(red) + " - Green: " + str(green) + " - Blue: " + str(blue))
             with lock:
                 currentColorList[x] = (red,green,blue)
             strip.setPixelColorRGB(x,green,red,blue)
-        print(str(currentColorList))
+        #print(str(currentColorList))
         strip.show()
         logging.info('Sleeping for 6 minutes before updating color again')
         time.sleep(360)
@@ -269,9 +266,6 @@ def on_message(client, userdata, msg):
     #weather mode
         if msg.payload == "weather":
             processActivateWeather.start()
-            time.sleep(5)
-            print(currentColorList)
-            print(str(weatherList))
 
 def startMQTT():
 
