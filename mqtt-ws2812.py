@@ -169,8 +169,8 @@ def getWeatherData(weatherList,lock):
         logging.info('Update Thread slepping for 15 minutes before getting all weatherpoints again')
         time.sleep(900)
 
-def weatherMap(weatherList,lock):
-    global weatherColorList
+def weatherMap(weatherColorList,lock):
+    
     print(weatherList)
     while True:
         for x in range(len(weatherList)):
@@ -221,7 +221,6 @@ def on_message(client, userdata, msg):
     global defaultColor
     global fadeTime
     global processActivateWeather
-    global weatherList
 
 
     #Brightness
@@ -252,6 +251,9 @@ def on_message(client, userdata, msg):
         defaultColor = data
         fadeStripRGB(red,green,blue,fadeTime)
         stateoff = False
+    
+    #effects
+    #fade speed
     elif msg.topic == "zimmer/map/effect/set":
         if msg.payload == "fade1":
             fadeTime = 1000
@@ -261,9 +263,8 @@ def on_message(client, userdata, msg):
             fadeTime = 5000
         if msg.payload == "fade10":
             fadeTime = 10000
+    #weather mode
         if msg.payload == "weather":
-            print(weatherList)
-            #v = Array('i',weatherList)
             processActivateWeather.start()
 
 def startMQTT():
@@ -278,7 +279,8 @@ def startMQTT():
 
     lock2 = Lock()
     global processActivateWeather
-    processActivateWeather = Process(target=weatherMap,args=(weatherList,lock2))
+    global weatherColorList
+    processActivateWeather = Process(target=weatherMap,args=(weatherColorList,lock2))
     processActivateWeather.daemon = True
 
     
