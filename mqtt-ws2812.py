@@ -11,7 +11,7 @@ import json
 import logging
 
 stateoff = False
-strip = Adafruit_NeoPixel(164, 18, 800000, 5, False, 255)
+strip = Adafruit_NeoPixel(165, 18, 800000, 5, False, 255)
 strip.begin()
 defaultColor = (255,255,255)
 fadeTime = 1000
@@ -283,8 +283,6 @@ def startMQTT():
     global processActivateWeather
     processActivateWeather = Process(target=weatherMap)
     processActivateWeather.daemon = True
-
-    
 
     client.loop_forever()
 
