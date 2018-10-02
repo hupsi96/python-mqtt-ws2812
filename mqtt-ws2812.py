@@ -222,7 +222,8 @@ def on_message(client, userdata, msg):
     global currentColorList
     global weatherList
 
-
+    print(msg.topic)
+    
     #Brightness
     if msg.topic == "zimmer/map/brightness/set":
         fadeStripBrightness(int(msg.payload),fadeTime)
