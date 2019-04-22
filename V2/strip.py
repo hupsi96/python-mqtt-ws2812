@@ -40,14 +40,15 @@ class strip_config:
         delta = currentBirghtness - value
         for x in range(0,delta):
             print(x)
-            strip.setBrightness(np.uint32(currentBirghtness + x))
-            strip.show()
-            test = strip.getBrightness()
-            print(test)
 
-        strip.setBrightness(value)
-        strip.show()
-        test = strip.getBrightness()
+            #strip.setBrightness(np.uint32(currentBirghtness + x))
+            #strip.show()
+            #test = strip.getBrightness()
+            #print(test)
+
+        #strip.setBrightness(value)
+        #strip.show()
+        #test = strip.getBrightness()
         print("Value is: "+str(test))
 
     def switch(self, value):
