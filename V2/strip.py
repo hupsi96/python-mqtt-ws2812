@@ -102,7 +102,7 @@ class strip_config:
      binary = bin(num) 
   
      # remove first two characters 
-     binary = binary[2:] 
+     #binary = binary[2:] 
   
      end = len(binary) - p 
      start = end - k + 1
