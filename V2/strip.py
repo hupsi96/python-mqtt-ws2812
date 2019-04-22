@@ -15,5 +15,5 @@ class strip_config:
             strip.setPixelColorRGB(x,0,0,0)
         strip.show()
 
-test = strip_config(177,19)
+test = strip_config(177,18)
 test.clear()
