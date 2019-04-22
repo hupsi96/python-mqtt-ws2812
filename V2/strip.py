@@ -45,9 +45,9 @@ class strip_config:
         boundary = delta if delta > 0 else (delta * (-1))
         for x in range(0,boundary +1):
             if delta < 0:
-                print(currentBirghtness+x)
+                strip.setBrightness(currentBirghtness+x)
             elif delta > 0:
-                print(currentBirghtness-x)
+                strip.setBrightness(currentBirghtness-x)
 
 
 
