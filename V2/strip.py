@@ -97,19 +97,22 @@ class strip_config:
             return (self.extractKBits(num,8,25),self.extractKBits(num,8,17),self.extractKBits(num,8,9),self.extractKBits(num,8,1))
 
     def extractKBits(self,num,k,p): 
+
+        # convert number into binary first 
+        binary = bin(num) 
   
-     # convert number into binary first 
-     binary = bin(num) 
+        if p > len(binary):
+            return bin(0)
+        else:
+            # remove first two characters 
+            binary = binary[2:] 
   
-     # remove first two characters 
-     binary = binary[2:] 
+            end = len(binary) - p 
+            start = end - k + 1
   
-     end = len(binary) - p 
-     start = end - k + 1
+            # extract k  bit sub-string 
+            kBitSubStr = binary[start : end+1] 
   
-     # extract k  bit sub-string 
-     kBitSubStr = binary[start : end+1] 
-  
-     # convert extracted sub-string into decimal again 
-     print(kBitSubStr)
-     return kBitSubStr
+            # convert extracted sub-string into decimal again 
+            print(kBitSubStr)
+            return kBitSubStr
