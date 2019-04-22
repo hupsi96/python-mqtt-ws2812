@@ -56,12 +56,12 @@ class strip_config:
         #value for for-loop - has to be positiv
         boundary = delta if delta > 0 else (delta * (-1))
         for x in range(0,boundary +1):
-            print(strip.getPixelColor(x))
+            print(strip.getPixels(x))
             if delta < 0:
                 strip.setBrightness(currentBirghtness+x)
             elif delta > 0:
                 strip.setBrightness(currentBirghtness-x)
-            strip.show()
+            #strip.show() # to be included after testing
             time.sleep(fadeTime)
         logging.info('Brightness set to: +' + str(value))
 
