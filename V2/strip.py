@@ -14,8 +14,11 @@ class strip_config:
 
     #define global List to store Colurs for all LEDs
     global colorList
+
+    #fadeTime for all fading functions - default value "medium"
     global fadeTime
     fadeTime = 0.05
+
     #Constructor
     def __init__(self, num, pin):
         # config strip
@@ -25,10 +28,12 @@ class strip_config:
         #Test Color
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,100,100,100)
+            colorList[x] = (10,100,100,100)
         strip.setBrightness(10)
         #strip.show()
         # List to store current color values
-        self.colorList = [[0,0,0]] * num
+        #The tupel show the values (brightness,red,green,blue)
+        self.colorList = [(0,0,0,0)] * num
 
     #Resets whole LED strip
     def clear(self):
@@ -60,7 +65,6 @@ class strip_config:
 
     def switch(self, value):
         if value == "OFF":
-            strip.setBrightness(0)
-            strip.show()
+            setStripBrightness(0)
         elif value == "ON":
             print("two")
