@@ -13,6 +13,7 @@ class main:
 
     def on_connect(client, userdata, flags, rc):
         logging.info("Mqtt connection established - " +str(rc))
+        print("Connectet")
         strip = st.strip(177, 18)
         # Subscribing in on_connect() means that if we lose the connection and
         # reconnect then subscriptions will be renewed.
