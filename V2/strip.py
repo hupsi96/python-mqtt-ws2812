@@ -36,6 +36,8 @@ class strip_config:
         strip.setBrightness(10)
         #strip.show() #to be included after testing
         
+        #test
+        print(strip.Color(255,255,255))
 
     #Resets whole LED strip
     def clear(self):
@@ -56,7 +58,6 @@ class strip_config:
         #value for for-loop - has to be positiv
         boundary = delta if delta > 0 else (delta * (-1))
         for x in range(0,boundary +1):
-            print(strip.getPixelColor(x))
             if delta < 0:
                 strip.setBrightness(currentBirghtness+x)
             elif delta > 0:
