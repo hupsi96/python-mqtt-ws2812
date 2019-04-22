@@ -102,7 +102,7 @@ class strip_config:
      binary = bin(num) 
   
      # remove first two characters 
-     #binary = binary[2:] 
+     binary = binary[2:] 
   
      end = len(binary) - p 
      start = end - k + 1
@@ -111,4 +111,5 @@ class strip_config:
      kBitSubStr = binary[start : end+1] 
   
      # convert extracted sub-string into decimal again 
-     print(kBitSubStr) 
+     print(kBitSubStr)
+     return kBitSubStr
