@@ -37,7 +37,7 @@ class strip_config:
         #strip.show() #to be included after testing
 
         #test
-        print(self.ColorGen(10,100,100,100))
+        print(self.ColorGen(0,100,100,100))
         print(strip.getPixelColor(1))
         
 
