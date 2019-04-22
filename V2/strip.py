@@ -1,5 +1,6 @@
 from neopixel import *
 import logging
+import time
 
 class strip_config:
 
@@ -30,6 +31,7 @@ class strip_config:
         logging.info('Strip cleared')
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,0,0,0)
+            time.sleep(1)
         strip.show()
 
     #Sets the brightness of the whole strip
