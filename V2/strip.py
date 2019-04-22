@@ -37,7 +37,7 @@ class strip_config:
         #strip.show() #to be included after testing
 
         #test
-        print(self.ColorGen(0,100,100,100))
+        print(self.ColorRGB(0,100,100,100))
         print(strip.getPixelColor(1))
         
 
@@ -77,5 +77,8 @@ class strip_config:
         elif value == "ON":
             print("two")
 
-    def ColorGen (self,white,red,green,blue):
+    def ColorRGB (self,white,red,green,blue):
         return (white << 24) | (red << 16)| (green << 8) | blue
+
+    def ColorNum (self,num):
+            return (num >> 24, num >> 16, num >> 8, num)
