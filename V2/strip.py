@@ -21,11 +21,11 @@ class strip_config:
             strip.setPixelColorRGB(x,0,0,0)
         strip.show()
 
-    def setStripBrightness(value):
+    def setStripBrightness(self,value):
         strip.setBrightness(value)
         strip.show()
 
-    def switch(value):
+    def switch(self, value):
         if value == "OFF":
             print("one")
         elif value == "ON":
