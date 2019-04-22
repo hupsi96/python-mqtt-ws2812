@@ -11,9 +11,11 @@ class strip_config:
 
     #confic logging module
     logging.basicConfig(filename='WS2812Controller.log', filemode='w', level=logging.DEBUG, format='%(asctime)s - %(levelname)s: %(message)s', datefmt='%d.%m.%y %I:%M:%S %p')
+
     #define global List to store Colurs for all LEDs
     global colorList
-
+    global fadeTime
+    fadeTime = 0.05
     #Constructor
     def __init__(self, num, pin):
         # config strip
@@ -23,7 +25,7 @@ class strip_config:
         #Test Color
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,100,100,100)
-        strip.setBrightness(100)
+        strip.setBrightness(10)
         #strip.show()
         # List to store current color values
         self.colorList = [[0,0,0]] * num
@@ -51,7 +53,7 @@ class strip_config:
             elif delta > 0:
                 strip.setBrightness(currentBirghtness-x)
             strip.show()
-            time.sleep(0.5)
+            time.sleep(fadeTime)
         logging.info('Brightness set to: +' + str(value))
 
 
