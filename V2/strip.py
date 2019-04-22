@@ -84,7 +84,7 @@ class strip_config:
 
     def ColorNum (self,num):
             white = num >> 24
-            red1 = num >> 16) << 24) >> 24
+            red1 = num >> 16
             red2 = red1 << 24
             red3 = red2 >> 24
             print(red1 +"-"+red2 + "-"+red3)
