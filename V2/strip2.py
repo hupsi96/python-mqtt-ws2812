@@ -2,7 +2,7 @@ import time
 import board
 import neopixel
 
-pixel_pin = board.D18
+pixel_pin = board.Board.D18
 num_pixels = 30
 ORDER = neopixel.RGB
 
