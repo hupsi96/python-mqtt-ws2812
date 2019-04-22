@@ -22,6 +22,8 @@ class strip_config:
         strip.show()
 
     def setStripBrightness(self,value):
+        for x in range(strip.numPixels()):
+            strip.setPixelColorRGB(x,100,100,100)
         strip.setBrightness(value)
         strip.show()
 
