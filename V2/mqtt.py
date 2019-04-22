@@ -9,12 +9,12 @@ class main:
     logging.basicConfig(filename='WS2812Controller.log', filemode='w', level=logging.DEBUG, format='%(asctime)s - %(levelname)s: %(message)s', datefmt='%d.%m.%y %I:%M:%S %p')
     logging.info('Main programm started')
 
-    global strip
+    strip = st.strip(177, 18)
 
     def on_connect(client, userdata, flags, rc):
         logging.info("Mqtt connection established - " +str(rc))
         print("Connectet")
-        strip = st.strip(177, 18)
+        
         # Subscribing in on_connect() means that if we lose the connection and
         # reconnect then subscriptions will be renewed.
         client.subscribe("zimmer/#")
