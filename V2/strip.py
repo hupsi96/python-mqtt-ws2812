@@ -16,4 +16,4 @@ class strip_config:
         strip.show()
 
 test = strip_config(177,18)
-test.clear()
+#test.clear()
