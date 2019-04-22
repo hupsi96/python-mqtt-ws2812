@@ -13,7 +13,7 @@ class strip_config:
     logging.basicConfig(filename='WS2812Controller.log', filemode='w', level=logging.DEBUG, format='%(asctime)s - %(levelname)s: %(message)s', datefmt='%d.%m.%y %I:%M:%S %p')
 
     #define global List to store Colurs for all LEDs
-    global colorList
+    global stripStatusList
 
     #fadeTime for all fading functions - default value "medium"
     global fadeTime
@@ -28,12 +28,12 @@ class strip_config:
         #Test Color
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,100,100,100)
-            colorList[x] = (10,100,100,100)
+            stripStatusList[x] = (10,100,100,100)
         strip.setBrightness(10)
         #strip.show()
         # List to store current color values
         #The tupel show the values (brightness,red,green,blue)
-        self.colorList = [(0,0,0,0)] * num
+        self.stripStatusList = [(0,0,0,0)] * num
 
     #Resets whole LED strip
     def clear(self):
