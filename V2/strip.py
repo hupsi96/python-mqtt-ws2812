@@ -35,9 +35,10 @@ class strip_config:
             self.stripStatusList[x] = (10,100,100,100)
         strip.setBrightness(10)
         #strip.show() #to be included after testing
-        
+
         #test
-        print(strip.Color(255,255,255))
+        print(self.ColorGen(10,100,100,100))
+        
 
     #Resets whole LED strip
     def clear(self):
@@ -74,3 +75,6 @@ class strip_config:
             strip.show()
         elif value == "ON":
             print("two")
+
+    def ColorGen (self,white,red,green,blue):
+        return (white << 24) | (red << 16)| (green << 8) | blue
