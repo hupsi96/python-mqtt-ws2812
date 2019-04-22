@@ -37,17 +37,22 @@ class strip_config:
 
     #Sets the brightness of the whole strip
     def setStripBrightness(self,value):
+        #current brightness of the whole strip
         currentBirghtness = strip.getBrightness()
-        print(currentBirghtness)
-        delta = currentBirghtness - value
-        print(delta)
 
+        #steps needed to fade strip
+        delta = currentBirghtness - value
+
+        #value for for-loop - has to be positiv
         boundary = delta if delta > 0 else (delta * (-1))
         for x in range(0,boundary +1):
             if delta < 0:
                 strip.setBrightness(currentBirghtness+x)
             elif delta > 0:
                 strip.setBrightness(currentBirghtness-x)
+            strip.show()
+            time.sleep(0.5)
+        logging.info('Brightness set to: +' + str(value))
 
 
 
