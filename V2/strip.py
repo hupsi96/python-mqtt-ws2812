@@ -18,4 +18,4 @@ class strip_config:
 test = strip_config(177,18)
 for x in range(test.strip.numPixels()):
         test.strip.setPixelColorRGB(x,0,0,0)
-    test.strip.show()
+    test.strip.show
