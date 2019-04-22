@@ -7,7 +7,7 @@ class strip_config:
 
     #define strip globaly and set default values
     global strip
-    strip = Adafruit_NeoPixel(177, 14, 800000, 5, False, 255) #default setting """Adafruit_NeoPixel"""
+    strip = Adafruit_NeoPixel(177, 12, 800000, 5, False, 255) #default setting """Adafruit_NeoPixel"""
 
     #confic logging module
     logging.basicConfig(filename='WS2812Controller.log', filemode='w', level=logging.DEBUG, format='%(asctime)s - %(levelname)s: %(message)s', datefmt='%d.%m.%y %I:%M:%S %p')
