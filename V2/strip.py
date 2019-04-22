@@ -25,15 +25,17 @@ class strip_config:
         self.strip = Adafruit_NeoPixel(num,pin,800000,10,False,255)
         strip.begin()
 
+        # List to store current color values
+        #The tupel show the values (brightness,red,green,blue)
+        self.stripStatusList = [(0,0,0,0)] * num
+
         #Test Color
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,100,100,100)
             stripStatusList[x] = (10,100,100,100)
         strip.setBrightness(10)
-        #strip.show()
-        # List to store current color values
-        #The tupel show the values (brightness,red,green,blue)
-        self.stripStatusList = [(0,0,0,0)] * num
+        #strip.show() #to be included after testing
+        
 
     #Resets whole LED strip
     def clear(self):
