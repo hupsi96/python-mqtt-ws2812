@@ -83,30 +83,18 @@ class strip_config:
         return (white << 24) | (red << 16)| (green << 8) | blue
 
     def ColorNum (self,num):
-            #white = bin(num >> 24)
-            #red1 = num >> 16
-            #red2 = red1 ^ 24
-            #red3 = red2 >> 24
-            #print("red: "+ str(bin(red1)) +"-"+str(bin(red2)) + "-"+str(bin(red3)))
-            #green1 = num >> 8
-            #green2 = green1 << 18
-            #green3 = green2 >> 24
-            #print("green: "+ str(bin(green1)) +"-"+str(bin(green2)) + "-"+str(bin(green3)))
-            #blue = (num << 24) >> 24
-            #return (bin(white), bin(red3), bin(green3), bin(blue))
             return (self.extractKBits(num,8,25),self.extractKBits(num,8,17),self.extractKBits(num,8,9),self.extractKBits(num,8,1))
 
     def extractKBits(self,num,k,p): 
 
         # convert number into binary first 
         binary = bin(num) 
-  
         if p > len(binary):
             return bin(0)
         else:
             # remove first two characters 
-            binary = binary[2:] 
-  
+            binary = binary[2:]
+
             end = len(binary) - p 
             start = end - k + 1
   
