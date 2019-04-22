@@ -82,4 +82,6 @@ class strip_config:
         return (white << 24) | (red << 16)| (green << 8) | blue
 
     def ColorNum (self,num):
+            white = num << -24
+            red = num << -16
             return (num >> 24, num >> 16, num >> 8, num)
