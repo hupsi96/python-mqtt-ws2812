@@ -1,7 +1,7 @@
 #author= Christian Huppertz
 
 import paho.mqtt.client as mqtt
-import strip.py as strip
+import strip as strip
 
 class main:
     #Create logging module
@@ -12,7 +12,7 @@ class main:
 
     def on_connect(client, userdata, flags, rc):
         logging.info("Mqtt connection established - " +str(rc))
-        st = strip
+        st = strip(177, 18, 800000, 5, False, 255)
         # Subscribing in on_connect() means that if we lose the connection and
         # reconnect then subscriptions will be renewed.
         #client.subscribe("$SYS/#")
