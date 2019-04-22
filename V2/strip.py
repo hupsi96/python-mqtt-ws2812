@@ -31,11 +31,11 @@ class strip_config:
         logging.info('Strip cleared')
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,0,0,0)
-            time.sleep(100)
         strip.show()
 
     #Sets the brightness of the whole strip
     def setStripBrightness(self,value):
+        print(strip.getBrightness)
         strip.setBrightness(value)
         strip.show()
 
