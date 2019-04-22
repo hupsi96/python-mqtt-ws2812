@@ -20,3 +20,4 @@ class strip_config:
 
 test = strip_config(177,18)
 test.start()
+test.clear()
