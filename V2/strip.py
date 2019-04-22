@@ -38,6 +38,7 @@ class strip_config:
     def setStripBrightness(self,value):
         currentBirghtness = strip.getBrightness()
         delta = currentBirghtness - value
+        print(currentBirghtness)
         for x in range(0,delta):
             print(x)
 
@@ -49,7 +50,8 @@ class strip_config:
         #strip.setBrightness(value)
         #strip.show()
         #test = strip.getBrightness()
-        print("Value is: "+str(test))
+        print(value)
+        print("Value is: "+str(delta))
 
     def switch(self, value):
         if value == "OFF":
