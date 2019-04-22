@@ -42,6 +42,7 @@ class strip_config:
         delta = currentBirghtness - value
         print(delta)
 
+        boundary = delta if delta > 0 else (delta * (-1))
         for x in range(0,delta -1):
             if delta < 0:
                 print(currentBirghtness+x)
