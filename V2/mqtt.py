@@ -10,7 +10,7 @@ class main:
     logging.info('Main programm started')
 
     global strip #why has it to be global?
-    strip = st.strip(177, 18)
+    strip = st.strip_config(177, 18)
 
     def on_connect(client, userdata, flags, rc):
         logging.info("Mqtt connection established - " +str(rc))
