@@ -10,9 +10,8 @@ class strip_config:
 
     def clear(self):
         logging.basicConfig(filename='WS2812Controller.log', filemode='w', level=logging.DEBUG, format='%(asctime)s - %(levelname)s: %(message)s', datefmt='%d.%m.%y %I:%M:%S %p')
-        logging.info('function called')
+        logging.info('Strip cleared')
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,0,0,0)
         strip.show()
-        print("test")
 
