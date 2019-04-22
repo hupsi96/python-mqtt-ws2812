@@ -32,7 +32,7 @@ class strip_config:
         #Test Color
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,100,100,100)
-            stripStatusList[x] = (10,100,100,100)
+            self.stripStatusList[x] = (10,100,100,100)
         strip.setBrightness(10)
         #strip.show() #to be included after testing
         
