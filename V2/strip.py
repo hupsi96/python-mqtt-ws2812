@@ -41,7 +41,7 @@ class strip_config:
         for x in range(0,delta):
             strip.setBrightness(currentBirghtness + x)
             strip.show()
-            test = strip.setBrightness()
+            test = strip.getBrightness()
             print(test)
 
         strip.setBrightness(value)
