@@ -13,7 +13,7 @@ class strip_config:
     def __init__(self, num, pin):
         self.strip = Adafruit_NeoPixel(num,pin,800000,10,False,255)
         strip.begin()
-        self.colorList = [none] * num
+        self.colorList = [[0,0,0]] * num
 
     def clear(self):
         logging.info('Strip cleared')
