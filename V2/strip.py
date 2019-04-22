@@ -27,5 +27,6 @@ class strip_config:
 
     def switch(value):
         if value == "OFF":
-
+            print("one")
         elif value == "ON":
+            print("two")
