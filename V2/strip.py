@@ -111,4 +111,4 @@ class strip_config:
      kBitSubStr = binary[start : end+1] 
   
      # convert extracted sub-string into decimal again 
-     print (int(kBitSubStr,2)) 
+     print(kBitSubStr) 
