@@ -96,7 +96,7 @@ class strip_config:
             #return (bin(white), bin(red3), bin(green3), bin(blue))
             return (self.extractKBits(num,8,25),self.extractKBits(num,8,17),self.extractKBits(num,8,9),self.extractKBits(num,8,1))
 
-    def extractKBits(num,k,p): 
+    def extractKBits(self,num,k,p): 
   
      # convert number into binary first 
      binary = bin(num) 
