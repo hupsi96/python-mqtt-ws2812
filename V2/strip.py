@@ -36,10 +36,11 @@ class strip_config:
 
     #Sets the brightness of the whole strip
     def setStripBrightness(self,value):
-        test = strip.getBrightness()
-        print("Value is: "+str(test))
+        
         strip.setBrightness(value)
         strip.show()
+        test = strip.getBrightness()
+        print("Value is: "+str(test))
 
     def switch(self, value):
         if value == "OFF":
