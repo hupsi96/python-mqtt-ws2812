@@ -1,6 +1,7 @@
 from neopixel import *
 import logging
 import time
+import numpy as np
 
 class strip_config:
 
@@ -35,7 +36,7 @@ class strip_config:
 
     #Sets the brightness of the whole strip
     def setStripBrightness(self,value):
-        print(strip.getBrightness)
+        print(hex(np.asscalar(np.uint32(strip.getBrightness))))
         strip.setBrightness(value)
         strip.show()
 
