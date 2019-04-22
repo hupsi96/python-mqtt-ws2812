@@ -37,9 +37,9 @@ class strip_config:
         #strip.show() #to be included after testing
 
         #test
-        print(self.ColorRGB(0,100,100,100))
-        print(strip.getPixelColor(1))
-        print(self.ColorNum(6579300))
+        print(self.ColorRGB(0,100,150,200))
+        print(self.ColorNum(self.ColorRGB(0,100,150,200)))
+
         
 
     #Resets whole LED strip
@@ -84,4 +84,6 @@ class strip_config:
     def ColorNum (self,num):
             white = num >> 24
             red = ((num >> 16) << 24) >> 24
-            return (white, red, num >> 8, num)
+            green = ((num >> 8) << 24) >> 24
+            blue = (num << 24) >> 24
+            return (white, red, green, blue)
