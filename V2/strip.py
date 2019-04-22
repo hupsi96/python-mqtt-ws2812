@@ -14,8 +14,9 @@ class strip_config:
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,0,0,0)
         strip.show()
-    def start(selft):
+
+    def start(self):
         strip.begin()
-        
+
 test = strip_config(177,18)
 test.start()
