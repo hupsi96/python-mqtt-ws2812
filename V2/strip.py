@@ -38,6 +38,7 @@ class strip_config:
 
         #test
         print(self.ColorRGB(0,100,150,200))
+        print(bin(self.ColorRGB(0,100,150,200)))
         print(self.ColorNum(self.ColorRGB(0,100,150,200)))
 
         
@@ -86,4 +87,4 @@ class strip_config:
             red = ((num >> 16) << 24) >> 24
             green = ((num >> 8) << 24) >> 24
             blue = (num << 24) >> 24
-            return (white, red, green, blue)
+            return (bin(white), bin(red), bin(green), bin(blue))
