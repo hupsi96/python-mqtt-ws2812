@@ -2,6 +2,7 @@
 
 import paho.mqtt.client as mqtt
 import strip as strip
+import logging
 
 class main:
     #Create logging module
