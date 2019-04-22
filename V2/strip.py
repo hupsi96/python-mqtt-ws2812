@@ -40,8 +40,10 @@ class strip_config:
         delta = currentBirghtness - value
         print(currentBirghtness)
         for x in range(0,delta):
-            print(currentBirghtness - x)
-            print(x)
+            if delta > 0:
+                print(currentBirghtness - x)
+            elif delta < 0:
+                print(currentBirghtness + x)
 
             #strip.setBrightness(np.uint32(currentBirghtness + x))
             #strip.show()
