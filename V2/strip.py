@@ -39,6 +39,7 @@ class strip_config:
         #test
         print(self.ColorRGB(0,100,100,100))
         print(strip.getPixelColor(1))
+        print(self.ColorNum(6579300))
         
 
     #Resets whole LED strip
