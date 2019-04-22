@@ -7,8 +7,9 @@ class strip:
         strip.begin()
 
     def clear():
-        print("test")
+        
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,0,0,0)
         strip.show()
+        return "test"
 
