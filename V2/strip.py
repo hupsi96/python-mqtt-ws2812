@@ -69,6 +69,7 @@ class strip_config:
 
     def switch(self, value):
         if value == "OFF":
-            setStripBrightness(0)
+            self.setStripBrightness(0)
+            strip.show()
         elif value == "ON":
             print("two")
