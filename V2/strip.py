@@ -3,10 +3,10 @@ from neopixel import *
 
 class strip_config:
     global strip
-    #strip = Adafruit_NeoPixel(177, 18, 800000, 5, False, 255) #Pin = 18 (2nd Param)
+    strip = Adafruit_NeoPixel(177, 18, 800000, 5, False, 255) #default setting
     def __init__(self, num, pin):
         self.strip = Adafruit_NeoPixel(num,pin,800000,10,False,255)
-        self.strip.begin()
+        strip.begin()
 
     def clear(self):
         #logging.basicConfig(filename='WS2812Controller.log', filemode='w', level=logging.DEBUG, format='%(asctime)s - %(levelname)s: %(message)s', datefmt='%d.%m.%y %I:%M:%S %p')
@@ -18,6 +18,6 @@ class strip_config:
     def start(self):
         strip.begin()
 
-test = strip_config(177,18)
+#test = strip_config(177,18)
 #test.start()
-test.clear()
+#test.clear()
