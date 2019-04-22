@@ -9,7 +9,7 @@ class main:
     logging.basicConfig(filename='WS2812Controller.log', filemode='w', level=logging.DEBUG, format='%(asctime)s - %(levelname)s: %(message)s', datefmt='%d.%m.%y %I:%M:%S %p')
     logging.info('Main programm started')
 
-    global strip 
+    #global strip 
     strip = st.strip(177, 18)
 
     def on_connect(client, userdata, flags, rc):
