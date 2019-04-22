@@ -8,3 +8,4 @@ num_pixels = 30
 
 pixels = neopixel.NeoPixel(board.D18, num_pixels) #, brightness=0.2, auto_write=False,pixel_order=neopixel.RGB)
 
+pixels[0] = (255,0,0)

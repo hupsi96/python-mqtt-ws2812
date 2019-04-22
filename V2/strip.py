@@ -36,7 +36,6 @@ class strip_config:
 
     #Sets the brightness of the whole strip
     def setStripBrightness(self,value):
-        print(str(np.uint32(strip.getBrightness)))
         strip.setBrightness(value)
         strip.show()
 
