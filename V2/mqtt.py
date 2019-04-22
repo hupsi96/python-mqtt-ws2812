@@ -10,7 +10,7 @@ class main:
     logging.info('Main programm started')
 
     global strip #why has it to be global?
-    strip = st.strip_config(177, 18)
+    strip = st.strip_config(177, 8) #2nd param should be reset to 18 after remote testing
 
     def on_connect(client, userdata, flags, rc):
         logging.info("Mqtt connection established - " +str(rc))
@@ -23,7 +23,12 @@ class main:
     # The callback for when a PUBLISH message is received from the server.
     def on_message(client, userdata, msg):
         print(msg.topic+" "+str(msg.payload))
-        strip.clear()
+        
+        if msg.topic == "zimmer/map/brightness/set":
+            strip.setStripBrightness(int(msg.payload))
+
+        elif msg.topic == "zimmer/map/light/switch":
+            strip.switch(msg.payload)
 
     client = mqtt.Client()
     client.on_connect = on_connect
