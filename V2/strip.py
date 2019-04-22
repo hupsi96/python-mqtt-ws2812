@@ -87,7 +87,10 @@ class strip_config:
             red1 = num >> 16
             red2 = red1 << 24
             red3 = red2 >> 24
-            print(str(bin(red1)) +"-"+str(bin(red2)) + "-"+str(bin(red3)))
-            green = ((num >> 8) << 24) >> 24
+            print("red: "+ str(bin(red1)) +"-"+str(bin(red2)) + "-"+str(bin(red3)))
+            green1 = num >> 8
+            green2 = green1 << 24
+            green3 = green2 >> 24
+            print("green: "+ str(bin(green1)) +"-"+str(bin(green2)) + "-"+str(bin(green3)))
             blue = (num << 24) >> 24
             return (bin(white), bin(red3), bin(green), bin(blue))
