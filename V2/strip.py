@@ -89,9 +89,9 @@ class strip_config:
     def testColorNum (self,num):
         binary = bin(num)
 
-        white = 0b11111111000000000000000000000000 & binary
+        white = 4278190080 & binary
         print(white)
-        blue = 0b00000000000000000000000011111111 & binary
+        blue = 255 & binary
         print(blue)
         return (int(white),0,0,int(blue))
 
