@@ -88,10 +88,9 @@ class strip_config:
     def extractKBits(self,num,k,p): 
 
         # convert number into binary first 
-        binary = bin(num) 
+        binary = format(num, '#32b') 
         print(binary)
-        test = bin(binary) << int((34 - len(binary)))
-        print test
+
         # remove first two characters 
         binary = binary[2:]
         print(binary)
