@@ -107,4 +107,4 @@ class strip_config:
 
             # convert extracted sub-string into decimal again 
             print(kBitSubStr)
-            return kBitSubStr
+            return format(kBitSubStr, '8b'
