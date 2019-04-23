@@ -90,10 +90,10 @@ class strip_config:
         #binary = bin(num)
 
         white = 4278190080 & num
-        print(white)
+        red = 16711680 & num
+        green = 65280 & num
         blue = 255 & num
-        print(blue)
-        return (int(white),0,0,int(blue))
+        return (int(white),int(red),int(green),int(blue))
 
 
 
