@@ -37,9 +37,9 @@ class strip_config:
         #strip.show() #to be included after testing
 
         #test
-        print(self.ColorRGB(0,100,150,200))
-        print(bin(self.ColorRGB(0,100,150,200)))
-        print(self.ColorNum(self.ColorRGB(0,100,150,200)))
+        #print(self.ColorRGB(0,100,150,200))
+        #print(bin(self.ColorRGB(0,100,150,200)))
+        #print(self.ColorNum(self.ColorRGB(0,100,150,200)))
 
         
 
@@ -52,7 +52,7 @@ class strip_config:
         strip.show()
 
     #Sets the brightness of the whole strip
-    def setStripBrightness(self,value):
+    def fadeStripBrightness(self,value):
         #current brightness of the whole strip
         currentBirghtness = strip.getBrightness()
 
@@ -74,7 +74,7 @@ class strip_config:
 
     def switch(self, value):
         if value == "OFF":
-            self.setStripBrightness(0)
+            self.fadeStripBrightness(0)
             strip.show()
         elif value == "ON":
             print("two")

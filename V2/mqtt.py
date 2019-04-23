@@ -25,7 +25,7 @@ class main:
         print(msg.topic+" "+str(msg.payload))
         
         if msg.topic == "zimmer/map/brightness/set":
-            strip.setStripBrightness(int(msg.payload))
+            strip.fadeStripBrightness(int(msg.payload))
 
         elif msg.topic == "zimmer/map/light/switch":
             strip.switch(msg.payload)
