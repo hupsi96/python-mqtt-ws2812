@@ -90,6 +90,7 @@ class strip_config:
         # convert number into binary first 
         binary = bin(num) 
         print(binary)
+        binary = binary << (34 - len(binary))
         # remove first two characters 
         binary = binary[2:]
         print(binary)
