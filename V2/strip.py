@@ -95,7 +95,6 @@ class strip_config:
         # remove first two characters 
         binary = binary[2:]
         print(binary)
-        binary = binary << (32 - len(binary))
         if p > len(binary):
             return bin(0)
         else:
