@@ -83,7 +83,7 @@ class strip_config:
         return (white << 24) | (red << 16)| (green << 8) | blue
 
     def ColorNum (self,num):
-            return (self.extractKBits(num,8,25),self.extractKBits(num,8,17),self.extractKBits(num,8,9),self.extractKBits(num,8,1))
+            return self.testColorNum(num)#(self.extractKBits(num,8,25),self.extractKBits(num,8,17),self.extractKBits(num,8,9),self.extractKBits(num,8,1))
 
 
     def testColorNum (self,num):
@@ -93,6 +93,7 @@ class strip_config:
         print(white)
         blue = 0b00000000000000000000000011111111 & binary
         print(blue)
+        return (int(white),0,0,int(blue))
 
 
 
