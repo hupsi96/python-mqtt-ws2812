@@ -83,10 +83,6 @@ class strip_config:
         return (white << 24) | (red << 16)| (green << 8) | blue
 
     def ColorNum (self,num):
-            return self.testColorNum(num)#(self.extractKBits(num,8,25),self.extractKBits(num,8,17),self.extractKBits(num,8,9),self.extractKBits(num,8,1))
-
-
-    def testColorNum (self,num):
         #using Binary logic to decode numeric input to (white,red,green.blue) tupel
         # bin of num is a 32 bit sequemce
         # using logical & to get bit sequence of the first, second, third and fourth
@@ -98,29 +94,3 @@ class strip_config:
         green = (65280 & num) >> 8
         blue = 255 & num
         return (int(white),int(red),int(green),int(blue))
-
-
-
-    def extractKBits(self,num,k,p): 
-
-        # convert number into binary first 
-        binary = '{:32b}'.format(num) #'format(num, '32b') 
-        print(binary)
-
-        # remove first two characters 
-        binary = binary[2:]
-        print(binary)
-        if p > len(binary):
-            return bin(0)
-        else:
-            end = len(binary) - p
-            print(end)
-            start = end - k + 1
-            print(start)
-  
-            # extract k  bit sub-string 
-            kBitSubStr = binary[start : end+1] 
-
-            # convert extracted sub-string into decimal again 
-            print(kBitSubStr)
-            return format(kBitSubStr, '8b')
