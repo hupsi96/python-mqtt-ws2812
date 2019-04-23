@@ -89,12 +89,12 @@ class strip_config:
 
         # convert number into binary first 
         binary = bin(num) 
+        
+        # remove first two characters 
+        binary = binary[2:]
         if p > len(binary):
             return bin(0)
         else:
-            # remove first two characters 
-            binary = binary[2:]
-
             end = len(binary) - p 
             start = end - k + 1
   
