@@ -89,18 +89,21 @@ class strip_config:
 
         # convert number into binary first 
         binary = bin(num) 
-        
+        print(binary)
         # remove first two characters 
         binary = binary[2:]
+        print(binary)
         if p > len(binary):
             return bin(0)
         else:
-            end = len(binary) - p 
+            end = len(binary) - p
+            print(end)
             start = end - k + 1
+            print(start)
   
             # extract k  bit sub-string 
             kBitSubStr = binary[start : end+1] 
-  
+
             # convert extracted sub-string into decimal again 
             print(kBitSubStr)
             return kBitSubStr
