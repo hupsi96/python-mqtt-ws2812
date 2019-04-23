@@ -87,7 +87,11 @@ class strip_config:
 
 
     def testColorNum (self,num):
-        #binary = bin(num)
+        #using Binary logic to decode numeric input to (white,red,green.blue) tupel
+        # bin of num is a 32 bit sequemce
+        # using logical & to get bit sequence of the first, second, third and fourth
+        # block of 8 bit e.g.
+        # 10100010010101010101110000 & 00000000111111110000000000000000
 
         white = (4278190080 & num) >> 24
         red = (16711680 & num) >> 16
