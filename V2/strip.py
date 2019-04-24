@@ -19,6 +19,7 @@ class strip_config:
     global fadeTime
     fadeTime = 0.05
 
+    global switchStatus
     #Constructor
     def __init__(self, num, pin):
         # config strip
@@ -28,12 +29,13 @@ class strip_config:
         # List to store current color values
         #The tupel show the values (brightness,red,green,blue,brightness)
         self.stripStatusList = [(0,0,0,0)] * num
-
+        self.switchStatus = False
         #Test Color
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,100,100,100)
             self.stripStatusList[x] = (0,100,100,100,10)
         strip.setBrightness(10)
+        self.switchStatus = True
         #strip.show() #to be included after testing
 
         #test
@@ -93,8 +95,12 @@ class strip_config:
             self.fadeStripBrightness(0,false)
             strip.show()
             logging.info('Strip switched off')
+            self.switchStatus = False
         elif value == "ON":
-            self.turn_on_animation()
+            if switchStatus:
+                self.switchStatus = True
+            else:
+                self.turn_on_animation()
 
     def ColorRGB (self,white,red,green,blue):
         return (white << 24) | (red << 16)| (green << 8) | blue
