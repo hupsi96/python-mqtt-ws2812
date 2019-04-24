@@ -51,8 +51,11 @@ class strip_config:
             self.stripStatusList[x] = (0,0,0,0,0)
         strip.show()
 
-    #Sets the brightness of the whole strip
-    def fadeStripBrightness(self,value):
+    #Sets the brightness of the whole strip | update is a bool to indicate 
+    #if the status List should be updated or not
+    #this is set to false when the strip is switched off in order
+    #to store the last brightness value of the strip
+    def fadeStripBrightness(self,value,update):
         #current brightness of the whole strip
         currentBirghtness = strip.getBrightness()
 
@@ -69,21 +72,29 @@ class strip_config:
             #strip.show() # to be included after testing
             time.sleep(fadeTime)
         logging.info('Brightness set to: +' + str(value))
-        for x in range(strip.numPixels()):
-            current = self.stripStatusList[x]
-            current[4] = value
-            self.stripStatusList[x] = current
+        if update:
+            for x in range(strip.numPixels()):
+                current = self.stripStatusList[x]
+                current[4] = value
+                self.stripStatusList[x] = current
 
-
-
+    def turn_on_animation (self):
+        for y in range(1,2):
+            for x in range(strip.numPixels()):
+                current = self.stripStatusList[x]
+                print(((((y*2)%4)/-4)+1))
+                strip.setPixelColorRGB(current[1] * ((((y*2)%4)/-4)+1),current[2] * ((((y*2)%4)/-4)+1),current[3] * ((((y*2)%4)/-4)+1))
+                sttrip.setBrightness(current[4] * ((((y*2)%4)/-4)+1))
+                strip.show()
+                time.sleep(fadeTime)
 
     def switch(self, value):
         if value == "OFF":
-            self.fadeStripBrightness(0)
+            self.fadeStripBrightness(0,false)
             strip.show()
             logging.info('Strip switched off')
         elif value == "ON":
-            print("two")
+            self.turn_on_animation()
 
     def ColorRGB (self,white,red,green,blue):
         return (white << 24) | (red << 16)| (green << 8) | blue
