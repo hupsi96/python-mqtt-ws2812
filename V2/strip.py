@@ -123,9 +123,9 @@ class strip_config:
             if abs(x[3] - blue) > abs(delta):
                 delta = x[3] - blue
                 print(x[3] - blue)
-        for y in range(abs(delta)):
+        for y in range(abs(delta)+1):
             print(y)
-            for x in range(strip.numPixels()+1):
+            for x in range(strip.numPixels()):
                 red_old = self.stripStatusList[x][1]
                 green_old = self.stripStatusList[x][2]
                 blue_old = self.stripStatusList[x][3]
@@ -134,7 +134,15 @@ class strip_config:
                 if x == 1:
                     print(str(red_old - (((red - red_old)/delta)*y))+","+ str(green_old - (((green - green_old)/delta)*y))+"," + 
                     str(blue_old - (((blue - blue_old)/delta)*y)))
-                
+            #strip.show()
+        for x in range(strip.numPixels()):
+            current = self.stripStatusList[x]
+            current[1] = red
+            current[2] = green
+            current[3] = blue
+            self.stripStatusList[x] = current
+        print("Done")
+                 
 
 
 
