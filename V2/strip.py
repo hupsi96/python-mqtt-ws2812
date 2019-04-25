@@ -77,7 +77,7 @@ class strip_config:
         if update:
             for x in range(strip.numPixels()):
                 current = self.stripStatusList[x]
-                current[4] = value
+                current[4] = int(value)
                 self.stripStatusList[x] = current
 
     def turn_on_animation (self):
