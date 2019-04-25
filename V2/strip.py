@@ -82,7 +82,7 @@ class strip_config:
                 current = self.stripStatusList[x]
                 current[4] = int(value)
                 self.stripStatusList[x] = current
-        print("Done")
+        print("Done - not jet finished")
 
     def turn_on_animation (self):
         for y in range(1,3):
