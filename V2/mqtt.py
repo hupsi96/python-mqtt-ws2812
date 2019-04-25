@@ -41,6 +41,9 @@ class main:
     # handles reconnecting.
     # Other loop*() functions are available that give a threaded interface and a
     # manual interface.
-    client.loop_forever()
+    try:
+        client.loop_forever()
+    except:
+        print("Forced Shutdown")
 
 mqqt_start = main()
