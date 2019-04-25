@@ -114,6 +114,7 @@ class strip_config:
         print("GO")
         delta = 0
         for x in self.stripStatusList:
+            print("ja")
             if abs(x[1] - red) > abs(delta):
                 delta = x[1] - red
             if abs(x[2] - green) > abs(delta):
