@@ -17,7 +17,7 @@ class strip_config:
 
     #fadeTime for all fading functions - default value "medium"
     global fadeTime
-    fadeTime = 0.05
+    fadeTime = 0.03
 
     global switchStatus
     #Constructor
@@ -94,6 +94,7 @@ class strip_config:
                     print(current[1])
                 #strip.show()
                 time.sleep(fadeTime)
+        logging.info('Animation done')
 
     def switch(self, value):
         if value == "OFF":
