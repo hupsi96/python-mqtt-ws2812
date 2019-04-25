@@ -114,13 +114,15 @@ class strip_config:
         print("GO")
         delta = 0
         for x in self.stripStatusList:
-            print("ja")
             if abs(x[1] - red) > abs(delta):
                 delta = x[1] - red
+                print(x[1] - red)
             if abs(x[2] - green) > abs(delta):
                 delta = x[2] - green
+                print(x[2] - green)
             if abs(x[3] - blue) > abs(delta):
                 delta = x[3] - blue
+                print(x[3] - blue)
         for y in range(delta):
             for x in range(strip.numPixels()):
                 red_old = self.stripStatusList[x][1]
