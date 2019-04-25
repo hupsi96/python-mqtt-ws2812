@@ -110,6 +110,28 @@ class strip_config:
                 self.turn_on_animation()
         print("Done")
 
+    def fadeColor(self,red,green,blue):
+        delta = 0
+        for x in self.stripStatusList:
+            if abs(x[1] - red) > abs(delta):
+                delta = x[1] - red
+            if abs(x[2] - green) > abs(delta):
+                delta = x[2] - green
+            if abs(x[3] - blue) > abs(delta):
+                delta = x[3] - blue
+        for y in range(delta):
+            for x in range(strip.numPixels()):
+                red_old = self.stripStatusList[x][1]
+                green_old = self.stripStatusList[x][2]
+                blue_old = self.stripStatusList[x][3]
+                strip.setPixelColorRGB(x, red_old + (((red - red_old)/delta)*y), green_old + (((green - green_old)/delta)*y),
+                 blue_old + (((blue - blue_old)/delta)*y))
+                if x == 1:
+                    print(red_old + (((red - red_old)/delta)*y)+","+ green_old + (((green - green_old)/delta)*y)+","+blue_old + (((blue - blue_old)/delta)*y))
+                
+
+
+
     def ColorRGB (self,white,red,green,blue):
         return (white << 24) | (red << 16)| (green << 8) | blue
 
@@ -124,4 +146,4 @@ class strip_config:
         red = (16711680 & num) >> 16
         green = (65280 & num) >> 8
         blue = 255 & num
-        return (int(white),int(red),int(green),int(blue))
+        return [int(white),int(red),int(green),int(blue)]

@@ -30,6 +30,10 @@ class main:
         elif msg.topic == "zimmer/map/light/switch":
             strip.switch(msg.payload)
 
+        elif msg.topic == "zimmer/map/rgb/set":
+            #testing input
+            strip.fadeColor(150,150,150)
+
     client = mqtt.Client()
     client.on_connect = on_connect
     client.on_message = on_message
