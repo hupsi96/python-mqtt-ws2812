@@ -87,7 +87,7 @@ class strip_config:
                 print(((((y*2)%4)/-4)+1))
                 strip.setPixelColorRGB(x,current[1] * ((((y*2)%4)/-4)+1),current[2] * ((((y*2)%4)/-4)+1),current[3] * ((((y*2)%4)/-4)+1))
                 sttrip.setBrightness(current[4] * ((((y*2)%4)/-4)+1))
-                strip.show()
+                #strip.show()
                 time.sleep(fadeTime)
 
     def switch(self, value):
