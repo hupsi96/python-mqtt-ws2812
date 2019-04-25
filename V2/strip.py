@@ -52,6 +52,7 @@ class strip_config:
             strip.setPixelColorRGB(x,0,0,0)
             self.stripStatusList[x] = [0,0,0,0,0]
         strip.show()
+        print("Done")
 
     #Sets the brightness of the whole strip | update is a bool to indicate 
     #if the status List should be updated or not
@@ -79,6 +80,7 @@ class strip_config:
                 current = self.stripStatusList[x]
                 current[4] = int(value)
                 self.stripStatusList[x] = current
+        print("Done")
 
     def turn_on_animation (self):
         for y in range(1,3):
@@ -95,6 +97,7 @@ class strip_config:
                 #strip.show()
                 time.sleep(fadeTime)
         logging.info('Animation done')
+        print("Done")
 
     def switch(self, value):
         if value == "OFF":
@@ -105,6 +108,7 @@ class strip_config:
         elif value == "ON":
             if not self.switchStatus:
                 self.turn_on_animation()
+        print("Done")
 
     def ColorRGB (self,white,red,green,blue):
         return (white << 24) | (red << 16)| (green << 8) | blue
