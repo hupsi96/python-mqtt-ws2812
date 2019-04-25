@@ -132,7 +132,7 @@ class strip_config:
                 strip.setPixelColorRGB(x, red_old + (((red - red_old)/delta)*y), green_old + (((green - green_old)/delta)*y),
                  blue_old + (((blue - blue_old)/delta)*y))
                 if x == 1:
-                    print(red_old + (((red - red_old)/delta)*y)+","+ green_old + (((green - green_old)/delta)*y)+","+blue_old + (((blue - blue_old)/delta)*y))
+                    print(str(red_old + (((red - red_old)/delta)*y))+","+ str(green_old + (((green - green_old)/delta)*y))+","+str(blue_old + (((blue - blue_old)/delta)*y)))
                 
 
 
