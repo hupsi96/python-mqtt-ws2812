@@ -141,6 +141,7 @@ class strip_config:
             current[2] = green
             current[3] = blue
             self.stripStatusList[x] = current
+            print(self.stripStatusList[x])
         print("Done")
                  
 
