@@ -113,7 +113,8 @@ class strip_config:
     def fadeColor(self,red,green,blue):
         print("GO")
         delta = 0
-        #define max dimming range:
+
+        #Define mx fade range
         for x in self.stripStatusList:
             if abs(x[1] - red) > abs(delta):
                 delta = x[1] - red
@@ -124,7 +125,8 @@ class strip_config:
             if abs(x[3] - blue) > abs(delta):
                 delta = x[3] - blue
                 print(x[3] - blue)
-        # set colors step by step
+
+        #set Color steop by step in delta+1 steps to final value
         for y in range(abs(delta)+1):
             print(y)
             for x in range(strip.numPixels()):
@@ -133,10 +135,13 @@ class strip_config:
                 blue_old = self.stripStatusList[x][3]
                 strip.setPixelColorRGB(x, red_old - (((red - red_old)/delta)*y), green_old - (((green - green_old)/delta)*y),
                  blue_old - (((blue - blue_old)/delta)*y))
-
+                if x == 1:
+                    print(str(red_old - (((red - red_old)/delta)*y))+","+ str(green_old - (((green - green_old)/delta)*y))+"," + 
+                    str(blue_old - (((blue - blue_old)/delta)*y)))
             #strip.show()
             time.sleep(fadeTime)
-        #adjust store array
+        
+        #adjust stored r,g,b values
         for x in range(strip.numPixels()):
             current = self.stripStatusList[x]
             current[1] = red
