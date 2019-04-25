@@ -135,6 +135,7 @@ class strip_config:
                     print(str(red_old - (((red - red_old)/delta)*y))+","+ str(green_old - (((green - green_old)/delta)*y))+"," + 
                     str(blue_old - (((blue - blue_old)/delta)*y)))
             #strip.show()
+            time.sleep(fadeTime)
         for x in range(strip.numPixels()):
             current = self.stripStatusList[x]
             current[1] = red
