@@ -47,7 +47,7 @@ class main:
     # manual interface.
     try:
         client.loop_forever()
-    except:
+    except KeyboardInterrupt:
         print("Forced Shutdown")
 
 mqqt_start = main()
