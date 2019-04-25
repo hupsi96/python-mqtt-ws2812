@@ -93,7 +93,7 @@ class strip_config:
                     strip.setBrightness(current[4])
                     print(current[1])
                 #strip.show()
-                #time.sleep(fadeTime)
+                time.sleep(fadeTime)
 
     def switch(self, value):
         if value == "OFF":
