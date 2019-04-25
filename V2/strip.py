@@ -82,16 +82,16 @@ class strip_config:
 
     def turn_on_animation (self):
         for y in range(1,2):
-            print(y)
-            print(y*2)
-            print((y*2)%4)
-            print(float(((y*2)%4)/(-4)))
-            print((float(((y*2)%4)/(-4)))+1.0)
             for x in range(strip.numPixels()):
                 current = self.stripStatusList[x]
-                print(float((((y*2)%4)/(-4))+1))
-                strip.setPixelColorRGB(x,current[1] * ((((y*2)%4)/-4)+1),current[2] * ((((y*2)%4)/-4)+1),current[3] * ((((y*2)%4)/-4)+1))
-                strip.setBrightness(current[4] * ((((y*2)%4)/-4)+1))
+                if y == 1:
+                    strip.setPixelColorRGB(x,int(current[1] * 0.5),int(current[2] * 0.5),int(current[3] * 0.5))
+                    strip.setBrightness(int(current[4] * 0.5))
+                    print(int(current[1] * 0.5))
+                else:
+                    strip.setPixelColorRGB(x,current[1],current[2],current[3])
+                    strip.setBrightness(current[4])
+                    print(current[1])
                 #strip.show()
                 #time.sleep(fadeTime)
 
