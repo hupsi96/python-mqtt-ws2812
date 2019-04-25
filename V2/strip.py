@@ -82,6 +82,7 @@ class strip_config:
 
     def turn_on_animation (self):
         for y in range(1,2):
+            print(y)
             for x in range(strip.numPixels()):
                 current = self.stripStatusList[x]
                 print(((((y*2)%4)/-4)+1))
