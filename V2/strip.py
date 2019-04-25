@@ -123,7 +123,7 @@ class strip_config:
             if abs(x[3] - blue) > abs(delta):
                 delta = x[3] - blue
                 print(x[3] - blue)
-        for y in range(delta):
+        for y in range(abs(delta)):
             print(y)
             for x in range(strip.numPixels()):
                 red_old = self.stripStatusList[x][1]
