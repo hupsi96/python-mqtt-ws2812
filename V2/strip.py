@@ -97,7 +97,7 @@ class strip_config:
             logging.info('Strip switched off')
             self.switchStatus = False
         elif value == "ON":
-            if switchStatus:
+            if self.switchStatus:
                 self.switchStatus = True
             else:
                 self.turn_on_animation()
