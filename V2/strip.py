@@ -111,6 +111,7 @@ class strip_config:
         print("Done")
 
     def fadeColor(self,red,green,blue):
+        print("GO")
         delta = 0
         for x in self.stripStatusList:
             if abs(x[1] - red) > abs(delta):
