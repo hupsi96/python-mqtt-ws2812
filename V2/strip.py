@@ -125,7 +125,7 @@ class strip_config:
                 print(x[3] - blue)
         for y in range(abs(delta)):
             print(y)
-            for x in range(strip.numPixels()):
+            for x in range(strip.numPixels()+1):
                 red_old = self.stripStatusList[x][1]
                 green_old = self.stripStatusList[x][2]
                 blue_old = self.stripStatusList[x][3]
