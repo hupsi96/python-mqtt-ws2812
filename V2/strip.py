@@ -28,12 +28,12 @@ class strip_config:
 
         # List to store current color values
         #The tupel show the values (brightness,red,green,blue,brightness)
-        self.stripStatusList = [(0,0,0,0)] * num
+        self.stripStatusList = [[0,0,0,0]] * num
         self.switchStatus = False
         #Test Color
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,100,100,100)
-            self.stripStatusList[x] = (0,100,100,100,10)
+            self.stripStatusList[x] = [0,100,100,100,10]
         strip.setBrightness(10)
         self.switchStatus = True
         #strip.show() #to be included after testing
@@ -50,7 +50,7 @@ class strip_config:
         logging.info('Strip cleared')
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,0,0,0)
-            self.stripStatusList[x] = (0,0,0,0,0)
+            self.stripStatusList[x] = [0,0,0,0,0]
         strip.show()
 
     #Sets the brightness of the whole strip | update is a bool to indicate 
@@ -103,9 +103,7 @@ class strip_config:
             logging.info('Strip switched off')
             self.switchStatus = False
         elif value == "ON":
-            if self.switchStatus:
-                self.switchStatus = True
-            else:
+            if not self.switchStatus:
                 self.turn_on_animation()
 
     def ColorRGB (self,white,red,green,blue):
