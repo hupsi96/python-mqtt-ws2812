@@ -81,7 +81,7 @@ class strip_config:
                 self.stripStatusList[x] = current
 
     def turn_on_animation (self):
-        for y in range(1,2):
+        for y in range(1,3):
             for x in range(strip.numPixels()):
                 current = self.stripStatusList[x]
                 if y == 1:
