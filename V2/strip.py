@@ -92,7 +92,7 @@ class strip_config:
 
     def switch(self, value):
         if value == "OFF":
-            self.fadeStripBrightness(0,false)
+            self.fadeStripBrightness(0,False)
             strip.show()
             logging.info('Strip switched off')
             self.switchStatus = False
