@@ -17,7 +17,7 @@ class strip_config:
 
     #fadeTime for all fading functions - default value "medium"
     global fadeTime
-    fadeTime = 0.03
+    fadeTime = 0.01
 
     global switchStatus
     #Constructor
