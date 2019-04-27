@@ -19,12 +19,18 @@ class strip_config:
     global fadeTime
     fadeTime = 0.01
 
+    #testMode deactivates all Show calls to avaid turning on and off the LES remotely
+    global testMode
+
+    #Status if On command shold be executed
     global switchStatus
     #Constructor
     def __init__(self, num, pin):
         # config strip
         self.strip = Adafruit_NeoPixel(num,pin,800000,10,False,255)
         strip.begin()
+
+        self.testMode = True
 
         # List to store current color values
         #The tupel show the values (brightness,red,green,blue,brightness)
@@ -36,7 +42,8 @@ class strip_config:
             self.stripStatusList[x] = [0,100,100,100,10]
         strip.setBrightness(10)
         self.switchStatus = True
-        #strip.show() #to be included after testing
+        if not testMode:
+            strip.show()
 
         #test
         #print(self.ColorRGB(0,100,150,200))
@@ -74,7 +81,8 @@ class strip_config:
                 strip.setBrightness(currentBirghtness+x)
             elif delta > 0:
                 strip.setBrightness(currentBirghtness-x)
-            #strip.show() # to be included after testing
+            if not testMode:
+                strip.show()
             time.sleep(fadeTime)
         logging.info('Brightness set to: +' + str(value))
         if update:
@@ -96,7 +104,8 @@ class strip_config:
                     strip.setPixelColorRGB(x,current[1],current[2],current[3])
                     strip.setBrightness(current[4])
                     print(current[1])
-                #strip.show()
+                if not testMode:
+                    strip.show()
                 time.sleep(fadeTime)
         logging.info('Animation done')
         print("Done")
@@ -124,10 +133,8 @@ class strip_config:
                 delta = green - x[2]
             if abs(blue - x[3]) > abs(delta):
                 delta = blue - x[3]
-        print(delta)
         #set Color steop by step in delta+1 steps to final value
         for y in range(abs(delta)+1):
-            print(y)
             for x in range(strip.numPixels()):
                 red_old = self.stripStatusList[x][1]
                 green_old = self.stripStatusList[x][2]
@@ -136,10 +143,12 @@ class strip_config:
                 green_new = float(green_old) + ((float(green - green_old)/float(abs(delta)))*float(y))
                 blue_new = float(blue_old) + ((float(blue - blue_old)/float(abs(delta)))*float(y))
                 strip.setPixelColorRGB(x, int(red_new), int(green_new),int(blue_new))
-                if x == 1 or x == 10 or x == 20:
-                    print(x)
-                    print(str(red_new)+","+ str(green_new)+"," + str(blue_new))
-            #strip.show()
+                #testing output
+                #if x == 1 or x == 10 or x == 20:
+                    #print(x)
+                    #print(str(red_new)+","+ str(green_new)+"," + str(blue_new))
+            if not testMode:
+                strip.show()
             time.sleep(fadeTime)
         
         #adjust stored r,g,b values
