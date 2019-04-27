@@ -98,11 +98,11 @@ class strip_config:
                 current = self.stripStatusList[x]
                 if y == 1:
                     strip.setPixelColorRGB(x,int(current[2] * 0.5),int(current[1] * 0.5),int(current[3] * 0.5))
-                    #strip.setBrightness(int(current[4] * 0.5))
+                    strip.setBrightness(int(current[4] * 0.5))
                     print(int(current[1] * 0.5))
                 else:
                     strip.setPixelColorRGB(x,current[2],current[1],current[3])
-                    #strip.setBrightness(current[4])
+                    strip.setBrightness(current[4])
                     print(current[1])
                 if not self.testMode:
                     strip.show()
