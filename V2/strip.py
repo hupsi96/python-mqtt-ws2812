@@ -42,13 +42,13 @@ class strip_config:
         self.stripStatusList = [[0,0,0,0]] * num
         self.switchStatus = True
         #Test Color
-        #for x in range(strip.numPixels()):
-        #    strip.setPixelColorRGB(x,100,100,100)
-        #    self.stripStatusList[x] = [0,100,100,100,10]
-        #strip.setBrightness(10)
-        #self.switchStatus = True
-        #if not self.testMode:
-        #    strip.show()
+        for x in range(strip.numPixels()):
+            strip.setPixelColorRGB(x,100,100,100)
+            self.stripStatusList[x] = [0,100,100,100,10]
+        strip.setBrightness(10)
+        self.switchStatus = True
+        if not self.testMode:
+            strip.show()
 
         #animationClass.waveAnimation()
         #test
