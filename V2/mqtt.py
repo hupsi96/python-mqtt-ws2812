@@ -32,11 +32,7 @@ class main:
 
         elif msg.topic == "zimmer/map/rgb/set":
             values = msg.payload.split(',')
-            
             strip.fadeColor(int(values[0]),int(values[1]),int(values[2]))
-            #testing input
-            #strip.fadeColor(150,130,20)
-            print(msg.payload)
 
     client = mqtt.Client()
     client.on_connect = on_connect
