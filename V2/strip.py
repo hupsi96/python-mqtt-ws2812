@@ -174,7 +174,8 @@ class strip_config:
             strip.setPixelColorRGB(x,37,74,0)
             strip.show()
             print(x)
-        time.sleep(1)
+            time.sleep(1)
+        
 
 
     def ColorRGB (self,white,red,green,blue):
