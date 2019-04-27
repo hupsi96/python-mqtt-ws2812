@@ -48,7 +48,7 @@ class strip_config:
         if not self.testMode:
             strip.show()
 
-        animationClass.waveAnimation()
+        #animationClass.waveAnimation()
         #test
         #print(self.ColorRGB(0,100,150,200))
         #print(bin(self.ColorRGB(0,100,150,200)))
@@ -95,7 +95,7 @@ class strip_config:
                 current = self.stripStatusList[x]
                 current[4] = int(value)
                 self.stripStatusList[x] = current
-        print("Done - not jet finished")
+        print("Done")
 
     def turn_on_animation (self):
         for x in range(strip.numPixels()):
@@ -129,10 +129,9 @@ class strip_config:
             if not self.switchStatus:
                 self.turn_on_animation()
                 self.switchStatus = True
-        print("Done")
+            print("Done")
 
     def fadeColor(self,red,green,blue):
-        print("GO")
         delta = 0
 
         #Define max fade range
@@ -143,7 +142,6 @@ class strip_config:
                 delta = green - x[2]
             if abs(blue - x[3]) > abs(delta):
                 delta = blue - x[3]
-            print(delta)
         #set Color steop by step in delta+1 steps to final value
         if delta != 0:
             for y in range(abs(delta)+1):
