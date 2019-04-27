@@ -170,7 +170,16 @@ class strip_config:
             current[3] = blue
             self.stripStatusList[x] = current
         print("Done")
-                 
+    
+    def setFadeSpeed(self,level):
+        if level == "slow":
+            self.fadeTime = 0.001
+        elif level == "medium":
+            self.fadeTime = 0.005
+        elif level == "fast":
+            self.fadeTime = 0.01
+
+
     def test_Pixel_numbers (self):
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,37,74,0)
