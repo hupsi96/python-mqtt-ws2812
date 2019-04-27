@@ -2,12 +2,14 @@ from neopixel import *
 import logging
 import time
 import numpy as np
-
+import map_animation as animat
 class strip_config:
 
     #define strip globaly and set default values
     global strip
     strip = Adafruit_NeoPixel(177, 18, 800000, 5, False, 255) #default setting """Adafruit_NeoPixel"""
+
+    global animationClass = animat.animation_setup(strip)
 
     #confic logging module
     logging.basicConfig(filename='WS2812Controller.log', filemode='w', level=logging.DEBUG, format='%(asctime)s - %(levelname)s: %(message)s', datefmt='%d.%m.%y %I:%M:%S %p')
