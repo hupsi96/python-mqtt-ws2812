@@ -91,7 +91,7 @@ class strip_config:
                 strip.setBrightness(currentBirghtness-x)
             if not self.testMode:
                 strip.show()
-            time.sleep(fadeTime)
+            time.sleep(self.fadeTime)
         logging.info('Brightness set to: +' + str(value))
         if update:
             for x in range(strip.numPixels()):
@@ -118,7 +118,7 @@ class strip_config:
                     #print(current[1])
                 if not self.testMode:
                     strip.show()
-                time.sleep(fadeTime)
+                time.sleep(self.fadeTime)
         logging.info('Animation done')
         print("Done")
 
