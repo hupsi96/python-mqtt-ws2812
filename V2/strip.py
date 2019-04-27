@@ -17,7 +17,7 @@ class strip_config:
 
     #fadeTime for all fading functions - default value "medium"
     global fadeTime
-    fadeTime = 0.01
+    fadeTime = 0.005
 
     #testMode deactivates all Show calls to avaid turning on and off the LES remotely
     global testMode
