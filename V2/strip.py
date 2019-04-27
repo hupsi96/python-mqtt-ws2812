@@ -135,22 +135,23 @@ class strip_config:
                 delta = blue - x[3]
             print(delta)
         #set Color steop by step in delta+1 steps to final value
-        for y in range(abs(delta)+1):
-            for x in range(strip.numPixels()):
-                red_old = self.stripStatusList[x][1]
-                green_old = self.stripStatusList[x][2]
-                blue_old = self.stripStatusList[x][3]
-                red_new = float(red_old) + ((float(red - red_old)/float(abs(delta)))*float(y))
-                green_new = float(green_old) + ((float(green - green_old)/float(abs(delta)))*float(y))
-                blue_new = float(blue_old) + ((float(blue - blue_old)/float(abs(delta)))*float(y))
-                strip.setPixelColorRGB(x, int(red_new), int(green_new),int(blue_new))
-                #testing output
-                #if x == 1 or x == 10 or x == 20:
-                    #print(x)
-                    #print(str(red_new)+","+ str(green_new)+"," + str(blue_new))
-            if not self.testMode:
-                strip.show()
-            time.sleep(fadeTime)
+        if delta != 0:
+            for y in range(abs(delta)+1):
+                for x in range(strip.numPixels()):
+                    red_old = self.stripStatusList[x][1]
+                    green_old = self.stripStatusList[x][2]
+                    blue_old = self.stripStatusList[x][3]
+                    red_new = float(red_old) + ((float(red - red_old)/float(abs(delta)))*float(y))
+                    green_new = float(green_old) + ((float(green - green_old)/float(abs(delta)))*float(y))
+                    blue_new = float(blue_old) + ((float(blue - blue_old)/float(abs(delta)))*float(y))
+                    strip.setPixelColorRGB(x, int(red_new), int(green_new),int(blue_new))
+                    #testing output
+                    #if x == 1 or x == 10 or x == 20:
+                        #print(x)
+                        #print(str(red_new)+","+ str(green_new)+"," + str(blue_new))
+                if not self.testMode:
+                    strip.show()
+                time.sleep(fadeTime)
         
         #adjust stored r,g,b values
         for x in range(strip.numPixels()):
