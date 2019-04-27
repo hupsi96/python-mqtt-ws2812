@@ -35,7 +35,7 @@ class strip_config:
         # List to store current color values
         #The tupel show the values (brightness,red,green,blue,brightness)
         self.stripStatusList = [[0,0,0,0]] * num
-        self.switchStatus = False
+        self.switchStatus = True
         #Test Color
         for x in range(strip.numPixels()):
             strip.setPixelColorRGB(x,100,100,100)
