@@ -31,6 +31,9 @@ class main:
             strip.switch(msg.payload)
 
         elif msg.topic == "zimmer/map/rgb/set":
+            values = msg.payload.split(',')
+            for x in values:
+                print(x)
             #testing input
             #strip.fadeColor(150,130,20)
             print(msg.payload)
