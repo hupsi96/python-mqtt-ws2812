@@ -132,10 +132,12 @@ class strip_config:
                 red_old = self.stripStatusList[x][1]
                 green_old = self.stripStatusList[x][2]
                 blue_old = self.stripStatusList[x][3]
-                print(str(red_old)+","+str(green_old)+","+str(blue_old))
-                strip.setPixelColorRGB(x, red_old - (((red - red_old)/delta)*y), green_old - (((green - green_old)/delta)*y),
-                 blue_old - (((blue - blue_old)/delta)*y))
-                if x == 1:
+                red_new = red_old + (((red - red_old)/abs(delta))*y)
+                green_new = green_old + (((green - green_old)/abs(delta))*y)
+                blue_new = blue_old + (((blue - blue_old)/abs(delta))*y)
+                strip.setPixelColorRGB(x, red_new, green_new,blue_new)
+                if x == 1 or x == 10 or x == 20:
+                    print(x)
                     print(str(red_old - (((red - red_old)/delta)*y))+","+ str(green_old - (((green - green_old)/delta)*y))+"," + 
                     str(blue_old - (((blue - blue_old)/delta)*y)))
             #strip.show()
