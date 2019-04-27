@@ -15,6 +15,6 @@ class animation_setup:
     def waveAnimation(self):
         for x in self.waveArray:
             for y in x:
-                strip.setBrightness(100)
-            strip.show()
+                self.strip.setBrightness(100)
+            self.strip.show()
             time.sleep(5)
