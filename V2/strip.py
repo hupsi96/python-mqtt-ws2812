@@ -41,7 +41,7 @@ class strip_config:
             strip.setPixelColorRGB(x,100,100,100)
             self.stripStatusList[x] = [0,100,100,100,10]
         strip.setBrightness(10)
-        self.switchStatus = True
+        #self.switchStatus = True
         if not self.testMode:
             strip.show()
 
