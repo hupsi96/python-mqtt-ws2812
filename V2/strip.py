@@ -77,7 +77,7 @@ class strip_config:
     def fadeStripBrightness(self,value,update):
         #current brightness of the whole strip
         currentBirghtness = strip.getBrightness()
-        print(fadeTime)
+        print(self.fadeTime)
 
         #steps needed to fade strip
         delta = currentBirghtness - value
