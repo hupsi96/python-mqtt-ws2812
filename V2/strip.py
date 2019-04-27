@@ -42,7 +42,7 @@ class strip_config:
             self.stripStatusList[x] = [0,100,100,100,10]
         strip.setBrightness(10)
         self.switchStatus = True
-        if not testMode:
+        if not self.testMode:
             strip.show()
 
         #test
@@ -81,7 +81,7 @@ class strip_config:
                 strip.setBrightness(currentBirghtness+x)
             elif delta > 0:
                 strip.setBrightness(currentBirghtness-x)
-            if not testMode:
+            if not self.testMode:
                 strip.show()
             time.sleep(fadeTime)
         logging.info('Brightness set to: +' + str(value))
@@ -104,7 +104,7 @@ class strip_config:
                     strip.setPixelColorRGB(x,current[1],current[2],current[3])
                     strip.setBrightness(current[4])
                     print(current[1])
-                if not testMode:
+                if not self.testMode:
                     strip.show()
                 time.sleep(fadeTime)
         logging.info('Animation done')
@@ -147,7 +147,7 @@ class strip_config:
                 #if x == 1 or x == 10 or x == 20:
                     #print(x)
                     #print(str(red_new)+","+ str(green_new)+"," + str(blue_new))
-            if not testMode:
+            if not self.testMode:
                 strip.show()
             time.sleep(fadeTime)
         
