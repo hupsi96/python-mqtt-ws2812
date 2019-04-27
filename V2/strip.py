@@ -49,7 +49,9 @@ class strip_config:
         self.switchStatus = True
         if not self.testMode:
             strip.show()
+            time.sleep(1)
         self.fadeStripBrightness(0)
+        strip.show()
 
         #animationClass.waveAnimation()
         #test
