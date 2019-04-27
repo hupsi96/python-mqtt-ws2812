@@ -49,8 +49,8 @@ class strip_config:
         #print(self.ColorRGB(0,100,150,200))
         #print(bin(self.ColorRGB(0,100,150,200)))
         #print(self.ColorNum(self.ColorRGB(0,100,150,200)))
-        self.stripStatusList[10] = [0,255,200,100,10]
-        self.stripStatusList[20] = [0,0,0,255,10]
+        #self.stripStatusList[10] = [0,255,200,100,10]
+        #self.stripStatusList[20] = [0,0,0,255,10]
 
         
 
