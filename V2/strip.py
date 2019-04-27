@@ -118,7 +118,6 @@ class strip_config:
 
         #Define max fade range
         for x in self.stripStatusList:
-            print(str(x[1])+","+str(x[2])+","+str(x[3]))
             if abs(red - x[1]) > abs(delta):
                 delta = red - x[1]
             if abs(green - x[2]) > abs(delta):
@@ -133,6 +132,7 @@ class strip_config:
                 red_old = self.stripStatusList[x][1]
                 green_old = self.stripStatusList[x][2]
                 blue_old = self.stripStatusList[x][3]
+                print(str(red_old)+","+str(green_old)+","+str(blue_old))
                 strip.setPixelColorRGB(x, red_old - (((red - red_old)/delta)*y), green_old - (((green - green_old)/delta)*y),
                  blue_old - (((blue - blue_old)/delta)*y))
                 if x == 1:
