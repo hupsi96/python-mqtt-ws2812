@@ -124,7 +124,7 @@ class strip_config:
                 delta = green - x[2]
             if abs(x[3] - blue) > abs(delta):
                 delta = blue - x[3]
-
+        print(delta)
         #set Color steop by step in delta+1 steps to final value
         for y in range(abs(delta)+1):
             print(y)
