@@ -30,7 +30,7 @@ class strip_config:
         self.strip = Adafruit_NeoPixel(num,pin,800000,10,False,255)
         strip.begin()
 
-        self.testMode = True
+        self.testMode = False
 
         # List to store current color values
         #The tupel show the values (brightness,red,green,blue,brightness)
