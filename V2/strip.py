@@ -95,6 +95,7 @@ class strip_config:
     def turn_on_animation (self):
         for x in range(strip.numPixels()):
             strip.setBrightness(self.stripStatusList[x][4])
+            strip.setPixelColorRGB(x,0,0,0)
         strip.show()
         time.sleep(10)
         for y in range(1,3):
