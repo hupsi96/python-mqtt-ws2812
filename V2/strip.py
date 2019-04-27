@@ -175,11 +175,11 @@ class strip_config:
         print("Done")
     
     def setFadeSpeed(self,level):
-        if level == "slow":
+        if level == "fast":
             self.fadeTime = 0.001
         elif level == "medium":
             self.fadeTime = 0.005
-        elif level == "fast":
+        elif level == "slow":
             self.fadeTime = 0.01
 
 
