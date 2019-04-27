@@ -174,11 +174,11 @@ class strip_config:
     
     def setFadeSpeed(self,level):
         if level == "slow":
-            fadeTime = 0.001
+            self.fadeTime = 0.001
         elif level == "medium":
-            fadeTime = 0.005
+            self.fadeTime = 0.005
         elif level == "fast":
-            fadeTime = 0.01
+            self.fadeTime = 0.01
 
 
     def test_Pixel_numbers (self):
