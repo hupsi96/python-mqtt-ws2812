@@ -144,7 +144,8 @@ class strip_config:
                     red_new = float(red_old) + ((float(red - red_old)/float(abs(delta)))*float(y))
                     green_new = float(green_old) + ((float(green - green_old)/float(abs(delta)))*float(y))
                     blue_new = float(blue_old) + ((float(blue - blue_old)/float(abs(delta)))*float(y))
-                    strip.setPixelColorRGB(x, int(red_new), int(green_new),int(blue_new))
+                    #strip.setPixelColorRGB takes values not RGB but GRB
+                    strip.setPixelColorRGB(x, int(green_new), int(red_new),int(blue_new))
                     #testing output
                     #if x == 1 or x == 10 or x == 20:
                         #print(x)
