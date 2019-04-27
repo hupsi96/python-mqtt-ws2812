@@ -97,7 +97,6 @@ class strip_config:
             strip.setBrightness(self.stripStatusList[x][4])
             strip.setPixelColorRGB(x,0,0,0)
         strip.show()
-        time.sleep(10)
         for y in range(1,3):
             for x in range(strip.numPixels()):
                 current = self.stripStatusList[x]
