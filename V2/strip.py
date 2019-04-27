@@ -174,8 +174,7 @@ class strip_config:
             strip.setPixelColorRGB(x,37,74,0)
             strip.show()
             print(x)
-            if x > 60:
-                time.sleep(1)
+            time.sleep(0.05)
         
 
 
