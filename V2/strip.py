@@ -9,7 +9,8 @@ class strip_config:
     global strip
     strip = Adafruit_NeoPixel(177, 18, 800000, 5, False, 255) #default setting """Adafruit_NeoPixel"""
 
-    global animationClass = animat.animation_setup(strip)
+    global animationClass 
+    animationClass = animat.animation_setup(strip)
 
     #confic logging module
     logging.basicConfig(filename='WS2812Controller.log', filemode='w', level=logging.DEBUG, format='%(asctime)s - %(levelname)s: %(message)s', datefmt='%d.%m.%y %I:%M:%S %p')
@@ -53,7 +54,7 @@ class strip_config:
         #print(self.ColorNum(self.ColorRGB(0,100,150,200)))
         #self.stripStatusList[10] = [0,255,200,100,10]
         #self.stripStatusList[20] = [0,0,0,255,10]
-        self.test_Pixel_numbers()
+        #self.test_Pixel_numbers()
 
         
 
