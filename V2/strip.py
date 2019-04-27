@@ -116,8 +116,9 @@ class strip_config:
         print("GO")
         delta = 0
 
-        #Define mx fade range
+        #Define max fade range
         for x in self.stripStatusList:
+            print(str(x[1])+","+str(x[2])+","str(x[3]))
             if abs(red - x[1]) > abs(delta):
                 delta = red - x[1]
             if abs(green - x[2]) > abs(delta):
