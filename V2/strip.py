@@ -138,8 +138,7 @@ class strip_config:
                 strip.setPixelColorRGB(x, red_new, green_new,blue_new)
                 if x == 1 or x == 10 or x == 20:
                     print(x)
-                    print(str(red_old - (((red - red_old)/delta)*y))+","+ str(green_old - (((green - green_old)/delta)*y))+"," + 
-                    str(blue_old - (((blue - blue_old)/delta)*y)))
+                    print(str(red_new)+","+ str(green_new)+"," + str(blue_new))
             #strip.show()
             time.sleep(fadeTime)
         
