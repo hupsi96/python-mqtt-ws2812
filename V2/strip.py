@@ -118,11 +118,11 @@ class strip_config:
 
         #Define mx fade range
         for x in self.stripStatusList:
-            if abs(x[1] - red) > abs(delta):
+            if abs(red - x[1]) > abs(delta):
                 delta = red - x[1]
-            if abs(x[2] - green) > abs(delta):
+            if abs(green - x[2]) > abs(delta):
                 delta = green - x[2]
-            if abs(x[3] - blue) > abs(delta):
+            if abs(blue - x[3]) > abs(delta):
                 delta = blue - x[3]
         print(delta)
         #set Color steop by step in delta+1 steps to final value
