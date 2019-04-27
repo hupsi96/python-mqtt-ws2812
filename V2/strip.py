@@ -48,7 +48,7 @@ class strip_config:
         if not self.testMode:
             strip.show()
 
-        self.animationClass.waveAnimation()
+        animationClass.waveAnimation()
         #test
         #print(self.ColorRGB(0,100,150,200))
         #print(bin(self.ColorRGB(0,100,150,200)))
