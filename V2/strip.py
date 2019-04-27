@@ -51,6 +51,7 @@ class strip_config:
         #print(self.ColorNum(self.ColorRGB(0,100,150,200)))
         #self.stripStatusList[10] = [0,255,200,100,10]
         #self.stripStatusList[20] = [0,0,0,255,10]
+        self.test_Pixel_numbers()
 
         
 
@@ -168,7 +169,12 @@ class strip_config:
             self.stripStatusList[x] = current
         print("Done")
                  
-
+    def test_Pixel_numbers (self):
+        for x in range(strip.numPixels()):
+            strip.setPixelColorRGB(x,37,74,0)
+            strip.show()
+            print(x)
+        time.sleep(1)
 
 
     def ColorRGB (self,white,red,green,blue):
