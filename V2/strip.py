@@ -35,7 +35,7 @@ class strip_config:
 
         self.testMode = False
 
-        self.fadeTime = 0.005
+        self.fadeTime = 0.0
 
         # List to store current color values
         #The tupel show the values (brightness,red,green,blue,brightness)
